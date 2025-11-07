@@ -7,18 +7,25 @@
     <title>Internet Banking</title>
   </head>
   <body>
-      <header>
-        <div class="head">
-          <h3 class="bank-name">Nova<span class="bank">Bank</span></h3>
-          <img src="notification.png" alt="notification" />
-        </div>
-        <p class="greeting">Good Morning, Jane</p>
-      </header>
-      <div class="container">
+    <header>
+      <div class="head">
+        <h3 class="bank-name">Nova<span class="bank">Bank</span></h3>
+        <img src="notification.png" alt="notification" />
+      </div>
+      <p class="greeting">Good Morning, Jane</p>
+    </header>
+    <div class="container">
       <main>
-        <section class="balance">
-          <p class="your-balance">Your Balance</p>
-          <span class="real-balance">$12,450.35</span>
+        <section class="bal">
+          <section class="balance">
+            <p class="your-balance">Your Balance</p>
+            <span class="real-balance">$12,450.35</span>
+          </section>
+          <footer>
+            <span class="total-deposit">$235534</span>
+            <span class="total-withdrawal">-$237894</span>
+            <span class="total-interst">$2778</span>
+          </footer>
         </section>
         <section class="other-balances">
           <div class="checking">
@@ -32,120 +39,111 @@
             <span class="save-balance">$7,219,60</span>
           </div>
         </section>
-                <section class="activites">
-            <div class="transfer">
-                <img src="rightarrow.png" alt="transfer" class="active">
-                <span>Transfer</span>
-            </div>
-             <div class="transfer">
-                <img src="dollar.png" alt="transfer" class="active">
-                <span>Pay</span>
-            </div>
-             <div class="transfer">
-                <img src="deposit.png" alt="transfer" class="active">
-                <span>Deposit</span>
-            </div>
-            <div class="transfer">
-                <img src="loan.png" alt="transfer" class="active">
-                <span>Deposit</span>
-            </div>
-        </section>
 
         <section class="transact">
           <p class="recent">Recent Transactions</p>
-         <div class="transactions">
-          <div class="transaction">
-             <div>
-              <p class="from-to">Starbucks</p>
-             <span class="datee">Oct 18</span>
-             </div>
-             <p class="transaction-deposit">$6.75</p>
+          <div class="transactions">
+            <div class="transaction">
+              <div>
+                <p class="from-to">Starbucks</p>
+                <span class="datee">Oct 18</span>
+              </div>
+              <p class="transaction-deposit">$6.75</p>
+            </div>
+            <div class="transaction">
+              <div>
+                <p class="from-to">Starbucks</p>
+                <span class="datee">Oct 18</span>
+              </div>
+              <p class="transaction-withdrawal">-$5.75</p>
+            </div>
+            <div class="transaction">
+              <div>
+                <p class="from-to">Starbucks</p>
+                <span class="datee">Oct 18</span>
+              </div>
+              <p class="transaction-deposit">$6.75</p>
+            </div>
+            <div class="transaction">
+              <div>
+                <p class="from-to">Starbucks</p>
+                <span class="datee">Oct 18</span>
+              </div>
+              <p class="transaction-withdrawal">-$5.75</p>
+            </div>
+            <div class="transaction">
+              <div>
+                <p class="from-to">Starbucks</p>
+                <span class="datee">Oct 18</span>
+              </div>
+              <p class="transaction-deposit">$6.75</p>
+            </div>
           </div>
-          <div class="transaction">
-             <div><p class="from-to">Starbucks</p>
-             <span class="datee">Oct 18</span></div>
-             <p class="transaction-withdrawal">-$5.75</p>
-          </div>
-          <div class="transaction">
-             <div><p class="from-to">Starbucks</p>
-             <span class="datee">Oct 18</span></div>
-             <p class="transaction-deposit">$6.75</p>
-          </div>
-          <div class="transaction">
-            <div> <p class="from-to">Starbucks</p>
-             <span class="datee">Oct 18</span></div>
-             <p class="transaction-withdrawal">-$5.75</p>
-          </div>
-          <div class="transaction">
-            <div> <p class="from-to">Starbucks</p>
-             <span class="datee">Oct 18</span></div>
-             <p class="transaction-deposit">$6.75</p>
-          </div>
-         </div>
-
         </section>
       </main>
-      
-       <aside>
+
+      <aside>
         <section class="activites">
-            <div class="transfer">
-                <img src="rightarrow.png" alt="transfer" class="active">
-                <span>Transfer</span>
-            </div>
-             <div class="transfer">
-                <img src="dollar.png" alt="transfer" class="active">
-                <span>Pay</span>
-            </div>
-             <div class="transfer">
-                <img src="deposit.png" alt="transfer" class="active">
-                <span>Deposit</span>
-            </div>
-            <div class="transfer">
-                <img src="loan.png" alt="transfer" class="active">
-                <span>Deposit</span>
-            </div>
+          <div class="transfer">
+            <img src="rightarrow.png" alt="transfer" class="active" />
+            <span>Transfer</span>
+          </div>
+          <div class="transfer">
+            <img src="dollar.png" alt="transfer" class="active" />
+            <span>Pay</span>
+          </div>
+          <div class="transfer">
+            <img src="deposit.png" alt="transfer" class="active" />
+            <span>Deposit</span>
+          </div>
+          <div class="transfer">
+            <img src="loan.png" alt="transfer" class="active" />
+            <span>Deposit</span>
+          </div>
         </section>
-            <div class="send">
-                <form action="submit">
-                    <p class="for">Transfer</p>
-                    <label for="transfer-account">Account Number</label>
-                    <input type="number" name="" id="tranfer-account" >
-                    <label for="transfer-amount">Amount</label>
-                    <input type="number" name="" id="transfer-amount">
-                    <button type="submit">Transfer</button>
-                </form>
-            </div>
-            <div class="send">
-                <form action="submit">
-                   <p class="for">Pay Bills</p>
-                   <label for="bill-type">Bill Type</label>
-                    <input type="text" name="" id="bill-type">
-                    <label for="bill-amount">Bill Amount</label>
-                    <input type="number" name="" id="bill-amount">
-                    <button type="submit">Pay</button>
-                </form>
-            </div>
-            <div class="send">
-                <form action="submit">
-                    <p class="for">Deposits</p>
-                     <label for="Deposit-amount">Deposit Amount</label>
-                    <input type="number" name="" id="tranfer-account">
-                    <label for="loan-amount">Purpose</label>
-                    <input type="text" name="" id="purpose">
-                    <button type="submit">Deposit</button>
-                </form>
-            </div>
-             <div class="send">
-                <form action="submit">
-                    <p class="for">Loan</p>
-                    <label for="payback-date">Payback Date</label>
-                    <input type="date" name="" id="loan-account">
-                    <label for="loan-amount">Loan Amount</label>
-                    <input type="number" name="" id="loan-amount">
-                    <button type="submit">Borrow</button>
-                </form>
-            </div>
-        </aside>
-      </div>
+        <div class="send">
+          <form action="submit">
+            <p class="for">Transfer</p>
+            <label for="transfer-account">Account Number</label>
+            <input type="number" name="" id="tranfer-account" />
+            <label for="transfer-amount">Amount</label>
+            <input type="number" name="" id="transfer-amount" />
+            <button type="submit">Transfer</button>
+          </form>
+        </div>
+        <div class="send">
+          <form action="submit">
+            <p class="for">Pay Bills</p>
+            <label for="bill-type">Bill Type</label>
+            <input type="text" name="" id="bill-type" />
+            <label for="bill-amount">Bill Amount</label>
+            <input type="number" name="" id="bill-amount" />
+            <button type="submit">Pay</button>
+          </form>
+        </div>
+        <div class="send">
+          <form action="submit">
+            <p class="for">Deposits</p>
+            <label for="Deposit-amount">Deposit Amount</label>
+            <input type="number" name="" id="tranfer-account" />
+            <label for="loan-amount">Purpose</label>
+            <input type="text" name="" id="purpose" />
+            <button type="submit">Deposit</button>
+          </form>
+        </div>
+        <div class="send">
+          <form action="submit">
+            <p class="for">Loan</p>
+            <label for="payback-date">Payback Date</label>
+            <input type="date" name="" id="loan-account" />
+            <label for="loan-amount">Loan Amount</label>
+            <input type="number" name="" id="loan-amount" />
+            <button type="submit">Borrow</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
