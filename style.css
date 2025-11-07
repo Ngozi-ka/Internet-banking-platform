@@ -324,13 +324,19 @@ aside {
   display: flex;
 }
 
+main{
+  padding: 1rem;
+}
+
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  margin-left: 0;
   background: whitesmoke;
   z-index: 1000;
 }
@@ -339,7 +345,7 @@ footer span{
   border: none;
   padding: 0.8rem;
   border-radius: 8px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: 1px 1px 1px navy;
 }
