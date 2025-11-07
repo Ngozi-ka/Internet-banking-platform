@@ -60,3 +60,52 @@ main{
     font-size: 2rem;
     font-weight: 600;
 }
+
+main .other-balances{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.other-balances > .checking{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    background: blue;
+    color: white;
+    width: 50%;
+    padding: 1rem;
+}
+
+.checking .checkin{
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.checking .check-balance{
+    font-size: 1.5rem;
+    font-weight: 550;
+}
+
+.other-balances > .saving{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    background: whitesmoke;
+    color: #000;
+    width: 50%;
+    padding: 1rem;
+}
+
+.saving .savin{
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.saving .save-balance{
+    font-size: 1.5rem;
+    font-weight: 550;
+}
