@@ -109,3 +109,27 @@ main .other-balances{
     font-size: 1.5rem;
     font-weight: 550;
 }
+
+.activites{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activites .transfer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.transfer > .active{
+    background: blue;
+    padding: 0.6rem;
+    border-radius: 50%;
+}
+
+.transfer span{
+    font-weight: 600;
+    color: #333;
+}
