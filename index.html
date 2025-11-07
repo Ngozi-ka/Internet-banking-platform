@@ -7,7 +7,6 @@
     <title>Internet Banking</title>
   </head>
   <body>
-    <div class="container">
       <header>
         <div class="head">
           <h3 class="bank-name">Nova<span class="bank">Bank</span></h3>
@@ -15,6 +14,7 @@
         </div>
         <p class="greeting">Good Morning, Jane</p>
       </header>
+      <div class="container">
       <main>
         <section class="balance">
           <p class="your-balance">Your Balance</p>
@@ -33,6 +33,9 @@
           </div>
         </section>
 
+      </main>
+      
+       <aside>
         <section class="activites">
             <div class="transfer">
                 <img src="rightarrow.png" alt="transfer" class="active">
@@ -46,8 +49,52 @@
                 <img src="deposit.png" alt="transfer" class="active">
                 <span>Deposit</span>
             </div>
+            <div class="transfer">
+                <img src="loan.png" alt="transfer" class="active">
+                <span>Deposit</span>
+            </div>
         </section>
-      </main>
-    </div>
+            <div class="send">
+                <form action="submit">
+                    <p class="for">Transfer</p>
+                    <label for="transfer-account">Account Number</label>
+                    <input type="number" name="" id="tranfer-account" >
+                    <label for="transfer-amount">Amount</label>
+                    <input type="number" name="" id="transfer-amount">
+                    <button type="submit">Transfer</button>
+                </form>
+            </div>
+            <div class="send">
+                <form action="submit">
+                   <p class="for">Pay Bills</p>
+                   <label for="bill-type">Bill Type</label>
+                    <input type="text" name="" id="bill-type">
+                    <label for="bill-amount">Bill Amount</label>
+                    <input type="number" name="" id="bill-amount">
+                    <button type="submit">Pay</button>
+                </form>
+            </div>
+            <div class="send">
+                <form action="submit">
+                    <p class="for">Deposits</p>
+                     <label for="Deposit-amount">Deposit Amount</label>
+                    <input type="number" name="" id="tranfer-account">
+                    <label for="loan-amount">Purpose</label>
+                    <input type="text" name="" id="purpose">
+                    <button type="submit">Deposit</button>
+                </form>
+            </div>
+             <div class="send">
+                <form action="submit">
+                    <p class="for">Loan</p>
+                    <label for="payback-date">Payback Date</label>
+                    <input type="date" name="" id="loan-account">
+                    <label for="loan-amount">Loan Amount</label>
+                    <input type="number" name="" id="loan-amount">
+                    <button type="submit">Borrow</button>
+                </form>
+            </div>
+        </aside>
+      </div>
   </body>
 </html>
