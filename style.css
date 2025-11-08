@@ -58,20 +58,20 @@ main {
   gap: 0.5rem;
 }
 
-.bal{
+.bal {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-footer{
+footer {
   display: flex;
   align-items: center;
   gap: 2rem;
   padding-right: 2rem;
 }
 
-footer span{
+footer span {
   border: none;
   padding: 1rem;
   border-radius: 8px;
@@ -79,7 +79,6 @@ footer span{
   font-weight: 600;
   box-shadow: 1px 1px 1px navy;
 }
-
 
 .balance > .your-balance {
   font-size: 12px;
@@ -140,10 +139,9 @@ main .other-balances {
   font-weight: 550;
 }
 
-.activitess{
+.activitess {
   display: none;
 }
-
 
 .activites {
   margin-top: 1.5rem;
@@ -151,7 +149,8 @@ main .other-balances {
   justify-content: space-between;
 }
 
-.activites .transfer, .activitess .transfer{
+.activites .transfer,
+.activitess .transfer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,26 +219,26 @@ form p {
   text-align: center;
 }
 
-.transact{
+.transact {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
 }
 
-.transact > .recent{
+.transact > .recent {
   font-size: 1.4rem;
   font-weight: 500;
 }
 
-.transact > .transactions{
+.transact > .transactions {
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.transactions > .transaction{
+.transactions > .transaction {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -249,117 +248,110 @@ form p {
   padding: 1rem 4rem 1rem 1rem;
 }
 
-.from-to{
+.from-to {
   font-weight: 450;
   margin-bottom: 0.3rem;
 }
 
-.datee{
+.datee {
   font-size: 0.8rem;
 }
 
-.transaction > .transaction-deposit{
+.transaction > .transaction-deposit {
   color: blue;
   font-weight: 500;
 }
 
-.transaction > .transaction-withdrawal{
+.transaction > .transaction-withdrawal {
   color: red;
   font-weight: 500;
 }
 
-
-.total-deposit{
+.total-deposit {
   color: blue;
 }
 
-.total-withdrawal{
+.total-withdrawal {
   color: red;
 }
 
-.total-interst{
+.total-interst {
   color: goldenrod;
 }
 
-
-@media(max-width: 90rem){
+@media (max-width: 90rem) {
   main {
-  width: 60%;
-}
-aside {
-  width: 38%;
-}
+    width: 60%;
+  }
+  aside {
+    width: 38%;
+  }
 
-.balance > .real-balance {
-  font-size: 1.5rem;
-}
+  .balance > .real-balance {
+    font-size: 1.5rem;
+  }
 
-.bal{
-  gap: 1rem;
-}
+  .bal {
+    gap: 1rem;
+  }
 
+  footer {
+    gap: 1.3rem;
+    padding-right: 1rem;
+  }
 
-
-footer{
-  gap: 1.3rem;
-  padding-right: 1rem;
-}
-
-
-footer span{
-  border: none;
-  padding: 0.3rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  box-shadow: 1px 1px 1px navy;
+  footer span {
+    border: none;
+    padding: 0.3rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 1px 1px 1px navy;
+  }
 }
 
-
-}
-
-@media(max-width: 45rem){
+@media (max-width: 45rem) {
   main {
-  width: 100%;
+    width: 100%;
+  }
+  aside {
+    display: none;
+  }
+
+  .greeting {
+    font-size: 1.7rem;
+  }
+
+  .activitess {
+    display: flex;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    margin-left: 0;
+    background: whitesmoke;
+    z-index: 1000;
+  }
+
+  footer span {
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 1px 1px 1px navy;
+  }
 }
-aside {
-  display: none;
-}
-
-.activitess{
-  display: flex;
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-main{
-  padding: 1rem;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-  margin-left: 0;
-  background: whitesmoke;
-  z-index: 1000;
-}
-
-footer span{
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 1px 1px 1px navy;
-}
-
-
-}
-
-
