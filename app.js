@@ -1,29 +1,77 @@
 const account1 = {
-  owner: 'Nnadi Jane',
+  owner: "Jane Nnadi",
   movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: "Blessing Nweke",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
-  owner: 'Steven Thomas Williams',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  owner: "Favour Onyinye Madu",
+  movements: [200, -200, 340, -300, -20, 50, 400, -460, 500],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
+  owner: "Gift Nwokeafor",
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
 };
 
 const accounts = [account1, account2, account3, account4];
+
+const greeting = document.querySelector(".greeting");
+const transactions = document.querySelector(".transactions");
+
+const hour = new Date().getHours();
+const month = new Date().toLocaleString("default", { month: "short" });
+const day = new Date().getDate();
+
+const date = `${month} ${day}`;
+
+console.log(date);
+
+const getFirstName = function (accounts) {
+  return accounts.map((account) => account.owner.split(" ")[0]);
+};
+
+const firstName = getFirstName(accounts)[2];
+
+if (hour > 0 && hour < 12) {
+  greeting.textContent = `Good Morning, ${firstName}`;
+} else if (hour < 18) {
+  greeting.textContent = `Good Afternoon, ${firstName}`;
+} else {
+  greeting.textContent = `Good Evening, ${firstName}`;
+}
+
+
+//CREATE FOR EACH TRANSACTION
+const eachTransaction = function (account3) {
+  account3.movements.forEach(function (movement) {
+    const deposit = movement > 0 ? "deposit" : "withdrawal";
+
+    const html = `<div class="transaction">
+              <div>
+                <p class="from-to">${account1.owner}</p>
+                <span class="datee">${date}</span>
+              </div>
+              <p class="transaction-${deposit}">${movement} $</p>
+            </div>`;
+
+    transactions.insertAdjacentHTML("afterbegin", html);
+  });
+};
+
+eachTransaction(account3);
+
+//MAIN BALANCE
+
