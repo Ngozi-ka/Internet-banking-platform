@@ -15,8 +15,9 @@ const account2 = {
 const account3 = {
   owner: "Favour Onyinye Madu",
   movements: [200, -200, 340, -300, -20, 50, 400, -460, 500, -200],
-  savings: [300, 400, 210, 846],
+  savings: [300, 400, 210, 846, 567],
   savingsacc: 33335567,
+  spendingacc: 33334567,
   interestRate: 0.7,
   pin: 3333,
 };
@@ -36,6 +37,11 @@ const realBalance = document.querySelector(".real-balance");
 const totalDeposit = document.querySelector(".total-deposit");
 const totalWithdrawal = document.querySelector(".total-withdrawal");
 const totalInterst = document.querySelector(".total-interst");
+const checkBalance = document.querySelector(".check-balance");
+const saveBalance = document.querySelector(".save-balance");
+const saveNo = document.querySelector(".saveno");
+const spendNo = document.querySelector(".checkno");
+
 
 const hour = new Date().getHours();
 const month = new Date().toLocaleString("default", { month: "short" });
@@ -80,11 +86,27 @@ eachTransaction(account3);
 
 //MAIN BALANCE
 const mainBalance = function (account3) {
-  const balance = account3.movements.reduce(function (acc, curr) {
+  const spendingBalance = account3.movements.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
 
-  realBalance.textContent = `$${balance}`;
+  checkBalance.textContent = `$${spendingBalance}`;
+
+  const SavingsBalance = account3.savings.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+
+  saveBalance.textContent = `$${SavingsBalance}`;
+
+  const balance = function () {
+    const one = [...account3.movements, ...account3.savings];
+    const main = one.reduce(function (acc, curr) {
+      return acc + curr;
+    }, 0);
+    realBalance.textContent = `$${main}`;
+  };
+
+  balance();
 };
 
 mainBalance(account3);
@@ -122,3 +144,14 @@ const summary = function (account3) {
 };
 
 summary(account3);
+
+const spendno = function(account3){
+  const save = account3.savingsacc.toString().slice(-4);
+  const spend = account3.spendingacc.toString().slice(-4);
+
+  saveNo.textContent = `****${save}`;
+  spendNo.textContent = `****${spend}`;
+
+}
+
+spendno(account3)
