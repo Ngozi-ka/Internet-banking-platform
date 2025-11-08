@@ -14,7 +14,9 @@ const account2 = {
 
 const account3 = {
   owner: "Favour Onyinye Madu",
-  movements: [200, -200, 340, -300, -20, 50, 400, -460, 500],
+  movements: [200, -200, 340, -300, -20, 50, 400, -460, 500, -200],
+  savings: [300, 400, 210, 846],
+  savingsacc: 33335567,
   interestRate: 0.7,
   pin: 3333,
 };
@@ -89,7 +91,6 @@ mainBalance(account3);
 
 //OTHER BALANCES
 const summary = function (account3) {
-
   function deposit() {
     const deposited = account3.movements
       .filter((movement) => movement > 0)
@@ -108,11 +109,16 @@ const summary = function (account3) {
   }
   withdraw();
 
-  function interest(){
-    const allInterest = account3.movements.filter(function(movement){
-      
-    })
+  function interest() {
+    const allInterest = account3.movements
+      .filter((movement) => movement > 0)
+      .map((movement) => (movement * 1.5) / 100)
+      .filter((movement) => movement > 1)
+      .reduce((acc, curr) => acc + curr, 0);
+
+    totalInterst.textContent = `$ ${allInterest}`;
   }
+  interest();
 };
 
 summary(account3);
