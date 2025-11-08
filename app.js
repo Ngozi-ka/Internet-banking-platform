@@ -30,6 +30,10 @@ const accounts = [account1, account2, account3, account4];
 
 const greeting = document.querySelector(".greeting");
 const transactions = document.querySelector(".transactions");
+const realBalance = document.querySelector(".real-balance");
+const totalDeposit = document.querySelector(".total-deposit");
+const totalWithdrawal = document.querySelector(".total-withdrawal");
+const totalInterst = document.querySelector(".total-interst");
 
 const hour = new Date().getHours();
 const month = new Date().toLocaleString("default", { month: "short" });
@@ -53,7 +57,6 @@ if (hour > 0 && hour < 12) {
   greeting.textContent = `Good Evening, ${firstName}`;
 }
 
-
 //CREATE FOR EACH TRANSACTION
 const eachTransaction = function (account3) {
   account3.movements.forEach(function (movement) {
@@ -64,7 +67,7 @@ const eachTransaction = function (account3) {
                 <p class="from-to">${account1.owner}</p>
                 <span class="datee">${date}</span>
               </div>
-              <p class="transaction-${deposit}">${movement} $</p>
+              <p class="transaction-${deposit}">$ ${movement}</p>
             </div>`;
 
     transactions.insertAdjacentHTML("afterbegin", html);
@@ -74,4 +77,42 @@ const eachTransaction = function (account3) {
 eachTransaction(account3);
 
 //MAIN BALANCE
+const mainBalance = function (account3) {
+  const balance = account3.movements.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
 
+  realBalance.textContent = `$${balance}`;
+};
+
+mainBalance(account3);
+
+//OTHER BALANCES
+const summary = function (account3) {
+
+  function deposit() {
+    const deposited = account3.movements
+      .filter((movement) => movement > 0)
+      .reduce((acc, curr) => acc + curr, 0);
+
+    totalDeposit.textContent = `$ ${deposited}`;
+  }
+  deposit();
+
+  function withdraw() {
+    const withdrawal = account3.movements
+      .filter((movement) => movement < 0)
+      .reduce((acc, curr) => acc + curr, 0);
+
+    totalWithdrawal.textContent = `$ ${withdrawal}`;
+  }
+  withdraw();
+
+  function interest(){
+    const allInterest = account3.movements.filter(function(movement){
+      
+    })
+  }
+};
+
+summary(account3);

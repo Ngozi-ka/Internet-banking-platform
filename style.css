@@ -140,13 +140,18 @@ main .other-balances {
   font-weight: 550;
 }
 
+.activitess{
+  display: none;
+}
+
+
 .activites {
   margin-top: 1.5rem;
   display: flex;
   justify-content: space-between;
 }
 
-.activites .transfer {
+.activites .transfer, .activitess .transfer{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -320,8 +325,12 @@ footer span{
 aside {
   display: none;
 }
-.activites{
+
+.activitess{
   display: flex;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 main{
