@@ -7,10 +7,11 @@
     <title>Internet Banking</title>
   </head>
   <body>
+    <div class="main-container">
     <header>
       <div class="head">
         <h3 class="bank-name">Nova<span class="bank">Bank</span></h3>
-        <img src="notification.png" alt="notification" />
+        <button id="logoutBtn">Log out</button>
       </div>
       <p class="greeting">Good Morning, Jane</p>
     </header>
@@ -42,20 +43,20 @@
 
         <section class="activitess">
           <div class="transfer">
-            <img src="rightarrow.png" alt="transfer" class="active" />
+            <img src="rightarrow.png" alt="transfer" class="active transferr" />
             <span>Transfer</span>
           </div>
           <div class="transfer">
-            <img src="dollar.png" alt="transfer" class="active" />
+            <img src="dollar.png" alt="transfer" class="active  pay" />
             <span>Pay</span>
           </div>
           <div class="transfer">
-            <img src="deposit.png" alt="transfer" class="active" />
+            <img src="deposit.png" alt="transfer" class="active  deposit" />
             <span>Deposit</span>
           </div>
           <div class="transfer">
-            <img src="loan.png" alt="transfer" class="active" />
-            <span>Deposit</span>
+            <img src="loan.png" alt="transfer" class="active  loan" />
+            <span>Loan</span>
           </div>
         </section>
 
@@ -87,7 +88,7 @@
             <span>Deposit</span>
           </div>
         </section>
-        <div class="send">
+        <div class="send send1">
           <form action="submit">
             <p class="for">Transfer</p>
             <label for="transfer-account">Account Number</label>
@@ -128,6 +129,21 @@
           </form>
         </div>
       </aside>
+    </div>
+    </div>
+    <div class="form-container">
+        <div class="containerr">
+        <h3>Welcome back</h3>
+        <p>Welcome back! Please enter your details</p>
+        <form action="" id="loginForm">
+            <label for="account-no">Username</label>
+            <input type="text" id="account-no" placeholder="Enter your username">
+            <label for="account-pin">Account Pin</label>
+            <input type="number" id="account-pin" placeholder="Enter your pin">
+            <button type="submit">Login</button>
+        </form>
+        <p id="errorMsg" class="error"></p>
+        </div>
     </div>
 
     <script src="app.js"></script>

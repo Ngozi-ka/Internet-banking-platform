@@ -41,7 +41,28 @@ const checkBalance = document.querySelector(".check-balance");
 const saveBalance = document.querySelector(".save-balance");
 const saveNo = document.querySelector(".saveno");
 const spendNo = document.querySelector(".checkno");
+const transfer = document.querySelector(".transferr");
+const pay = document.querySelector(".pay");
+const deposit = document.querySelector(".deposit");
+const loan = document.querySelector(".loan");
+const send1 = document.querySelector(".send1");
+const loginForm = document.getElementById("loginForm");
+const accountNo = document.getElementById("account-no");
+const accountPin = document.getElementById("account-pin");
+const logoutBtn = document.getElementById("logoutBtn");
+const errorMsg = document.getElementById("errorMsg");
+const mainContainer = document.querySelector(".main-container");
+const formContainer = document.querySelector(".form-container");
 
+const username = accounts.forEach(function (acc) {
+  acc.username = acc.owner
+    .toLowerCase()
+    .split(" ")
+    .map((ac) => ac[0])
+    .join("");
+});
+
+let currentAccount;
 
 const hour = new Date().getHours();
 const month = new Date().toLocaleString("default", { month: "short" });
@@ -145,13 +166,33 @@ const summary = function (account3) {
 
 summary(account3);
 
-const spendno = function(account3){
+const spendno = function (account3) {
   const save = account3.savingsacc.toString().slice(-4);
   const spend = account3.spendingacc.toString().slice(-4);
 
   saveNo.textContent = `****${save}`;
   spendNo.textContent = `****${spend}`;
+};
 
-}
+spendno(account3);
 
-spendno(account3)
+loginForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  if (
+    accountNo.value == account3.username &&
+    Number(accountPin.value) === account3.pin
+  ) {
+    console.log("yes");
+    formContainer.classList.add("fade-out");
+    formContainer.addEventListener("transitionend", function handler() {
+      formContainer.style.display = "none";
+      mainContainer.style.display = "block";
+      mainContainer.classList.add("fade-in");
+
+      formContainer.removeEventListener("transitionend", handler);
+    });
+  } else {
+    console.log("good");
+  }
+});
