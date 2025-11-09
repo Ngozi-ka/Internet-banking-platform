@@ -193,6 +193,7 @@ loginForm.addEventListener("submit", function (e) {
       formContainer.removeEventListener("transitionend", handler);
     });
   } else {
-    console.log("good");
+    errorMsg.textContent = "Invalid username or pin";
+    return;
   }
 });

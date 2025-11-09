@@ -315,6 +315,10 @@ form p {
   color: goldenrod;
 }
 
+#errorMsg{
+  color: red;
+}
+
 @media (max-width: 90rem) {
   main {
     width: 60%;
@@ -347,6 +351,11 @@ form p {
 }
 
 @media (max-width: 45rem) {
+
+  header {
+  gap: 0.5rem;
+}
+
   main {
     width: 100%;
     padding: 1rem 0.7rem;
@@ -354,6 +363,21 @@ form p {
   aside {
     display: none;
   }
+
+  header > .greeting {
+  font-size: 1.6rem;
+  font-weight: 450;
+}
+
+
+  .containerr form input, .containerr form button{
+  width: 90%;
+}
+
+.containerr{
+  padding: 2rem 1rem;
+}
+
 
   .activitess {
     display: flex;
