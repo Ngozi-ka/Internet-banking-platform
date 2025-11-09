@@ -1,6 +1,9 @@
 const account1 = {
   owner: "Jane Nnadi",
   movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
+  savings: [300, 400, 210, 846, 567],
+  savingsacc: 33335567,
+  spendingacc: 33334567,
   interestRate: 1.2, // %
   pin: 1111,
 };
@@ -8,6 +11,9 @@ const account1 = {
 const account2 = {
   owner: "Blessing Nweke",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  savings: [300, 400, 210, 846, 567],
+  savingsacc: 33335567,
+  spendingacc: 33334567,
   interestRate: 1.5,
   pin: 2222,
 };
@@ -25,6 +31,9 @@ const account3 = {
 const account4 = {
   owner: "Gift Nwokeafor",
   movements: [430, 1000, 700, 50, 90],
+  savings: [300, 400, 210, 846, 567],
+  savingsacc: 33335567,
+  spendingacc: 33334567,
   interestRate: 1,
   pin: 4444,
 };
@@ -54,6 +63,7 @@ const errorMsg = document.getElementById("errorMsg");
 const mainContainer = document.querySelector(".main-container");
 const formContainer = document.querySelector(".form-container");
 
+let currentAccount;
 
 //CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
 const username = accounts.forEach(function (acc) {
@@ -64,27 +74,8 @@ const username = accounts.forEach(function (acc) {
     .join("");
 });
 
-let currentAccount;
-
-//SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING AND FETCH USER FIRSTNAME
+//SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING 
 const hour = new Date().getHours();
-
-const getFirstName = function (accounts) {
-  return accounts.map((account) => account.owner.split(" ")[0]);
-};
-
-const firstName = getFirstName(currentAccount);
-
-if (hour > 0 && hour < 12) {
-  greeting.textContent = `Good Morning, ${firstName}`;
-} else if (hour < 18) {
-  greeting.textContent = `Good Afternoon, ${firstName}`;
-} else {
-  greeting.textContent = `Good Evening, ${firstName}`;
-}
-
-
-//
 
 const month = new Date().toLocaleString("default", { month: "short" });
 const day = new Date().getDate();
@@ -93,17 +84,14 @@ const date = `${month} ${day}`;
 
 console.log(date);
 
-
-
-
-//CREATE FOR EACH TRANSACTION
-const eachTransaction = function (currentAccount) {
+// //CREATE FOR EACH TRANSACTION
+const eachTransaction = function (accounts) {
   currentAccount.movements.forEach(function (movement) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
 
     const html = `<div class="transaction">
               <div>
-                <p class="from-to">${account1.owner}</p>
+                <p class="from-to">${currentAccount.owner}</p>
                 <span class="datee">${date}</span>
               </div>
               <p class="transaction-${deposit}">$ ${movement}</p>
@@ -112,8 +100,6 @@ const eachTransaction = function (currentAccount) {
     transactions.insertAdjacentHTML("afterbegin", html);
   });
 };
-
-eachTransaction(currentAccount);
 
 //MAIN BALANCE
 const mainBalance = function (accounts) {
@@ -140,12 +126,10 @@ const mainBalance = function (accounts) {
   balance();
 };
 
-mainBalance(currentAccount);
-
 //OTHER BALANCES
-const summary = function (currentA) {
+const summary = function (currentAccount) {
   function deposit() {
-    const deposited = currentA.movements
+    const deposited = currentAccount.movements
       .filter((movement) => movement > 0)
       .reduce((acc, curr) => acc + curr, 0);
 
@@ -154,7 +138,7 @@ const summary = function (currentA) {
   deposit();
 
   function withdraw() {
-    const withdrawal = currentA.movements
+    const withdrawal = currentAccount.movements
       .filter((movement) => movement < 0)
       .reduce((acc, curr) => acc + curr, 0);
 
@@ -163,7 +147,7 @@ const summary = function (currentA) {
   withdraw();
 
   function interest() {
-    const allInterest = currentA.movements
+    const allInterest = currentAccount.movements
       .filter((movement) => movement > 0)
       .map((movement) => (movement * 1.5) / 100)
       .filter((movement) => movement > 1)
@@ -174,31 +158,42 @@ const summary = function (currentA) {
   interest();
 };
 
-summary(currentA);
-
-const spendno = function (currentA) {
-  const save = currentA.savingsacc.toString().slice(-4);
-  const spend = currentA.spendingacc.toString().slice(-4);
+const spendno = function (accounts) {
+  const save = currentAccount.savingsacc.toString().slice(-4);
+  const spend = currentAccount.spendingacc.toString().slice(-4);
 
   saveNo.textContent = `****${save}`;
   spendNo.textContent = `****${spend}`;
 };
 
-spendno(currentA);
-
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (
-    accountNo.value == currentAccount.username &&
-    Number(accountPin.value) === currentAccount.pin
-  ) {
-    console.log("yes");
+  currentAccount = accounts.find(function (move) {
+    return move.username === accountNo.value;
+  });
+
+  if (Number(accountPin.value) === currentAccount.pin) {
     formContainer.classList.add("fade-out");
     formContainer.addEventListener("transitionend", function handler() {
       formContainer.style.display = "none";
       mainContainer.style.display = "block";
       mainContainer.classList.add("fade-in");
+      eachTransaction(currentAccount);
+      mainBalance(currentAccount);
+      summary(currentAccount);
+      spendno(currentAccount);
+
+      //FETCH USER FIRSTNAME
+      const firstName = currentAccount.owner.split(" ")[0];
+      console.log(firstName);
+      if (hour > 0 && hour < 12) {
+        greeting.textContent = `Good Morning, ${firstName}`;
+      } else if (hour < 18) {
+        greeting.textContent = `Good Afternoon, ${firstName}`;
+      } else {
+        greeting.textContent = `Good Evening, ${firstName}`;
+      }
 
       formContainer.removeEventListener("transitionend", handler);
     });
