@@ -54,6 +54,8 @@ const errorMsg = document.getElementById("errorMsg");
 const mainContainer = document.querySelector(".main-container");
 const formContainer = document.querySelector(".form-container");
 
+
+//CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
 const username = accounts.forEach(function (acc) {
   acc.username = acc.owner
     .toLowerCase()
@@ -64,19 +66,14 @@ const username = accounts.forEach(function (acc) {
 
 let currentAccount;
 
+//SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING AND FETCH USER FIRSTNAME
 const hour = new Date().getHours();
-const month = new Date().toLocaleString("default", { month: "short" });
-const day = new Date().getDate();
-
-const date = `${month} ${day}`;
-
-console.log(date);
 
 const getFirstName = function (accounts) {
   return accounts.map((account) => account.owner.split(" ")[0]);
 };
 
-const firstName = getFirstName(accounts)[2];
+const firstName = getFirstName(currentAccount);
 
 if (hour > 0 && hour < 12) {
   greeting.textContent = `Good Morning, ${firstName}`;
@@ -86,9 +83,22 @@ if (hour > 0 && hour < 12) {
   greeting.textContent = `Good Evening, ${firstName}`;
 }
 
+
+//
+
+const month = new Date().toLocaleString("default", { month: "short" });
+const day = new Date().getDate();
+
+const date = `${month} ${day}`;
+
+console.log(date);
+
+
+
+
 //CREATE FOR EACH TRANSACTION
-const eachTransaction = function (account3) {
-  account3.movements.forEach(function (movement) {
+const eachTransaction = function (currentAccount) {
+  currentAccount.movements.forEach(function (movement) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
 
     const html = `<div class="transaction">
@@ -103,24 +113,24 @@ const eachTransaction = function (account3) {
   });
 };
 
-eachTransaction(account3);
+eachTransaction(currentAccount);
 
 //MAIN BALANCE
-const mainBalance = function (account3) {
-  const spendingBalance = account3.movements.reduce(function (acc, curr) {
+const mainBalance = function (accounts) {
+  const spendingBalance = currentAccount.movements.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
 
   checkBalance.textContent = `$${spendingBalance}`;
 
-  const SavingsBalance = account3.savings.reduce(function (acc, curr) {
+  const SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
 
   saveBalance.textContent = `$${SavingsBalance}`;
 
   const balance = function () {
-    const one = [...account3.movements, ...account3.savings];
+    const one = [...currentAccount.movements, ...currentAccount.savings];
     const main = one.reduce(function (acc, curr) {
       return acc + curr;
     }, 0);
@@ -130,12 +140,12 @@ const mainBalance = function (account3) {
   balance();
 };
 
-mainBalance(account3);
+mainBalance(currentAccount);
 
 //OTHER BALANCES
-const summary = function (account3) {
+const summary = function (currentA) {
   function deposit() {
-    const deposited = account3.movements
+    const deposited = currentA.movements
       .filter((movement) => movement > 0)
       .reduce((acc, curr) => acc + curr, 0);
 
@@ -144,7 +154,7 @@ const summary = function (account3) {
   deposit();
 
   function withdraw() {
-    const withdrawal = account3.movements
+    const withdrawal = currentA.movements
       .filter((movement) => movement < 0)
       .reduce((acc, curr) => acc + curr, 0);
 
@@ -153,7 +163,7 @@ const summary = function (account3) {
   withdraw();
 
   function interest() {
-    const allInterest = account3.movements
+    const allInterest = currentA.movements
       .filter((movement) => movement > 0)
       .map((movement) => (movement * 1.5) / 100)
       .filter((movement) => movement > 1)
@@ -164,24 +174,24 @@ const summary = function (account3) {
   interest();
 };
 
-summary(account3);
+summary(currentA);
 
-const spendno = function (account3) {
-  const save = account3.savingsacc.toString().slice(-4);
-  const spend = account3.spendingacc.toString().slice(-4);
+const spendno = function (currentA) {
+  const save = currentA.savingsacc.toString().slice(-4);
+  const spend = currentA.spendingacc.toString().slice(-4);
 
   saveNo.textContent = `****${save}`;
   spendNo.textContent = `****${spend}`;
 };
 
-spendno(account3);
+spendno(currentA);
 
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   if (
-    accountNo.value == account3.username &&
-    Number(accountPin.value) === account3.pin
+    accountNo.value == currentAccount.username &&
+    Number(accountPin.value) === currentAccount.pin
   ) {
     console.log("yes");
     formContainer.classList.add("fade-out");
