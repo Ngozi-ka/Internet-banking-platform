@@ -408,6 +408,11 @@ form p {
     box-shadow: 1px 1px 1px navy;
   }
 
+  .containerr{
+  padding: 1rem;
+}
+
+
 }
 
 .form-container{
