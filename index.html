@@ -69,10 +69,53 @@
         </section>
       </main>
 
+      <section class="payments"> 
+      <div class="send sendOne">
+          <form action="submit">
+            <p class="for">Transfer</p>
+            <label for="transfer-account">Account Number</label>
+            <input type="number" name="" id="tranfer-account" />
+            <label for="transfer-amount">Amount</label>
+            <input type="number" name="" id="transfer-amount" />
+            <button type="submit">Transfer</button>
+          </form>
+        </div>
+        <div class="send sendTwo">
+          <form action="submit">
+            <p class="for">Pay Bills</p>
+            <label for="bill-type">Bill Type</label>
+            <input type="text" name="" id="bill-type" />
+            <label for="bill-amount">Bill Amount</label>
+            <input type="number" name="" id="bill-amount" />
+            <button type="submit">Pay</button>
+          </form>
+        </div>
+        <div class="send sendThree">
+          <form action="submit">
+            <p class="for">Deposits</p>
+            <label for="Deposit-amount">Deposit Amount</label>
+            <input type="number" name="" id="tranfer-account" />
+            <label for="loan-amount">Purpose</label>
+            <input type="text" name="" id="purpose" />
+            <button type="submit">Deposit</button>
+          </form>
+        </div>
+        <div class="send sendFour">
+          <form action="submit">
+            <p class="for">Loan</p>
+            <label for="payback-date">Payback Date</label>
+            <input type="date" name="" id="loan-account" />
+            <label for="loan-amount">Loan Amount</label>
+            <input type="number" name="" id="loan-amount" />
+            <button type="submit">Borrow</button>
+          </form>
+        </div>
+    </section>
+
       <aside>
         <section class="activites">
           <div class="transfer">
-            <img src="rightarrow.png" alt="transfer" class="active" />
+            <img src="rightarrow.png" alt="transfer" class="active activeOne" />
             <span>Transfer</span>
           </div>
           <div class="transfer">
@@ -88,7 +131,7 @@
             <span>Deposit</span>
           </div>
         </section>
-        <div class="send send1">
+        <div class="send sendOne">
           <form action="submit">
             <p class="for">Transfer</p>
             <label for="transfer-account">Account Number</label>
@@ -131,6 +174,8 @@
       </aside>
     </div>
     </div>
+
+
     <div class="form-container">
         <div class="containerr">
         <h3>Welcome back</h3>

@@ -8,11 +8,14 @@
 
 body {
   font-family: "Roboto", sans-serif;
+ 
 }
 
 .main-container{
     display: none;
     opacity: 1;
+     position: relative;
+    
 }
 
 .form-container, .main-container{
@@ -319,6 +322,62 @@ form p {
   color: red;
 }
 
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.containerr{
+  border: 1px solid #000000ab;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.containerr h3{
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  color: blue;
+  font-weight: 700;
+}
+
+.containerr p{
+  color: #000000ab;
+  font-weight: 650;
+}
+
+.containerr form{
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.containerr form label{
+  font-weight: 550;
+}
+
+.containerr form input{
+  box-shadow: none;
+  border: 1px solid rgba(128, 128, 128, 0.329);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.containerr form input::placeholder{
+  font-size: 13px;
+  color:#000000ab;
+}
+
+.containerr form button{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.payments{
+  display: none;
+}
+ 
+
 @media (max-width: 90rem) {
   main {
     width: 60%;
@@ -326,6 +385,7 @@ form p {
   aside {
     width: 38%;
   }
+
 
   .balance > .real-balance {
     font-size: 1.5rem;
@@ -412,56 +472,35 @@ form p {
   padding: 1rem;
 }
 
-
-}
-
-.form-container{
+.payments{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  bottom: 70%;
+  z-index: 1000;
 }
 
-.containerr{
-  border: 1px solid #000000ab;
-  padding: 2rem;
-  border-radius: 1rem;
+.sendOne, .sendTwo, .sendThree, .sendFour{
+  width: 20rem;
+  background: white;
+  
 }
 
-.containerr h3{
-  margin-bottom: 1rem;
-  font-size: 1.7rem;
-  color: blue;
-  font-weight: 700;
+.sendTwo{
+  display: none;
 }
 
-.containerr p{
-  color: #000000ab;
-  font-weight: 650;
+.sendThree{
+  display: none;
 }
 
-.containerr form{
-  padding: 0;
-  margin: 1.5rem 0;
+.sendFour{
+  display: none;
 }
 
-.containerr form label{
-  font-weight: 550;
+
 }
 
-.containerr form input{
-  box-shadow: none;
-  border: 1px solid rgba(128, 128, 128, 0.329);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.containerr form input::placeholder{
-  font-size: 13px;
-  color:#000000ab;
-}
-
-.containerr form button{
-  font-size: 1rem;
-  font-weight: 550;
-}

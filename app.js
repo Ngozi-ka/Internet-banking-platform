@@ -54,7 +54,7 @@ const transfer = document.querySelector(".transferr");
 const pay = document.querySelector(".pay");
 const deposit = document.querySelector(".deposit");
 const loan = document.querySelector(".loan");
-const send1 = document.querySelector(".send1");
+const sendOne = document.querySelector(".sendOne");
 const loginForm = document.getElementById("loginForm");
 const accountNo = document.getElementById("account-no");
 const accountPin = document.getElementById("account-pin");
@@ -62,6 +62,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 const errorMsg = document.getElementById("errorMsg");
 const mainContainer = document.querySelector(".main-container");
 const formContainer = document.querySelector(".form-container");
+const activeOne = document.querySelector(".activeOne");
 
 let currentAccount;
 
