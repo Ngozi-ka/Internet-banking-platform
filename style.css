@@ -483,10 +483,18 @@ form p {
   z-index: 1000;
 }
 
+.send{
+  position: relative;
+}
+
 .sendOne, .sendTwo, .sendThree, .sendFour{
   width: 20rem;
   background: white;
   
+}
+
+.sendOne{
+  display: none;
 }
 
 .sendTwo{
@@ -494,13 +502,19 @@ form p {
 }
 
 .sendThree{
-  display: none;
+  display: block;
 }
 
 .sendFour{
   display: none;
 }
 
+.close{
+  width: 20px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
 
 }
 

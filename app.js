@@ -54,6 +54,9 @@ const transfer = document.querySelector(".transferr");
 const pay = document.querySelector(".pay");
 const deposit = document.querySelector(".deposit");
 const loan = document.querySelector(".loan");
+const sendFour = document.querySelector(".sendFour");
+const sendThree = document.querySelector(".sendThree");
+const sendTwo = document.querySelector(".sendTwo");
 const sendOne = document.querySelector(".sendOne");
 const loginForm = document.getElementById("loginForm");
 const accountNo = document.getElementById("account-no");
@@ -62,7 +65,10 @@ const logoutBtn = document.getElementById("logoutBtn");
 const errorMsg = document.getElementById("errorMsg");
 const mainContainer = document.querySelector(".main-container");
 const formContainer = document.querySelector(".form-container");
+const close = document.querySelectorAll(".close");
+const send = document.querySelector(".send");
 const activeOne = document.querySelector(".activeOne");
+
 
 let currentAccount;
 
@@ -213,3 +219,11 @@ loginForm.addEventListener("submit", function (e) {
     errorMsg.textContent = "Invalid username or pin";
   }
 });
+
+close.forEach(function(closebtn){
+  closebtn.addEventListener("click", function(){
+    closebtn.closest(".send").style.display = "none";
+  })
+})
+
+transfer.addEventListener("click")
