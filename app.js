@@ -68,6 +68,17 @@ const formContainer = document.querySelector(".form-container");
 const close = document.querySelectorAll(".close");
 const send = document.querySelector(".send");
 const main = document.querySelector(".main");
+const activeThree = document.querySelector(".activeThree");
+const sendDeposit = document.querySelector(".sendDeposit");
+const asideForms = document.querySelector(".asideForms")
+const sendLoan = document.querySelector(".sendLoan");
+const activeFour = document.querySelector(".activeFour");
+const sendTransfer = document.querySelector(".sendTransfer");
+const activeOne = document.querySelector(".activeOne");
+const sendPay = document.querySelector(".sendPay");
+const activeTwo = document.querySelector(".activeTwo");
+
+
 
 
 let currentAccount;
@@ -81,7 +92,7 @@ const username = accounts.forEach(function (acc) {
     .join("");
 });
 
-//SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING 
+//SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING
 const hour = new Date().getHours();
 
 const month = new Date().toLocaleString("default", { month: "short" });
@@ -181,8 +192,6 @@ const spendno = function (currentAccount) {
   spendNo.textContent = `${spend}`;
 };
 
-
-
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -219,44 +228,57 @@ loginForm.addEventListener("submit", function (e) {
   } else {
     errorMsg.textContent = "Invalid username or pin";
   }
-})
+});
 
-
-
-
-close.forEach(function(closebtn){
-  closebtn.addEventListener("click", function(){
+close.forEach(function (closebtn) {
+  closebtn.addEventListener("click", function () {
     closebtn.closest(".send").style.display = "none";
-     main.style.filter = "blur(0)";
-  })
-})
+    main.style.filter = "blur(0)";
+  });
+});
 
-transfer.addEventListener("click", function(){
+transfer.addEventListener("click", function () {
   sendOne.style.display = "block";
   main.style.filter = "blur(2px)";
-})
-pay.addEventListener("click", function(){
+});
+pay.addEventListener("click", function () {
   sendTwo.style.display = "block";
   main.style.filter = "blur(2px)";
-})
-deposit.addEventListener("click", function(){
+});
+deposit.addEventListener("click", function () {
   sendThree.style.display = "block";
   main.style.filter = "blur(2px)";
-})
-loan.addEventListener("click", function(){
+});
+loan.addEventListener("click", function () {
   sendFour.style.display = "block";
   main.style.filter = "blur(2px)";
-})
+});
 
-logoutBtn.addEventListener("click", function(e){
-
-  const answer = confirm("Are you sure you want to log out?")
+logoutBtn.addEventListener("click", function (e) {
+  const answer = confirm("Are you sure you want to log out?");
 
   if (answer) {
     formContainer.style.display = "flex";
-      mainContainer.style.display = "none";
-      formContainer.classList.add("fade-in");
-      location.reload()
-    }
-})
+    mainContainer.style.display = "none";
+    formContainer.classList.add("fade-in");
+    location.reload();
+  }
+});
+
+activeOne.addEventListener("click", function(){
+  asideForms.prepend(sendTransfer)
+});
+
+activeTwo.addEventListener("click", function(){
+  asideForms.prepend(sendPay)
+});
+
+activeThree.addEventListener("click", function(){
+  asideForms.prepend(sendDeposit)
+});
+
+activeFour.addEventListener("click", function(){
+  asideForms.prepend(sendLoan)
+});
+
 
