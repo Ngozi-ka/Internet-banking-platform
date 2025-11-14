@@ -67,7 +67,7 @@ const mainContainer = document.querySelector(".main-container");
 const formContainer = document.querySelector(".form-container");
 const close = document.querySelectorAll(".close");
 const send = document.querySelector(".send");
-const activeOne = document.querySelector(".activeOne");
+const main = document.querySelector(".main");
 
 
 let currentAccount;
@@ -183,7 +183,6 @@ const spendno = function (currentAccount) {
 
 
 
-
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -201,6 +200,8 @@ loginForm.addEventListener("submit", function (e) {
       mainBalance(currentAccount);
       summary(currentAccount);
       spendno(currentAccount);
+      accountNo.value = "";
+      accountPin.value = "";
 
       //FETCH USER FIRSTNAME
       const firstName = currentAccount.owner.split(" ")[0];
@@ -218,12 +219,44 @@ loginForm.addEventListener("submit", function (e) {
   } else {
     errorMsg.textContent = "Invalid username or pin";
   }
-});
+})
+
+
+
 
 close.forEach(function(closebtn){
   closebtn.addEventListener("click", function(){
     closebtn.closest(".send").style.display = "none";
+     main.style.filter = "blur(0)";
   })
 })
 
-transfer.addEventListener("click")
+transfer.addEventListener("click", function(){
+  sendOne.style.display = "block";
+  main.style.filter = "blur(2px)";
+})
+pay.addEventListener("click", function(){
+  sendTwo.style.display = "block";
+  main.style.filter = "blur(2px)";
+})
+deposit.addEventListener("click", function(){
+  sendThree.style.display = "block";
+  main.style.filter = "blur(2px)";
+})
+loan.addEventListener("click", function(){
+  sendFour.style.display = "block";
+  main.style.filter = "blur(2px)";
+})
+
+logoutBtn.addEventListener("click", function(e){
+
+  const answer = confirm("Are you sure you want to log out?")
+
+  if (answer) {
+    formContainer.style.display = "flex";
+      mainContainer.style.display = "none";
+      formContainer.classList.add("fade-in");
+      location.reload()
+    }
+})
+

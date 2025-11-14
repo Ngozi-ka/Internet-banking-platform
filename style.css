@@ -192,12 +192,18 @@ main .other-balances {
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
+  cursor: pointer;
 }
 
 .transfer > .active {
   background: blue;
   padding: 0.6rem;
   border-radius: 50%;
+}
+
+.transfer > .active:hover{
+  background: rgba(0, 0, 255, 0.521);
+  transition-duration: 0.5s;
 }
 
 .transfer span {
@@ -502,7 +508,7 @@ form p {
 }
 
 .sendThree{
-  display: block;
+  display: none;
 }
 
 .sendFour{
