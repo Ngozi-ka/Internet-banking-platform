@@ -482,11 +482,11 @@ form p {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 60%;
-  top: 30%;
+  top: 50%;
   left: 15%;
-  bottom: 70%;
+  bottom: 50%;
   right: 15%;
   z-index: 1000;
 }
