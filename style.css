@@ -8,27 +8,26 @@
 
 body {
   font-family: "Roboto", sans-serif;
- 
 }
 
-.main-container{
-    display: none;
-    opacity: 1;
-     position: relative;
-    
+.main-container {
+  display: none;
+  opacity: 1;
+  position: relative;
 }
 
-.form-container, .main-container{
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
+.form-container,
+.main-container {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
 }
 
-.fade-out{
-    opacity: 0;
+.fade-out {
+  opacity: 0;
 }
 
-.fade-in{
-    opacity: 1;
+.fade-in {
+  opacity: 1;
 }
 
 header {
@@ -53,7 +52,7 @@ header {
   font-weight: 700;
 }
 
-.head button{
+.head button {
   padding: 1rem;
   background: #fff;
   border: none;
@@ -63,7 +62,7 @@ header {
   cursor: pointer;
 }
 
-.head button:hover{
+.head button:hover {
   color: #fff;
   background: blue;
   transition: 1s ease-in-out;
@@ -201,7 +200,7 @@ main .other-balances {
   border-radius: 50%;
 }
 
-.transfer > .active:hover{
+.transfer > .active:hover {
   background: rgba(0, 0, 255, 0.521);
   transition-duration: 0.5s;
 }
@@ -324,65 +323,68 @@ form p {
   color: goldenrod;
 }
 
-#errorMsg{
+#errorMsg {
   color: red;
 }
 
-.form-container{
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.containerr{
+.containerr {
   border: 1px solid #000000ab;
   padding: 2rem;
   border-radius: 1rem;
 }
 
-.containerr h3{
+.containerr h3 {
   margin-bottom: 1rem;
   font-size: 1.7rem;
   color: blue;
   font-weight: 700;
 }
 
-.containerr p{
+.containerr p {
   color: #000000ab;
   font-weight: 650;
 }
 
-.containerr form{
+.containerr form {
   padding: 0;
   margin: 1.5rem 0;
 }
 
-.containerr form label{
+.containerr form label {
   font-weight: 550;
 }
 
-.containerr form input{
+.containerr form input {
   box-shadow: none;
   border: 1px solid rgba(128, 128, 128, 0.329);
   padding: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.containerr form input::placeholder{
+.containerr form input::placeholder {
   font-size: 13px;
-  color:#000000ab;
+  color: #000000ab;
 }
 
-.containerr form button{
+.containerr form button {
   font-size: 1rem;
   font-weight: 550;
 }
 
-.payments{
+.payments {
   display: none;
 }
- 
+
+button {
+  cursor: pointer;
+}
 
 @media (max-width: 90rem) {
   main {
@@ -391,7 +393,6 @@ form p {
   aside {
     width: 38%;
   }
-
 
   .balance > .real-balance {
     font-size: 1.5rem;
@@ -417,10 +418,9 @@ form p {
 }
 
 @media (max-width: 45rem) {
-
   header {
-  gap: 0.5rem;
-}
+    gap: 0.5rem;
+  }
 
   main {
     width: 100%;
@@ -431,19 +431,18 @@ form p {
   }
 
   header > .greeting {
-  font-size: 1.6rem;
-  font-weight: 450;
-}
+    font-size: 1.6rem;
+    font-weight: 450;
+  }
 
+  .containerr form input,
+  .containerr form button {
+    width: 90%;
+  }
 
-  .containerr form input, .containerr form button{
-  width: 90%;
-}
-
-.containerr{
-  padding: 2rem 1rem;
-}
-
+  .containerr {
+    padding: 2rem 1rem;
+  }
 
   .activitess {
     display: flex;
@@ -474,55 +473,55 @@ form p {
     box-shadow: 1px 1px 1px navy;
   }
 
-  .containerr{
-  padding: 1rem;
-}
+  .containerr {
+    padding: 1rem;
+  }
 
-.payments{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 60%;
-  top: 50%;
-  left: 15%;
-  bottom: 50%;
-  right: 15%;
-  z-index: 1000;
-}
+  .payments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 60%;
+    top: 50%;
+    left: 15%;
+    bottom: 50%;
+    right: 15%;
+    z-index: 1000;
+  }
 
-.send{
-  position: relative;
-}
+  .send {
+    position: relative;
+  }
 
-.sendOne, .sendTwo, .sendThree, .sendFour{
-  width: 20rem;
-  background: white;
-  
-}
+  .sendOne,
+  .sendTwo,
+  .sendThree,
+  .sendFour {
+    width: 20rem;
+    background: white;
+  }
 
-.sendOne{
-  display: none;
-}
+  .sendOne {
+    display: none;
+  }
 
-.sendTwo{
-  display: none;
-}
+  .sendTwo {
+    display: none;
+  }
 
-.sendThree{
-  display: none;
-}
+  .sendThree {
+    display: none;
+  }
 
-.sendFour{
-  display: none;
-}
+  .sendFour {
+    display: none;
+  }
 
-.close{
-  width: 20px;
-  position: absolute;
-  right: 0;
-  cursor: pointer;
+  .close {
+    width: 20px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
 }
-
-}
-
