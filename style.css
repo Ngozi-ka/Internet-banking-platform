@@ -483,9 +483,11 @@ form p {
   justify-content: center;
   align-items: center;
   position: absolute;
+  width: 60%;
   top: 30%;
-  left: 30%;
+  left: 15%;
   bottom: 70%;
+  right: 15%;
   z-index: 1000;
 }
 
