@@ -84,6 +84,13 @@ const transferAmount = document.querySelectorAll(".transfer-amount");
 
 let currentAccount;
 
+const updateUI = function () {
+  eachTransaction(currentAccount);
+  mainBalance(currentAccount);
+  summary(currentAccount);
+  spendno(currentAccount);
+};
+
 //CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
 const username = accounts.forEach(function (acc) {
   acc.username = acc.owner
@@ -206,10 +213,7 @@ loginForm.addEventListener("submit", function (e) {
       formContainer.style.display = "none";
       mainContainer.style.display = "block";
       mainContainer.classList.add("fade-in");
-      eachTransaction(currentAccount);
-      mainBalance(currentAccount);
-      summary(currentAccount);
-      spendno(currentAccount);
+      updateUI(currentAccount);
       accountNo.value = "";
       accountPin.value = "";
 
@@ -286,13 +290,6 @@ activeFour.addEventListener("click", function () {
 //   e.preventDefault();
 
 const implementingTransfer = function () {
-  let transferToAccount = null;
-  let amount = 0;
-
-  currentAccount = accounts.find(function (move) {
-    return move.username === accountNo.value;
-  });
-
   transferAccount.forEach(function (input, index) {
     input.addEventListener("input", function () {
       const typedAcc = this.value.trim();
@@ -311,23 +308,57 @@ const implementingTransfer = function () {
       }
     });
   });
-
-  transferForm.forEach(function (accs) {
-    accs.addEventListener("click", function () {
-      transferAmount.forEach(function (inputAmount) {
-        const amount = inputAmount.value.trim();
-      });
-
-      if (
-        transferToAccount &&
-        amount > 0 &&
-        currentAccount.SavingsBalance >= amount &&
-        currentAccount.spendingacc !== transferToAccount.spendingacc &&
-        currentAccount.savingsacc !== transferToAccount.savingsacc
-      ) {
-      }
-    });
-  });
 };
 
 implementingTransfer();
+
+// savingsacc: 4829103756,
+// spendingacc: 7612345980,
+
+transferForm.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    
+console.log("come on")
+let tran;
+
+currentAccount = accounts.find(function (move) {
+    return move.username === accountNo.value;
+  });
+
+  let tot = transferAccount.forEach(function(each){
+    each.addEventListener("input", function(){
+    this.value;
+    })
+ });
+tran = accounts.find(function(acc){
+  return acc.spendingacc === tot;
+ 
+})
+
+console.log(tot);
+      
+      
+    });
+  });
+
+
+  // currentAccount = accounts.find(function (move) {
+  //     return move.username === accountNo.value;
+  //   });
+
+  //   transferAccount.forEach(function (b) {
+  //     b.addEventListener("input", function () {
+  //       const toAcc = b.value.trim();
+      
+  //       let transferTo = accounts.find(function (acc) {
+  //         return acc.spendingacc == toAcc;
+  //       });
+
+  //       console.log(transferTo);
+    
+  //       console.log(transferTo.owner);
+      
+  //     });
+      
