@@ -77,6 +77,10 @@ const sendTransfer = document.querySelector(".sendTransfer");
 const activeOne = document.querySelector(".activeOne");
 const sendPay = document.querySelector(".sendPay");
 const activeTwo = document.querySelector(".activeTwo");
+const transferForm = document.querySelectorAll(".transferForm");
+const transferAccount = document.querySelectorAll(".transfer-account");
+const transferDetails = document.querySelectorAll(".transferDetails");
+
 
 
 
@@ -281,4 +285,52 @@ activeFour.addEventListener("click", function(){
   asideForms.prepend(sendLoan)
 });
 
+const transfers = transferForm.forEach(function(accs){
+  
+})
+
+
+// transfers.addEventListener("submit", function(e){
+//   e.preventDefault();
+
+const implementingTransfer = function(){
+
+  currentAccount = accounts.find(function (move) {
+    return move.username === accountNo.value;
+  });
+
+
+ transferAccount.forEach(function(input, index){
+  input.addEventListener("input", function(){
+    const typedAcc = this.value.trim();
+
+
+    let transferToAccount = accounts.find(function(user){
+    return user.spendingacc == typedAcc;
+  });
+
+  if(transferToAccount){
+    transferDetails[index].textContent = transferToAccount.owner;
+  }else{
+    transferDetails[index].textContent = "Incorrect account number";
+  }
+  })
+    
+  });
+
+  
+
+
+  // transAcc.addEventListener("input", function(){
+  //    this.value.trim();
+
+  //   transferDetails.forEach(function(tranS){
+  //   return tranS.textContent = currentAccount.owner;
+  // });
+
+
+
+};
+
+implementingTransfer();
 
