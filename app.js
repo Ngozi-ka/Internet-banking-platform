@@ -70,7 +70,7 @@ const send = document.querySelector(".send");
 const main = document.querySelector(".main");
 const activeThree = document.querySelector(".activeThree");
 const sendDeposit = document.querySelector(".sendDeposit");
-const asideForms = document.querySelector(".asideForms")
+const asideForms = document.querySelector(".asideForms");
 const sendLoan = document.querySelector(".sendLoan");
 const activeFour = document.querySelector(".activeFour");
 const sendTransfer = document.querySelector(".sendTransfer");
@@ -80,10 +80,7 @@ const activeTwo = document.querySelector(".activeTwo");
 const transferForm = document.querySelectorAll(".transferForm");
 const transferAccount = document.querySelectorAll(".transfer-account");
 const transferDetails = document.querySelectorAll(".transferDetails");
-
-
-
-
+const transferAmount = document.querySelectorAll(".transfer-amount");
 
 let currentAccount;
 
@@ -269,68 +266,68 @@ logoutBtn.addEventListener("click", function (e) {
   }
 });
 
-activeOne.addEventListener("click", function(){
-  asideForms.prepend(sendTransfer)
+activeOne.addEventListener("click", function () {
+  asideForms.prepend(sendTransfer);
 });
 
-activeTwo.addEventListener("click", function(){
-  asideForms.prepend(sendPay)
+activeTwo.addEventListener("click", function () {
+  asideForms.prepend(sendPay);
 });
 
-activeThree.addEventListener("click", function(){
-  asideForms.prepend(sendDeposit)
+activeThree.addEventListener("click", function () {
+  asideForms.prepend(sendDeposit);
 });
 
-activeFour.addEventListener("click", function(){
-  asideForms.prepend(sendLoan)
+activeFour.addEventListener("click", function () {
+  asideForms.prepend(sendLoan);
 });
-
-const transfers = transferForm.forEach(function(accs){
-  
-})
-
 
 // transfers.addEventListener("submit", function(e){
 //   e.preventDefault();
 
-const implementingTransfer = function(){
+const implementingTransfer = function () {
+  let transferToAccount = null;
+  let amount = 0;
 
   currentAccount = accounts.find(function (move) {
     return move.username === accountNo.value;
   });
 
+  transferAccount.forEach(function (input, index) {
+    input.addEventListener("input", function () {
+      const typedAcc = this.value.trim();
 
- transferAccount.forEach(function(input, index){
-  input.addEventListener("input", function(){
-    const typedAcc = this.value.trim();
+      let transferToAccount = accounts.find(function (user) {
+        return (
+          user.spendingacc === Number(typedAcc) ||
+          user.savingsacc === Number(typedAcc)
+        );
+      });
 
-
-    let transferToAccount = accounts.find(function(user){
-    return user.spendingacc == typedAcc;
+      if (transferToAccount) {
+        transferDetails[index].textContent = transferToAccount.owner;
+      } else {
+        transferDetails[index].textContent = "Incorrect account number";
+      }
+    });
   });
 
-  if(transferToAccount){
-    transferDetails[index].textContent = transferToAccount.owner;
-  }else{
-    transferDetails[index].textContent = "Incorrect account number";
-  }
-  })
-    
+  transferForm.forEach(function (accs) {
+    accs.addEventListener("click", function () {
+      transferAmount.forEach(function (inputAmount) {
+        const amount = inputAmount.value.trim();
+      });
+
+      if (
+        transferToAccount &&
+        amount > 0 &&
+        currentAccount.SavingsBalance >= amount &&
+        currentAccount.spendingacc !== transferToAccount.spendingacc &&
+        currentAccount.savingsacc !== transferToAccount.savingsacc
+      ) {
+      }
+    });
   });
-
-  
-
-
-  // transAcc.addEventListener("input", function(){
-  //    this.value.trim();
-
-  //   transferDetails.forEach(function(tranS){
-  //   return tranS.textContent = currentAccount.owner;
-  // });
-
-
-
 };
 
 implementingTransfer();
-
