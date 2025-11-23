@@ -77,10 +77,10 @@ const sendTransfer = document.querySelector(".sendTransfer");
 const activeOne = document.querySelector(".activeOne");
 const sendPay = document.querySelector(".sendPay");
 const activeTwo = document.querySelector(".activeTwo");
-const transferForm = document.querySelectorAll(".transferForm");
-const transferAccount = document.querySelectorAll(".transfer-account");
-const transferDetails = document.querySelectorAll(".transferDetails");
-const transferAmount = document.querySelectorAll(".transfer-amount");
+const transferForm = document.querySelector(".transferForm");
+const transferAccount = document.querySelector(".transfer-account");
+const transferDetails = document.querySelector(".transferDetails");
+const transferAmount = document.querySelector(".transfer-amount");
 
 let currentAccount;
 
@@ -152,35 +152,27 @@ const mainBalance = function () {
   balance();
 };
 
-
-
 //OTHER BALANCES
 const summary = function (currentAccount) {
+  const deposited = currentAccount.movements
+    .filter((movement) => movement > 0)
+    .reduce((acc, curr) => acc + curr, 0);
 
-    const deposited = currentAccount.movements
-      .filter((movement) => movement > 0)
-      .reduce((acc, curr) => acc + curr, 0);
+  totalDeposit.textContent = `$ ${deposited}`;
 
-    totalDeposit.textContent = `$ ${deposited}`;
-  
+  const withdrawal = currentAccount.movements
+    .filter((movement) => movement < 0)
+    .reduce((acc, curr) => acc + curr, 0);
 
-  
-    const withdrawal = currentAccount.movements
-      .filter((movement) => movement < 0)
-      .reduce((acc, curr) => acc + curr, 0);
-
-    totalWithdrawal.textContent = `$ ${withdrawal}`;
-  
+  totalWithdrawal.textContent = `$ ${withdrawal}`;
 
   const allInterest = currentAccount.movements
-      .filter((movement) => movement > 0)
-      .map((movement) => (movement * 1.5) / 100)
-      .filter((movement) => movement > 1)
-      .reduce((acc, curr) => acc + curr, 0);
+    .filter((movement) => movement > 0)
+    .map((movement) => (movement * 1.5) / 100)
+    .filter((movement) => movement > 1)
+    .reduce((acc, curr) => acc + curr, 0);
 
-    totalInterst.textContent = `$ ${allInterest}`;
-  
-  
+  totalInterst.textContent = `$ ${allInterest}`;
 };
 
 // const spendno = function (accounts) {
@@ -285,84 +277,20 @@ activeFour.addEventListener("click", function () {
   asideForms.prepend(sendLoan);
 });
 
-// transfers.addEventListener("submit", function(e){
-//   e.preventDefault();
+//IMPLEMENTING TRANSFER
 
-// const implementingTransfer = function () {
-//   transferAccount.forEach(function (input, index) {
-//     input.addEventListener("input", function () {
-//       const typedAcc = this.value.trim();
+transferForm.addEventListener("click", function(e){
+  e.preventDefault()
 
-//       let transferToAccount = accounts.find(function (user) {
-//         return (
-//           user.spendingacc === Number(typedAcc) ||
-//           user.savingsacc === Number(typedAcc)
-//         );
-//       });
+const transferToAccount = accounts.find(function(input){
+  input.spendingacc == transferAccount.value;
+})
 
-//       if (transferToAccount) {
-//         transferDetails[index].textContent = transferToAccount.owner;
-//       } else {
-//         transferDetails[index].textContent = "Incorrect account number";
-//       }
-//     });
-//   });
-// };
+console.log(transferToAccount)
+transferDetails.textContent = transferToAccount;
 
-// implementingTransfer();
+})
 
-// // savingsacc: 4829103756,
-// // spendingacc: 7612345980,
-// const spendingBalance = currentAccount.movements.reduce(function (acc, curr) {
-//     return acc + curr;
-//   }, 0);
 
-// transferForm.forEach(function (btn) {
-//   btn.addEventListener("click", function (e) {
-//     e.preventDefault();
-
-//     let currentAccount = accounts.find(function (move) {
-//       return move.username === accountNo.value;
-//     });
-
-//     transferAmount.forEach(function (input) {
-  
-//         const amount = input.value;
-
-//         let transferToAccount = accounts.find(function (user) {
-//           return (
-//             user.spendingacc === Number(amount) ||
-//             user.savingsacc === Number(amount)
-//           );
-//         });
-
-//         if (currentAccount !== transferToAccount) {
-//           console.log("yessssss");
-//           currentAccount.movements.push(-20);
-//           transferToAccount.movements.push(20);
-//           updateUI(currentAccount);
-//         } else {
-//           console.log("easy");
-//         }
-//       });
-
-//       console.log("come today");
-//     });
-  
-
-//   // currentAccount = accounts.find(function (move) {
-//   //     return move.username === accountNo.value;
-//   //   });
-
-//   //   transferAccount.forEach(function (b) {
-//   //     b.addEventListener("input", function () {
-//   //       const toAcc = b.value.trim();
-
-//   //       let transferTo = accounts.find(function (acc) {
-//   //         return acc.spendingacc == toAcc;
-//   //       });
-
-//   //       console.log(transferTo);
-
-//   //       console.log(transferTo.owner);
-// });
+// savingsacc: 4829103756,
+// spendingacc: 7612345980,
