@@ -297,24 +297,28 @@ mainTransferForm.addEventListener("click", function (e) {
     return acc.spendingacc == transferMain.value;
   });
 
-
-  console.log(currentAccount)
-  console.log(accountNo.value)
+  console.log(currentAccount);
+  console.log(accountNo.value);
 
   const amount = Number(mainTransferAmount.value.trim());
 
   if (
     transferToAccount &&
-    transferToAccount !== currentAccount &&
-   currentAccount.spendingBalance > amount
+    transferToAccount?.spendingacc !== currentAccount.spendingacc &&
+    amount > 0 &&
+    currentAccount.spendingBalance >= amount
   ) {
-    console.log("did it");
+    currentAccount.movements.push(-amount);
+    transferToAccount.movements.push(amount);
+    updateUI()
+    transferMain.value = "";
+    mainTransferAmount.value = "";
+    mainTransferDetails.textContent = "";
+    console.log("Did it again")
   } else {
     console.log("try again");
   }
 });
-
-
 
 //spendingacc: 9081726354,
 // savingsacc: 4829103756,
