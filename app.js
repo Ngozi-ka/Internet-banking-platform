@@ -77,10 +77,10 @@ const sendTransfer = document.querySelector(".sendTransfer");
 const activeOne = document.querySelector(".activeOne");
 const sendPay = document.querySelector(".sendPay");
 const activeTwo = document.querySelector(".activeTwo");
-const transferForm = document.querySelector(".transferForm");
-const transferAccount = document.querySelector(".transfer-account");
-const transferDetails = document.querySelector(".transferDetails");
-const transferAmount = document.querySelector(".transfer-amount");
+const mainTransferForm = document.querySelector("#mainTransferForm");
+const transferMain = document.querySelector("#transferMain");
+const mainTransferDetails = document.querySelector(".mainTransferDetails");
+const mainTransferAmount = document.querySelector("#mainTransferAmount");
 
 let currentAccount;
 
@@ -128,12 +128,12 @@ const eachTransaction = function (accounts) {
 };
 
 //MAIN BALANCE
-const mainBalance = function () {
-  const spendingBalance = currentAccount.movements.reduce(function (acc, curr) {
+const mainBalance = function (acc) {
+  acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
 
-  checkBalance.textContent = `$${spendingBalance}`;
+  checkBalance.textContent = `$${acc.spendingBalance}`;
 
   const SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
     return acc + curr;
@@ -279,18 +279,47 @@ activeFour.addEventListener("click", function () {
 
 //IMPLEMENTING TRANSFER
 
-transferForm.addEventListener("click", function(e){
-  e.preventDefault()
+transferMain.addEventListener("input", function () {
+  const own = accounts.find(function (acc) {
+    return acc.spendingacc === Number(transferMain.value);
+  });
+  if (own) {
+    mainTransferDetails.textContent = own.owner;
+  } else {
+    mainTransferDetails.textContent = "Incorrect account number";
+  }
+});
 
-const transferToAccount = accounts.find(function(input){
-  input.spendingacc == transferAccount.value;
-})
+mainTransferForm.addEventListener("click", function (e) {
+  e.preventDefault();
 
-console.log(transferToAccount)
-transferDetails.textContent = transferToAccount;
-
-})
+  const transferToAccount = accounts.find(function (acc) {
+    return acc.spendingacc == transferMain.value;
+  });
 
 
+  console.log(currentAccount)
+  console.log(accountNo.value)
+
+  const amount = Number(mainTransferAmount.value.trim());
+
+  if (
+    transferToAccount &&
+    transferToAccount !== currentAccount &&
+   currentAccount.spendingBalance > amount
+  ) {
+    console.log("did it");
+  } else {
+    console.log("try again");
+  }
+});
+
+
+
+//spendingacc: 9081726354,
 // savingsacc: 4829103756,
 // spendingacc: 7612345980,
+// const mainTransferForm = document.querySelector("#mainTransferForm");
+// const transferMain = document.querySelector("#transferMain");
+// const mainTransferDetails = document.querySelector(".mainTransferDetails");
+// const mainTransferAmount = document.querySelector("#mainTransferAmount");
