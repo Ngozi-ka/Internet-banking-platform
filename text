@@ -1,0 +1,254 @@
+
+let transferToAccount;
+
+const updateUI = function () {
+  mainBalance(currentAccount);
+  eachTransaction(currentAccount);
+  summary(currentAccount);
+  spendno(currentAccount);
+ 
+};
+
+
+
+
+
+console.log(date);
+
+// //CREATE FOR EACH TRANSACTION
+const eachTransaction = function () {
+
+  currentAccount.movements.forEach(function (movement) {
+    const deposit = movement > 0 ? "deposit" : "withdrawal";
+
+    const html = `<div class="transaction">
+              <div>
+                <p class="from-to">${currentAccount.owner}</p>
+                <span class="datee">${date}</span>
+              </div>
+              <p class="transaction-${deposit}">$ ${movement}</p>
+            </div>`;
+
+    transactions.insertAdjacentHTML("afterbegin", html);
+  });
+};
+
+//MAIN BALANCE
+const mainBalance = function (acc) {
+  acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+
+  checkBalance.textContent = `$${acc.spendingBalance}`;
+
+  const SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+
+  saveBalance.textContent = `$${SavingsBalance}`;
+
+  const balance = function () {
+    const one = [...currentAccount.movements, ...currentAccount.savings];
+    const main = one.reduce(function (acc, curr) {
+      return acc + curr;
+    }, 0);
+    realBalance.textContent = `$${main}`;
+  };
+
+  balance();
+};
+
+//OTHER BALANCES
+const summary = function (currentAccount) {
+  const deposited = currentAccount.movements
+    .filter((movement) => movement > 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  totalDeposit.textContent = `$ ${deposited}`;
+
+  const withdrawal = currentAccount.movements
+    .filter((movement) => movement < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  totalWithdrawal.textContent = `$ ${withdrawal}`;
+
+  const allInterest = currentAccount.movements
+    .filter((movement) => movement > 0)
+    .map((movement) => (movement * 1.5) / 100)
+    .filter((movement) => movement > 1)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  totalInterst.textContent = `$ ${allInterest}`;
+};
+
+// const spendno = function (accounts) {
+//   const save = currentAccount.savingsacc.toString().slice(-4);
+//   const spend = currentAccount.spendingacc.toString().slice(-4);
+
+//   saveNo.textContent = `****${save}`;
+//   spendNo.textContent = `****${spend}`;
+// };
+
+const spendno = function (currentAccount) {
+  const save = currentAccount.savingsacc;
+  const spend = currentAccount.spendingacc;
+
+  saveNo.textContent = `${save}`;
+  spendNo.textContent = `${spend}`;
+};
+
+const implimentLogin = function () {
+  loginBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    currentAccount = accounts.find(function (move) {
+      return move.username === accountNo.value;
+    });
+
+    if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
+      // formContainer.classList.add("fade-out");
+      formContainer.classList.remove("fade-in");
+      formContainer.classList.remove("fade-out");
+      mainContainer.classList.remove("fade-in");
+
+      // Start fade-out transition
+      formContainer.classList.add("fade-out");
+
+      formContainer.addEventListener("transitionend", function handler() {
+        formContainer.style.display = "none";
+        mainContainer.style.display = "block";
+        mainContainer.classList.add("fade-in");
+        updateUI(currentAccount);
+        accountNo.value = "";
+        accountPin.value = "";
+
+        //FETCH USER FIRSTNAME
+        const firstName = currentAccount.owner.split(" ")[0];
+        console.log(firstName);
+        if (hour > 0 && hour < 12) {
+          greeting.textContent = `Good Morning, ${firstName}`;
+        } else if (hour < 18) {
+          greeting.textContent = `Good Afternoon, ${firstName}`;
+        } else {
+          greeting.textContent = `Good Evening, ${firstName}`;
+        }
+
+        formContainer.removeEventListener("transitionend", handler);
+      });
+    } else {
+      errorMsg.textContent = "Invalid username or pin";
+    }
+  });
+};
+
+implimentLogin();
+
+close.forEach(function (closebtn) {
+  closebtn.addEventListener("click", function () {
+    closebtn.closest(".send").style.display = "none";
+    main.style.filter = "blur(0)";
+  });
+});
+
+transfer.addEventListener("click", function () {
+  sendOne.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+pay.addEventListener("click", function () {
+  sendTwo.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+deposit.addEventListener("click", function () {
+  sendThree.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+loan.addEventListener("click", function () {
+  sendFour.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+
+logoutBtn.addEventListener("click", function (e) {
+  const answer = confirm("Are you sure you want to log out?");
+
+  if (answer) {
+    formContainer.classList.remove("fade-out");
+    mainContainer.classList.remove("fade-in");
+    formContainer.style.display = "flex";
+    mainContainer.style.display = "none";
+
+    accountNo.value = "";
+    accountPin.value = "";
+    errorMsg.textContent = "";
+  } 
+});
+
+activeOne.addEventListener("click", function () {
+  asideForms.prepend(sendTransfer);
+});
+
+activeTwo.addEventListener("click", function () {
+  asideForms.prepend(sendPay);
+});
+
+activeThree.addEventListener("click", function () {
+  asideForms.prepend(sendDeposit);
+});
+
+activeFour.addEventListener("click", function () {
+  asideForms.prepend(sendLoan);
+});
+
+//IMPLEMENTING TRANSFER
+
+transferMain.addEventListener("input", function () {
+  const own = accounts.find(function (acc) {
+    return acc.spendingacc === Number(transferMain.value);
+  });
+  if (own) {
+    mainTransferDetails.textContent = own.owner;
+  } else {
+    mainTransferDetails.textContent = "Incorrect account number";
+  }
+});
+
+mainTransferForm.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  transferToAccount = accounts.find(function (acc) {
+    return acc.spendingacc == transferMain.value;
+  });
+
+  console.log(currentAccount);
+  console.log(accountNo.value);
+
+  const amount = Number(mainTransferAmount.value.trim());
+
+  if (
+    transferToAccount &&
+    transferToAccount?.spendingacc !== currentAccount.spendingacc &&
+    amount > 0 &&
+    currentAccount.spendingBalance >= amount
+  ) {
+    currentAccount.movements.push(-amount);
+    transferToAccount.movements.push(amount);
+    console.log(currentAccount.movements)
+    console.log(transferToAccount.movements)
+    updateUI(currentAccount);
+    transferMain.value = "";
+    mainTransferAmount.value = "";
+    mainTransferDetails.textContent = "";
+    sendOne.style.display = "none";
+    main.style.filter = "blur(0)";
+    console.log("Did it again");
+  } else {
+    console.log("try again");
+  }
+});
+
+//spendingacc: 9081726354,
+// savingsacc: 4829103756,
+// spendingacc: 7612345980,
+// const mainTransferForm = document.querySelector("#mainTransferForm");
+// const transferMain = document.querySelector("#transferMain");
+// const mainTransferDetails = document.querySelector(".mainTransferDetails");
+// const mainTransferAmount = document.querySelector("#mainTransferAmount");
