@@ -15,7 +15,7 @@ const updateUI = function () {
 
 console.log(date);
 
-// //CREATE FOR EACH TRANSACTION
+// //CREATE FOR EACH TRANSACTION IN THE MOVEMENTS ARRAY
 const eachTransaction = function () {
 
   currentAccount.movements.forEach(function (movement) {

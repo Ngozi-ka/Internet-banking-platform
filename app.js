@@ -104,3 +104,80 @@ const day = new Date().getDate();
 
 const date = `${month} ${day}`;
 
+//CREATE FOR EACH TRANSACTION IN THE MOVEMENTS ARRAY
+const eachTransaction = function () {
+  currentAccount.movements.forEach(function (movement) {
+    const deposit = movement > 0 ? "deposit" : "withdrawal";
+
+    const html = `<div class="transaction">
+              <div>
+                <p class="from-to">${currentAccount.owner}</p>
+                <span class="datee">${date}</span>
+              </div>
+              <p class="transaction-${deposit}">$ ${movement}</p>
+            </div>`;
+
+    transactions.insertAdjacentHTML("afterbegin", html);
+  });
+};
+
+//CREATING A SPENDINGBALANCE PROPERTY IN THE CURRENTACCOUNT, CALCULATING SPENDNG BALANCE, CALCULATING SAVINGS BALANCE AND CALCULATING THE MAIN BALANCE
+const mainBalance = function (acc) {
+  acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+
+  checkBalance.textContent = `$${acc.spendingBalance}`;
+
+  const SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+
+  saveBalance.textContent = `$${SavingsBalance}`;
+
+  const balance = function () {
+    const one = [...currentAccount.movements, ...currentAccount.savings];
+    const main = one.reduce(function (acc, curr) {
+      return acc + curr;
+    }, 0);
+    realBalance.textContent = `$${main}`;
+  };
+
+  balance();
+};
+
+
+//CALCULATING OTHER BALANCES
+const summary = function (currentAccount) {
+  const deposited = currentAccount.movements
+    .filter((movement) => movement > 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  totalDeposit.textContent = `$ ${deposited}`;
+
+  const withdrawal = currentAccount.movements
+    .filter((movement) => movement < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  totalWithdrawal.textContent = `$ ${withdrawal}`;
+
+  const allInterest = currentAccount.movements
+    .filter((movement) => movement > 0)
+    .map((movement) => (movement * 1.5) / 100)
+    .filter((movement) => movement > 1)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  totalInterst.textContent = `$ ${allInterest}`;
+};
+
+//SHOWING THE SPENDING ACCOUNT NUM AND SAVINGS ACCOUNT NUM FOR EACH ACCOUNT
+const spendno = function (currentAccount) {
+  const save = currentAccount.savingsacc;
+  const spend = currentAccount.spendingacc;
+
+  saveNo.textContent = `${save}`;
+  spendNo.textContent = `${spend}`;
+};
+
+
+
