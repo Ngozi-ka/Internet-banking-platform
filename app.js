@@ -59,6 +59,7 @@ const sendThree = document.querySelector(".sendThree");
 const sendTwo = document.querySelector(".sendTwo");
 const sendOne = document.querySelector(".sendOne");
 const loginForm = document.getElementById("loginForm");
+const loginBtn = document.querySelector(".loginBtn");
 const accountNo = document.getElementById("account-no");
 const accountPin = document.getElementById("account-pin");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -191,40 +192,51 @@ const spendno = function (currentAccount) {
   spendNo.textContent = `${spend}`;
 };
 
-loginForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+const implimentLogin = function () {
+  loginBtn.addEventListener("click", function (e) {
+    e.preventDefault();
 
-  currentAccount = accounts.find(function (move) {
-    return move.username === accountNo.value;
-  });
-
-  if (Number(accountPin.value) === currentAccount.pin) {
-    formContainer.classList.add("fade-out");
-    formContainer.addEventListener("transitionend", function handler() {
-      formContainer.style.display = "none";
-      mainContainer.style.display = "block";
-      mainContainer.classList.add("fade-in");
-      updateUI(currentAccount);
-      accountNo.value = "";
-      accountPin.value = "";
-
-      //FETCH USER FIRSTNAME
-      const firstName = currentAccount.owner.split(" ")[0];
-      console.log(firstName);
-      if (hour > 0 && hour < 12) {
-        greeting.textContent = `Good Morning, ${firstName}`;
-      } else if (hour < 18) {
-        greeting.textContent = `Good Afternoon, ${firstName}`;
-      } else {
-        greeting.textContent = `Good Evening, ${firstName}`;
-      }
-
-      formContainer.removeEventListener("transitionend", handler);
+    currentAccount = accounts.find(function (move) {
+      return move.username === accountNo.value;
     });
-  } else {
-    errorMsg.textContent = "Invalid username or pin";
-  }
-});
+
+    if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
+      // formContainer.classList.add("fade-out");
+      formContainer.classList.remove("fade-in");
+      formContainer.classList.remove("fade-out");
+      mainContainer.classList.remove("fade-in");
+
+      // Start fade-out transition
+      formContainer.classList.add("fade-out");
+
+      formContainer.addEventListener("transitionend", function handler() {
+        formContainer.style.display = "none";
+        mainContainer.style.display = "block";
+        mainContainer.classList.add("fade-in");
+        updateUI(currentAccount);
+        accountNo.value = "";
+        accountPin.value = "";
+
+        //FETCH USER FIRSTNAME
+        const firstName = currentAccount.owner.split(" ")[0];
+        console.log(firstName);
+        if (hour > 0 && hour < 12) {
+          greeting.textContent = `Good Morning, ${firstName}`;
+        } else if (hour < 18) {
+          greeting.textContent = `Good Afternoon, ${firstName}`;
+        } else {
+          greeting.textContent = `Good Evening, ${firstName}`;
+        }
+
+        formContainer.removeEventListener("transitionend", handler);
+      });
+    } else {
+      errorMsg.textContent = "Invalid username or pin";
+    }
+  });
+};
+
+implimentLogin();
 
 close.forEach(function (closebtn) {
   closebtn.addEventListener("click", function () {
@@ -254,11 +266,15 @@ logoutBtn.addEventListener("click", function (e) {
   const answer = confirm("Are you sure you want to log out?");
 
   if (answer) {
+    formContainer.classList.remove("fade-out");
+    mainContainer.classList.remove("fade-in");
     formContainer.style.display = "flex";
     mainContainer.style.display = "none";
-    formContainer.classList.add("fade-in");
-    location.reload();
-  }
+
+    accountNo.value = "";
+    accountPin.value = "";
+    errorMsg.textContent = "";
+  } 
 });
 
 activeOne.addEventListener("click", function () {
@@ -310,11 +326,13 @@ mainTransferForm.addEventListener("click", function (e) {
   ) {
     currentAccount.movements.push(-amount);
     transferToAccount.movements.push(amount);
-    updateUI()
+    updateUI();
     transferMain.value = "";
     mainTransferAmount.value = "";
     mainTransferDetails.textContent = "";
-    console.log("Did it again")
+    sendOne.style.display = "none";
+    main.style.filter = "blur(0)";
+    console.log("Did it again");
   } else {
     console.log("try again");
   }
