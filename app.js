@@ -82,8 +82,10 @@ const mainTransferForm = document.querySelector("#mainTransferForm");
 const transferMain = document.querySelector("#transferMain");
 const mainTransferDetails = document.querySelector(".mainTransferDetails");
 const mainTransferAmount = document.querySelector("#mainTransferAmount");
+const fromTo = document.querySelector(".from-to");
 
 let currentAccount;
+let transferToAccount;
 
 const updateUI = function () {
   eachTransaction(currentAccount);
@@ -112,7 +114,8 @@ const date = `${month} ${day}`;
 console.log(date);
 
 // //CREATE FOR EACH TRANSACTION
-const eachTransaction = function (accounts) {
+const eachTransaction = function (currentAccount) {
+
   currentAccount.movements.forEach(function (movement) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
 
@@ -309,7 +312,7 @@ transferMain.addEventListener("input", function () {
 mainTransferForm.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const transferToAccount = accounts.find(function (acc) {
+  transferToAccount = accounts.find(function (acc) {
     return acc.spendingacc == transferMain.value;
   });
 
