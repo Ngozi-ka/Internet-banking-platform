@@ -1,6 +1,10 @@
 const account1 = {
   owner: "Jane Nnadi",
-  movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
+    movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
+    amounts: [],
+    from: [],
+    too: [],
+    reason: ["Bills"],
   savings: [300, 400, 210, 846, 567],
   savingsacc: 7482091563,
   spendingacc: 5823710496,
@@ -31,6 +35,10 @@ const account3 = {
 const account4 = {
   owner: "Gift Nwokeafor",
   movements: [430, 1000, 700, 50, 90],
+  amounts: [],
+  from: [],
+  too: [],
+  reason: ["Bills"],
   savings: [300, 400, 210, 846, 567],
   savingsacc: 4829103756,
   spendingacc: 7612345980,
@@ -83,20 +91,18 @@ const transferMain = document.querySelector("#transferMain");
 const mainTransferDetails = document.querySelector(".mainTransferDetails");
 const mainTransferAmount = document.querySelector("#mainTransferAmount");
 const fromTo = document.querySelector(".from-to");
+const transferReason = document.getElementById("transferReason");
 
 //THIS ACCOUNT IS THE ACCOUNT CURRENTLY LOGGED IN
 let currentAccount;
 let transferToAccount;
 
-
 //ALL BALANCES
 const updateUI = function (currentAccount) {
   mainBalance(currentAccount);
-   eachTransaction(currentAccount);
   summary(currentAccount);
   spendno(currentAccount);
 };
-
 
 //CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
 const username = accounts.forEach(function (acc) {
@@ -126,7 +132,9 @@ const eachTransaction = function (acc) {
               <p class="from-to">${acc.owner}</p>
                 <span class="datee">${date}</span>
               </div>
+              <div>
               <p class="transaction-${deposit}">$ ${movement}</p>
+              <div>
             </div>`;
 
     transactions.insertAdjacentHTML("afterbegin", html);
@@ -148,7 +156,10 @@ const mainBalance = function (acc) {
   saveBalance.textContent = `$${SavingsBalance}`;
 
   const balance = function () {
-    const one = [...currentAccount.movements, ...currentAccount.savings];
+    const one = [
+      ...currentAccount.movements,
+      ...currentAccount.savings,
+    ];
     const main = one.reduce(function (acc, curr) {
       return acc + curr;
     }, 0);
@@ -157,7 +168,6 @@ const mainBalance = function (acc) {
 
   balance();
 };
-
 
 //CALCULATING OTHER BALANCES
 const summary = function (acc) {
@@ -192,49 +202,50 @@ const spendno = function (currentAccount) {
 };
 
 loginBtn.addEventListener("click", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    currentAccount = accounts.find(function (move) {
-      return move.username === accountNo.value;
-    });
-
-    if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
-      // formContainer.classList.add("fade-out");
-      formContainer.classList.remove("fade-in");
-      formContainer.classList.remove("fade-out");
-      mainContainer.classList.remove("fade-in");
-
-      // Start fade-out transition
-      formContainer.classList.add("fade-out");
-
-      formContainer.addEventListener("transitionend", function handler() {
-        formContainer.style.display = "none";
-        mainContainer.style.display = "block";
-        mainContainer.classList.add("fade-in");
-        updateUI(currentAccount);
-        accountNo.value = "";
-        accountPin.value = "";
-
-        //FETCH USER FIRSTNAME
-        const firstName = currentAccount.owner.split(" ")[0];
-        console.log(firstName);
-        if (hour > 0 && hour < 12) {
-          greeting.textContent = `Good Morning, ${firstName}`;
-        } else if (hour < 18) {
-          greeting.textContent = `Good Afternoon, ${firstName}`;
-        } else {
-          greeting.textContent = `Good Evening, ${firstName}`;
-        }
-
-        formContainer.removeEventListener("transitionend", handler);
-      });
-    } else {
-      errorMsg.textContent = "Invalid username or pin";
-    }
+  currentAccount = accounts.find(function (move) {
+    return move.username === accountNo.value;
   });
 
+  if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
+    // formContainer.classList.add("fade-out");
+    formContainer.classList.remove("fade-in");
+    formContainer.classList.remove("fade-out");
+    mainContainer.classList.remove("fade-in");
 
-  logoutBtn.addEventListener("click", function (e) {
+    // Start fade-out transition
+    formContainer.classList.add("fade-out");
+
+    formContainer.addEventListener("transitionend", function handler() {
+      formContainer.style.display = "none";
+      mainContainer.style.display = "block";
+      mainContainer.classList.add("fade-in");
+      eachTransaction(currentAccount);
+      updateUI(currentAccount);
+      accountNo.value = "";
+      accountPin.value = "";
+
+      //FETCH USER FIRSTNAME
+      const firstName = currentAccount.owner.split(" ")[0];
+      console.log(firstName);
+      console.log(currentAccount.amounts);
+      if (hour > 0 && hour < 12) {
+        greeting.textContent = `Good Morning, ${firstName}`;
+      } else if (hour < 18) {
+        greeting.textContent = `Good Afternoon, ${firstName}`;
+      } else {
+        greeting.textContent = `Good Evening, ${firstName}`;
+      }
+
+      formContainer.removeEventListener("transitionend", handler);
+    });
+  } else {
+    errorMsg.textContent = "Invalid username or pin";
+  }
+});
+
+logoutBtn.addEventListener("click", function (e) {
   const answer = confirm("Are you sure you want to log out?");
 
   if (answer) {
@@ -246,9 +257,8 @@ loginBtn.addEventListener("click", function (e) {
     accountNo.value = "";
     accountPin.value = "";
     errorMsg.textContent = "";
-  } 
+  }
 });
-
 
 //FOR CLOSING THE TRANSFER, LOAN, DEPOSIT AND BILLS FORMS
 close.forEach(function (closebtn) {
@@ -275,6 +285,25 @@ loan.addEventListener("click", function () {
   main.style.filter = "blur(2px)";
 });
 
+const register = function (acc) {
+  acc.amounts.forEach(function (amm) {
+    const deposit = amm > 0 ? "deposit" : "withdrawal";
+    const person = amm > 0 ? acc.from : acc.too;
+
+    const html = `<div class="transaction">
+              <div>
+              <p class="from-to">${person}</p>
+                <span class="datee">${date}</span>
+              </div>
+              <div>
+              <p class="transaction-${deposit}">$ ${amm}</p>
+                <p class="transfer-reason">${transferReason.value}</p>
+              <div>
+            </div>`;
+
+    transactions.insertAdjacentHTML("afterbegin", html);
+  });
+};
 
 //DISPLAYING THE NAME OF THE TRANSFER ACCOUNT OWNER
 transferMain.addEventListener("input", function () {
@@ -300,7 +329,8 @@ mainTransferForm.addEventListener("click", function (e) {
   console.log(accountNo.value);
 
   const amount = Number(mainTransferAmount.value.trim());
-  
+
+  const tReason = transferReason.value;
 
   if (
     transferToAccount &&
@@ -310,12 +340,20 @@ mainTransferForm.addEventListener("click", function (e) {
   ) {
     currentAccount.movements.push(-amount);
     transferToAccount.movements.push(amount);
-    console.log(currentAccount.movements)
-    console.log(transferToAccount.movements)
+    currentAccount.amounts.push(-amount);
+    transferToAccount.amounts.push(amount);
+    currentAccount.reason.push(tReason);
+    transferToAccount.reason.push(tReason);
+    currentAccount.too.push(transferToAccount.owner);
+    transferToAccount.from.push(currentAccount.owner);
+    console.log(currentAccount.amounts);
+    console.log(transferToAccount.amounts);
+    register(currentAccount);
     updateUI(currentAccount);
     transferMain.value = "";
     mainTransferAmount.value = "";
     mainTransferDetails.textContent = "";
+    transferReason.textContent = "";
     sendOne.style.display = "none";
     main.style.filter = "blur(0)";
     console.log("Did it again");
@@ -325,4 +363,3 @@ mainTransferForm.addEventListener("click", function (e) {
 });
 
 //spendingacc: 7612345980,
-

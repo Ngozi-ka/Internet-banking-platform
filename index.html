@@ -8,196 +8,215 @@
   </head>
   <body>
     <div class="main-container">
-    <header>
-      <div class="head">
-        <h3 class="bank-name">Nova<span class="bank">Bank</span></h3>
-        <button id="logoutBtn">Log out</button>
-      </div>
-      <p class="greeting">Good Morning, Jane</p>
-    </header>
-    <div class="container">
-      <main class="main">
-        <section class="bal">
-          <section class="balance">
-            <p class="your-balance">Your Balance</p>
-            <span class="real-balance">$12,450.35</span>
+      <header>
+        <div class="head">
+          <h3 class="bank-name">Nova<span class="bank">Bank</span></h3>
+          <button id="logoutBtn">Log out</button>
+        </div>
+        <p class="greeting">Good Morning, Jane</p>
+      </header>
+      <div class="container">
+        <main class="main">
+          <section class="bal">
+            <section class="balance">
+              <p class="your-balance">Your Balance</p>
+              <span class="real-balance">$12,450.35</span>
+            </section>
+            <footer>
+              <span class="total-deposit">$235534</span>
+              <span class="total-withdrawal">-$237894</span>
+              <span class="total-interst">$2778</span>
+            </footer>
           </section>
-          <footer>
-            <span class="total-deposit">$235534</span>
-            <span class="total-withdrawal">-$237894</span>
-            <span class="total-interst">$2778</span>
-          </footer>
-        </section>
-        <section class="other-balances">
-          <div class="checking">
-            <p class="checkin">Spending</p>
-            <p class="checkno">****1234</p>
-            <span class="check-balance">$5,230.75</span>
+          <section class="other-balances">
+            <div class="checking">
+              <p class="checkin">Spending</p>
+              <p class="checkno">****1234</p>
+              <span class="check-balance">$5,230.75</span>
+            </div>
+            <div class="saving">
+              <p class="savin">Savings</p>
+              <p class="saveno">****5678</p>
+              <span class="save-balance">$7,219,60</span>
+            </div>
+          </section>
+
+          <section class="activitess">
+            <div class="transfer">
+              <img
+                src="rightarrow.png"
+                alt="transfer"
+                class="active transferr"
+              />
+              <span>Transfer</span>
+            </div>
+            <div class="transfer">
+              <img src="dollar.png" alt="transfer" class="active pay" />
+              <span>Pay</span>
+            </div>
+            <div class="transfer">
+              <img src="deposit.png" alt="transfer" class="active deposit" />
+              <span>Deposit</span>
+            </div>
+            <div class="transfer">
+              <img src="loan.png" alt="transfer" class="active loan" />
+              <span>Loan</span>
+            </div>
+          </section>
+
+          <section class="transact">
+            <p class="recent">Recent Transactions</p>
+            <div class="transactions">
+              <div class="transaction">
+                <div>
+                  <p class="transfer-reason"></p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <section class="payments">
+          <div class="send sendOne">
+            <form>
+              <p class="for">Transfer</p>
+              <label for="transfer-account">Account Number</label>
+              <input type="number" id="transferMain" />
+              <p class="mainTransferDetails"></p>
+              <label for="transferReason">Reason:</label>
+              <input type="text" id="transferReason" />
+              <label for="transfer-amount">Amount</label>
+              <input type="number" name="" id="mainTransferAmount" />
+              <button id="mainTransferForm">Transfer</button>
+              <img src="close.png" alt="close form" class="close" />
+            </form>
           </div>
-          <div class="saving">
-            <p class="savin">Savings</p>
-            <p class="saveno">****5678</p>
-            <span class="save-balance">$7,219,60</span>
+          <div class="send sendTwo">
+            <form action="submit">
+              <p class="for">Pay Bills</p>
+              <label for="bill-type">Bill Type</label>
+              <input type="text" name="" id="bill-type" />
+              <label for="bill-amount">Bill Amount</label>
+              <input type="number" name="" id="bill-amount" />
+              <button type="submit">Pay</button>
+              <img src="close.png" alt="close form" class="close" />
+            </form>
+          </div>
+          <div class="send sendThree" id="sendO">
+            <form action="submit">
+              <p class="for">Deposits</p>
+              <label for="Deposit-amount">Deposit Amount</label>
+              <input type="number" name="" id="tranfer-account" />
+              <label for="loan-amount">Purpose</label>
+              <input type="text" name="" id="purpose" />
+              <button type="submit">Deposit</button>
+              <img src="close.png" alt="close form" class="close" />
+            </form>
+          </div>
+          <div class="send sendFour" id="sendO">
+            <form action="submit">
+              <p class="for">Loan</p>
+              <label for="payback-date">Payback Date</label>
+              <input type="date" name="" id="loan-account" />
+              <label for="loan-amount">Loan Amount</label>
+              <input type="number" name="" id="loan-amount" />
+              <button type="submit">Borrow</button>
+              <img src="close.png" alt="close form" class="close" />
+            </form>
           </div>
         </section>
 
-        <section class="activitess">
-          <div class="transfer">
-            <img src="rightarrow.png" alt="transfer" class="active transferr" />
-            <span>Transfer</span>
-          </div>
-          <div class="transfer">
-            <img src="dollar.png" alt="transfer" class="active  pay" />
-            <span>Pay</span>
-          </div>
-          <div class="transfer">
-            <img src="deposit.png" alt="transfer" class="active  deposit" />
-            <span>Deposit</span>
-          </div>
-          <div class="transfer">
-            <img src="loan.png" alt="transfer" class="active  loan" />
-            <span>Loan</span>
-          </div>
-        </section>
-
-        <section class="transact">
-          <p class="recent">Recent Transactions</p>
-          <div class="transactions">
-            <div class="transaction">
-              
-          </div>
-        </section>
-      </main>
-
-      <section class="payments"> 
-      <div class="send sendOne">
-          <form>
-            <p class="for">Transfer</p>
-            <label for="transfer-account">Account Number</label>
-            <input type="number" name="" id="transferMain" />
-            <p class="mainTransferDetails"></p>
-            <label for="transfer-amount">Amount</label>
-            <input type="number" name="" id="mainTransferAmount" />
-            <button id="mainTransferForm">Transfer</button>
-            <img src="close.png" alt="close form" class="close">
-          </form>
-        </div>
-        <div class="send sendTwo">
-          <form action="submit">
-            <p class="for">Pay Bills</p>
-            <label for="bill-type">Bill Type</label>
-            <input type="text" name="" id="bill-type" />
-            <label for="bill-amount">Bill Amount</label>
-            <input type="number" name="" id="bill-amount" />
-            <button type="submit">Pay</button>
-            <img src="close.png" alt="close form" class="close">
-          </form>
-        </div>
-        <div class="send sendThree" id="sendO">
-          <form action="submit">
-            <p class="for">Deposits</p>
-            <label for="Deposit-amount">Deposit Amount</label>
-            <input type="number" name="" id="tranfer-account" />
-            <label for="loan-amount">Purpose</label>
-            <input type="text" name="" id="purpose" />
-            <button type="submit">Deposit</button>
-            <img src="close.png" alt="close form" class="close">
-          </form>
-        </div>
-        <div class="send sendFour" id="sendO">
-          <form action="submit">
-            <p class="for">Loan</p>
-            <label for="payback-date">Payback Date</label>
-            <input type="date" name="" id="loan-account" />
-            <label for="loan-amount">Loan Amount</label>
-            <input type="number" name="" id="loan-amount" />
-            <button type="submit">Borrow</button>
-            <img src="close.png" alt="close form" class="close">
-          </form>
-        </div>
-    </section>
-
-      <aside>
-        <section class="activites">
-          <div class="transfer">
-            <img src="rightarrow.png" alt="transfer" class="active activeOne" />
-            <span>Transfer</span>
-          </div>
-          <div class="transfer">
-            <img src="dollar.png" alt="transfer" class="active activeTwo" />
-            <span>Pay</span>
-          </div>
-          <div class="transfer">
-            <img src="deposit.png" alt="transfer" class="active activeThree" />
-            <span>Deposit</span>
-          </div>
-          <div class="transfer">
-            <img src="loan.png" alt="transfer" class="active activeFour" />
-            <span>Loan</span>
-          </div>
-        </section>
-        <section class="asideForms">
-        <div class="send sendTransfer">
-          <form >
-            <p class="for">Transfer</p>
-            <label for="transfer-account">Account Number</label>
-            <input type="number" name="" class="transfer-account" />
-            <p class="transferDetails">hello</p>
-            <label for="transfer-amount">Amount</label>
-            <input type="number" name="" class="transfer-amount" />
-            <button class="transferForm">Transfer</button>
-          </form>
-        </div>
-        <div class="send sendPay">
-          <form action="submit">
-            <p class="for">Pay Bills</p>
-            <label for="bill-type">Bill Type</label>
-            <input type="text" name="" id="bill-type" />
-            <label for="bill-amount">Bill Amount</label>
-            <input type="number" name="" id="bill-amount" />
-            <button type="submit">Pay</button>
-          </form>
-        </div>
-        <div class="send sendDeposit">
-          <form action="submit">
-            <p class="for">Deposits</p>
-            <label for="Deposit-amount">Deposit Amount</label>
-            <input type="number" name="" id="tranfer-account" />
-            <label for="loan-amount">Purpose</label>
-            <input type="text" name="" id="purpose" />
-            <button type="submit">Deposit</button>
-          </form>
-        </div>
-        <div class="send sendLoan">
-          <form action="submit">
-            <p class="for">Loan</p>
-            <label for="payback-date">Payback Date</label>
-            <input type="date" name="" id="loan-account" />
-            <label for="loan-amount">Loan Amount</label>
-            <input type="number" name="" id="loan-amount" />
-            <button type="submit">Borrow</button>
-          </form>
-        </div>
-        </section>
-      </aside>
+        <aside>
+          <section class="activites">
+            <div class="transfer">
+              <img
+                src="rightarrow.png"
+                alt="transfer"
+                class="active activeOne"
+              />
+              <span>Transfer</span>
+            </div>
+            <div class="transfer">
+              <img src="dollar.png" alt="transfer" class="active activeTwo" />
+              <span>Pay</span>
+            </div>
+            <div class="transfer">
+              <img
+                src="deposit.png"
+                alt="transfer"
+                class="active activeThree"
+              />
+              <span>Deposit</span>
+            </div>
+            <div class="transfer">
+              <img src="loan.png" alt="transfer" class="active activeFour" />
+              <span>Loan</span>
+            </div>
+          </section>
+          <section class="asideForms">
+            <div class="send sendTransfer">
+              <form>
+                <p class="for">Transfer</p>
+                <label for="transfer-account">Account Number</label>
+                <input type="number" name="" class="transfer-account" />
+                <p class="transferDetails">hello</p>
+                <label for="transfer-amount">Amount</label>
+                <input type="number" name="" class="transfer-amount" />
+                <button class="transferForm">Transfer</button>
+              </form>
+            </div>
+            <div class="send sendPay">
+              <form action="submit">
+                <p class="for">Pay Bills</p>
+                <label for="bill-type">Bill Type</label>
+                <input type="text" name="" id="bill-type" />
+                <label for="bill-amount">Bill Amount</label>
+                <input type="number" name="" id="bill-amount" />
+                <button type="submit">Pay</button>
+              </form>
+            </div>
+            <div class="send sendDeposit">
+              <form action="submit">
+                <p class="for">Deposits</p>
+                <label for="Deposit-amount">Deposit Amount</label>
+                <input type="number" name="" id="tranfer-account" />
+                <label for="loan-amount">Purpose</label>
+                <input type="text" name="" id="purpose" />
+                <button type="submit">Deposit</button>
+              </form>
+            </div>
+            <div class="send sendLoan">
+              <form action="submit">
+                <p class="for">Loan</p>
+                <label for="payback-date">Payback Date</label>
+                <input type="date" name="" id="loan-account" />
+                <label for="loan-amount">Loan Amount</label>
+                <input type="number" name="" id="loan-amount" />
+                <button type="submit">Borrow</button>
+              </form>
+            </div>
+          </section>
+        </aside>
+      </div>
     </div>
-    </div>
-
 
     <div class="form-container">
-        <div class="containerr">
+      <div class="containerr">
         <h3>Welcome back</h3>
         <p>Welcome back! Please enter your details</p>
         <form action="" id="loginForm">
-            <label for="account-no">Username</label>
-            <input type="text" id="account-no" placeholder="Enter your username">
-            <label for="account-pin">Account Pin</label>
-            <input type="number" id="account-pin" placeholder="Enter your pin">
-             <p id="errorMsg" class="error"></p>
-            <button class="loginBtn">Login</button>
+          <label for="account-no">Username</label>
+          <input
+            type="text"
+            id="account-no"
+            placeholder="Enter your username"
+          />
+          <label for="account-pin">Account Pin</label>
+          <input type="number" id="account-pin" placeholder="Enter your pin" />
+          <p id="errorMsg" class="error"></p>
+          <button class="loginBtn">Login</button>
         </form>
-       
-        </div>
+      </div>
     </div>
 
     <script src="app.js"></script>
