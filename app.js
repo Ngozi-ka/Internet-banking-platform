@@ -86,6 +86,17 @@ const fromTo = document.querySelector(".from-to");
 
 //THIS ACCOUNT IS THE ACCOUNT CURRENTLY LOGGED IN
 let currentAccount;
+let transferToAccount;
+
+
+//ALL BALANCES
+const updateUI = function (currentAccount) {
+  mainBalance(currentAccount);
+   eachTransaction(currentAccount);
+  summary(currentAccount);
+  spendno(currentAccount);
+};
+
 
 //CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
 const username = accounts.forEach(function (acc) {
@@ -105,13 +116,14 @@ const day = new Date().getDate();
 const date = `${month} ${day}`;
 
 //CREATE FOR EACH TRANSACTION IN THE MOVEMENTS ARRAY
-const eachTransaction = function () {
-  currentAccount.movements.forEach(function (movement) {
+const eachTransaction = function (acc) {
+  transactions.innerHTML = "";
+  acc.movements.forEach(function (movement) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
 
     const html = `<div class="transaction">
               <div>
-                <p class="from-to">${currentAccount.owner}</p>
+              <p class="from-to">${acc.owner}</p>
                 <span class="datee">${date}</span>
               </div>
               <p class="transaction-${deposit}">$ ${movement}</p>
@@ -148,20 +160,20 @@ const mainBalance = function (acc) {
 
 
 //CALCULATING OTHER BALANCES
-const summary = function (currentAccount) {
-  const deposited = currentAccount.movements
+const summary = function (acc) {
+  const deposited = acc.movements
     .filter((movement) => movement > 0)
     .reduce((acc, curr) => acc + curr, 0);
 
   totalDeposit.textContent = `$ ${deposited}`;
 
-  const withdrawal = currentAccount.movements
+  const withdrawal = acc.movements
     .filter((movement) => movement < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
   totalWithdrawal.textContent = `$ ${withdrawal}`;
 
-  const allInterest = currentAccount.movements
+  const allInterest = acc.movements
     .filter((movement) => movement > 0)
     .map((movement) => (movement * 1.5) / 100)
     .filter((movement) => movement > 1)
@@ -179,5 +191,138 @@ const spendno = function (currentAccount) {
   spendNo.textContent = `${spend}`;
 };
 
+loginBtn.addEventListener("click", function (e) {
+    e.preventDefault();
 
+    currentAccount = accounts.find(function (move) {
+      return move.username === accountNo.value;
+    });
+
+    if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
+      // formContainer.classList.add("fade-out");
+      formContainer.classList.remove("fade-in");
+      formContainer.classList.remove("fade-out");
+      mainContainer.classList.remove("fade-in");
+
+      // Start fade-out transition
+      formContainer.classList.add("fade-out");
+
+      formContainer.addEventListener("transitionend", function handler() {
+        formContainer.style.display = "none";
+        mainContainer.style.display = "block";
+        mainContainer.classList.add("fade-in");
+        updateUI(currentAccount);
+        accountNo.value = "";
+        accountPin.value = "";
+
+        //FETCH USER FIRSTNAME
+        const firstName = currentAccount.owner.split(" ")[0];
+        console.log(firstName);
+        if (hour > 0 && hour < 12) {
+          greeting.textContent = `Good Morning, ${firstName}`;
+        } else if (hour < 18) {
+          greeting.textContent = `Good Afternoon, ${firstName}`;
+        } else {
+          greeting.textContent = `Good Evening, ${firstName}`;
+        }
+
+        formContainer.removeEventListener("transitionend", handler);
+      });
+    } else {
+      errorMsg.textContent = "Invalid username or pin";
+    }
+  });
+
+
+  logoutBtn.addEventListener("click", function (e) {
+  const answer = confirm("Are you sure you want to log out?");
+
+  if (answer) {
+    formContainer.classList.remove("fade-out");
+    mainContainer.classList.remove("fade-in");
+    formContainer.style.display = "flex";
+    mainContainer.style.display = "none";
+
+    accountNo.value = "";
+    accountPin.value = "";
+    errorMsg.textContent = "";
+  } 
+});
+
+
+//FOR CLOSING THE TRANSFER, LOAN, DEPOSIT AND BILLS FORMS
+close.forEach(function (closebtn) {
+  closebtn.addEventListener("click", function () {
+    closebtn.closest(".send").style.display = "none";
+    main.style.filter = "blur(0)";
+  });
+});
+
+transfer.addEventListener("click", function () {
+  sendOne.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+pay.addEventListener("click", function () {
+  sendTwo.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+deposit.addEventListener("click", function () {
+  sendThree.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+loan.addEventListener("click", function () {
+  sendFour.style.display = "block";
+  main.style.filter = "blur(2px)";
+});
+
+
+//DISPLAYING THE NAME OF THE TRANSFER ACCOUNT OWNER
+transferMain.addEventListener("input", function () {
+  const own = accounts.find(function (acc) {
+    return acc.spendingacc === Number(transferMain.value);
+  });
+  if (own) {
+    mainTransferDetails.textContent = own.owner;
+  } else {
+    mainTransferDetails.textContent = "Incorrect account number";
+  }
+});
+
+//IMPLEMENTING TRANSFERS
+mainTransferForm.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  transferToAccount = accounts.find(function (acc) {
+    return acc.spendingacc == transferMain.value;
+  });
+
+  console.log(currentAccount);
+  console.log(accountNo.value);
+
+  const amount = Number(mainTransferAmount.value.trim());
+  
+
+  if (
+    transferToAccount &&
+    transferToAccount?.spendingacc !== currentAccount.spendingacc &&
+    amount > 0 &&
+    currentAccount.spendingBalance >= amount
+  ) {
+    currentAccount.movements.push(-amount);
+    transferToAccount.movements.push(amount);
+    console.log(currentAccount.movements)
+    console.log(transferToAccount.movements)
+    updateUI(currentAccount);
+    transferMain.value = "";
+    mainTransferAmount.value = "";
+    mainTransferDetails.textContent = "";
+    sendOne.style.display = "none";
+    main.style.filter = "blur(0)";
+    console.log("Did it again");
+  } else {
+    console.log("try again");
+  }
+});
+
+//spendingacc: 7612345980,
 
