@@ -1,3 +1,5 @@
+"use strict";
+
 const account1 = {
   owner: "Jane Nnadi",
   movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
@@ -38,11 +40,6 @@ const account4 = {
   pin: 4444,
 };
 
-// amounts: [],
-//     from: [],
-//     too: [],
-//     reason: ["Bills"],
-
 const accounts = [account1, account2, account3, account4];
 
 const greeting = document.querySelector(".greeting");
@@ -74,25 +71,6 @@ const formContainer = document.querySelector(".form-container");
 const close = document.querySelectorAll(".close");
 const send = document.querySelector(".send");
 const main = document.querySelector(".main");
-const activeThree = document.querySelector(".activeThree");
-const sendDeposit = document.querySelector(".sendDeposit");
-const asideForms = document.querySelector(".asideForms");
-const sendLoan = document.querySelector(".sendLoan");
-const activeFour = document.querySelector(".activeFour");
-const sendTransfer = document.querySelector(".sendTransfer");
-const activeOne = document.querySelector(".activeOne");
-const sendPay = document.querySelector(".sendPay");
-const activeTwo = document.querySelector(".activeTwo");
-const mainTransferForm = document.querySelector("#mainTransferForm");
-const transferMain = document.querySelector("#transferMain");
-const mainTransferDetails = document.querySelector(".mainTransferDetails");
-const mainTransferAmount = document.querySelector("#mainTransferAmount");
-const fromTo = document.querySelector(".from-to");
-const transferReason = document.getElementById("transferReason");
-
-//THIS ACCOUNT IS THE ACCOUNT CURRENTLY LOGGED IN
-let currentAccount;
-let transferToAccount;
 
 //ALL BALANCES
 const updateUI = function (currentAccount) {
@@ -110,6 +88,7 @@ const username = accounts.forEach(function (acc) {
     .join("");
 });
 
+
 //SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING
 const hour = new Date().getHours();
 
@@ -118,7 +97,6 @@ const day = new Date().getDate();
 
 const date = `${month} ${day}`;
 
-//CREATE FOR EACH TRANSACTION IN THE MOVEMENTS ARRAY
 const eachTransaction = function (acc) {
   transactions.innerHTML = "";
   acc.movements.forEach(function (movement) {
@@ -195,14 +173,16 @@ const spendno = function (currentAccount) {
   spendNo.textContent = `${spend}`;
 };
 
+let currentAccount;
+let transferToAccount;
+
 loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(function (move) {
     return move.username === accountNo.value;
   });
-
-  if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
+if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
     // formContainer.classList.add("fade-out");
     formContainer.classList.remove("fade-in");
     formContainer.classList.remove("fade-out");
@@ -222,8 +202,6 @@ loginBtn.addEventListener("click", function (e) {
 
       //FETCH USER FIRSTNAME
       const firstName = currentAccount.owner.split(" ")[0];
-      console.log(firstName);
-      console.log(currentAccount.amounts);
       if (hour > 0 && hour < 12) {
         greeting.textContent = `Good Morning, ${firstName}`;
       } else if (hour < 18) {
@@ -239,6 +217,8 @@ loginBtn.addEventListener("click", function (e) {
   }
 });
 
+
+//FOR LOGGING OUT
 logoutBtn.addEventListener("click", function (e) {
   const answer = confirm("Are you sure you want to log out?");
 
@@ -279,152 +259,5 @@ loan.addEventListener("click", function () {
   main.style.filter = "blur(2px)";
 });
 
-const register = function (acc) {
-  const index = acc.amounts.length - 1;
-  const amm = acc.amounts[index];
-  const deposit = amm > 0 ? "deposit" : "withdrawal";
-  const person = amm > 0 ? acc.from[index] : acc.too[index];
-  // acc.amounts.forEach(function (amm) {
-  // acc.from[acc.from.length - 1] : acc.too[acc.too.length - 1];
 
-  const html = `<div class="transaction">
-              <div>
-              <p class="from-to">${person}</p>
-                <span class="datee">${date}</span>
-              </div>
-              <div>
-              <p class="transaction-${deposit}">$ ${amm}</p>
-                <p class="transfer-reason">${transferReason.value}</p>
-              <div>
-            </div>`;
 
-  transactions.insertAdjacentHTML("afterbegin", html);
-};
-
-//DISPLAYING THE NAME OF THE TRANSFER ACCOUNT OWNER
-// transferMain.addEventListener("input", function () {
-//   const own = accounts.find(function (acc) {
-//     return acc.spendingacc === Number(transferMain.value);
-//   });
-//   if (own) {
-//     mainTransferDetails.textContent = own.owner;
-//   } else {
-//     mainTransferDetails.textContent = "Incorrect account number";
-//   }
-// });
-
-// //IMPLEMENTING TRANSFERS
-// mainTransferForm.addEventListener("click", function (e) {
-//   e.preventDefault();
-
-//   transferToAccount = accounts.find(function (acc) {
-//     return acc.spendingacc == transferMain.value;
-//   });
-
-//   console.log(currentAccount);
-//   console.log(accountNo.value);
-
-//   const amount = Number(mainTransferAmount.value.trim());
-
-//   const tReason = transferReason.value;
-
-//   if (
-//     transferToAccount &&
-//     transferToAccount?.spendingacc !== currentAccount.spendingacc &&
-//     amount > 0 &&
-//     currentAccount.spendingBalance >= amount
-//   ) {
-//     currentAccount.movements.push(-amount);
-//     transferToAccount.movements.push(amount);
-//     currentAccount.amounts.push(-amount);
-//     transferToAccount.amounts.push(amount);
-//     currentAccount.reason.push(tReason);
-//     transferToAccount.reason.push(tReason);
-//     currentAccount.too.push(transferToAccount.owner);
-//     transferToAccount.from.push(currentAccount.owner);
-//     console.log(currentAccount.amounts);
-//     console.log(transferToAccount.amounts);
-//     register(currentAccount);
-//     updateUI(currentAccount);
-//     transferMain.value = "";
-//     mainTransferAmount.value = "";
-//     mainTransferDetails.textContent = "";
-//     transferReason.textContent = "";
-//     sendOne.style.display = "none";
-//     main.style.filter = "blur(0)";
-//     console.log("Did it again");
-//   } else {
-//     console.log("try again");
-//   }
-// });
-
-// //spendingacc: 7612345980,
-
-transferMain.addEventListener("input", function () {
-  const own = accounts.find(function (acc) {
-    return acc.spendingacc === Number(transferMain.value);
-  });
-  if (own) {
-    mainTransferDetails.textContent = own.owner;
-  } else {
-    mainTransferDetails.textContent = "Incorrect account number";
-  }
-});
-
-//IMPLEMENTING TRANSFERS
-mainTransferForm.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  transferToAccount = accounts.find(function (acc) {
-    return acc.spendingacc == transferMain.value;
-  });
-
-  console.log(currentAccount);
-  console.log(accountNo.value);
-
-  const amount = Number(mainTransferAmount.value.trim());
-
-  const tReason = transferReason.value;
-
-  if (
-    transferToAccount &&
-    transferToAccount?.spendingacc !== currentAccount.spendingacc &&
-    amount > 0 &&
-    currentAccount.spendingBalance >= amount
-  ) {
-    currentAccount.spendingBalance -= amount;
-    transferToAccount.spendingBalance += amount;
-
-    const sender = {
-      amount: -amount,
-      to: transferToAccount.owner,
-      reason: tReason,
-      date: new Date().toLocaleString(),
-    };
-
-    const receiver = {
-      amount: amount,
-      from: currentAccount.owner,
-      reason: tReason,
-      date: new Date().toLocaleString(),
-    };
-
-    currentAccount.transactions.push(sender);
-    transferToAccount.transactions.push(receiver);
-    console.log(currentAccount.amounts);
-    console.log(transferToAccount.amounts);
-
-    updateUI(currentAccount);
-    transferMain.value = "";
-    mainTransferAmount.value = "";
-    mainTransferDetails.textContent = "";
-    transferReason.value = "";
-    sendOne.style.display = "none";
-    main.style.filter = "blur(0)";
-    console.log("Did it again");
-  } else {
-    console.log("try again");
-  }
-});
-
-//spendingacc: 7612345980,
