@@ -242,6 +242,8 @@ close.forEach(function (closebtn) {
   });
 });
 
+
+//OPENING TRANSFER, DEPOSIT, BORROW AND BILL FORMS
 transfer.addEventListener("click", function () {
   sendOne.style.display = "block";
   main.style.filter = "blur(2px)";
@@ -259,5 +261,7 @@ loan.addEventListener("click", function () {
   main.style.filter = "blur(2px)";
 });
 
+
+//
 
 
