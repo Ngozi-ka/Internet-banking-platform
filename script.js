@@ -262,6 +262,29 @@ loan.addEventListener("click", function () {
 });
 
 
-//
+//IMplementing transfers
+// DISPLAYING THE NAME OF THE TRANSFER ACCOUNT OWNER
+// transferMain.addEventListener("input", function () {
+//   const own = accounts.find(function (acc) {
+//     return acc.spendingacc === Number(transferMain.value);
+//   });
+//   if (own) {
+//     mainTransferDetails.textContent = own.owner;
+//   } else {
+//     mainTransferDetails.textContent = "Incorrect account number";
+//   }
+// });
+
+transferMain.addEventListener("input", function () {
+  const own = accounts.find(function (acc) {
+    return acc.spendingacc === Number(transferMain.value);
+  });
+  if (own) {
+    mainTransferDetails.textContent = own.owner;
+  } else {
+    mainTransferDetails.textContent = "Incorrect account number";
+  }
+});
+
 
 
