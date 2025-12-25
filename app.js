@@ -6,6 +6,8 @@ const account1 = {
   spendingacc: 5823710496,
   interestRate: 1.2, // %
   pin: 1111,
+  transWith: ["School Bookshop", "David Musa", "Netflix", "Access Bank", "Electric Company", "Food Vendor", "Jane Smith", "Water Utility"],
+  transFor:["Textbooks", "Money sent", "Subscription payment", "Cash deposit", "Electricity bill", "Lunch purchase", "Refund received", "Water bill"]
 };
 
 const account2 = {
@@ -16,6 +18,8 @@ const account2 = {
   spendingacc: 4609871532,
   interestRate: 1.5,
   pin: 2222,
+  transWith: ["Supermart", "Alex Johnson", "Bolt", "University Bursary", "Amazon", "Fuel Station", "Sarah Williams", "Church"],
+  transFor:["Groceries", "Transfer sent", "Transport fare", "School fees refund", "Online shopping", "Fuel purchase", "Gift received", "Donation"]
 };
 
 const account3 = {
@@ -26,6 +30,8 @@ const account3 = {
   spendingacc: 9081726354,
   interestRate: 0.7,
   pin: 3333,
+  transWith: ["Company Payroll", "Apple Store", "Landlord", "Cinema House", "Freelance Client", "Gym Center", "Internet Provider", "Mother"],
+  transFor: ["Monthly salary", "Phone accessory", "House rent", "Movie ticket", "Project payment", "Membership fee", "Internet subscription", "Allowance received"]
 };
 
 const account4 = {
@@ -36,6 +42,8 @@ const account4 = {
   spendingacc: 7612345980,
   interestRate: 1,
   pin: 4444,
+  transWith: ["Airpeace", "Eze Maryann", "Spar Mall", "UBA Bank", "John Okafor", "Pharmacy Plus", "MTN", "Office HR"],
+  transFor: ["Flight ticket", "Personal transfer", "Groceries", "Account funding", "Loan repayment", "Medicine purchase", "Airtime purchase", "Salary payment"]
 };
 
 // amounts: [],
@@ -131,6 +139,7 @@ const eachTransaction = function (acc) {
               </div>
               <div>
               <p class="transaction-${deposit}">$ ${movement}</p>
+              <p class="transfer-reason">${acc.owner}</p>
               <div>
             </div>`;
 

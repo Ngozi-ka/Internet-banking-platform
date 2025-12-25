@@ -71,6 +71,21 @@ const formContainer = document.querySelector(".form-container");
 const close = document.querySelectorAll(".close");
 const send = document.querySelector(".send");
 const main = document.querySelector(".main");
+const activeThree = document.querySelector(".activeThree");
+const sendDeposit = document.querySelector(".sendDeposit");
+const asideForms = document.querySelector(".asideForms");
+const sendLoan = document.querySelector(".sendLoan");
+const activeFour = document.querySelector(".activeFour");
+const sendTransfer = document.querySelector(".sendTransfer");
+const activeOne = document.querySelector(".activeOne");
+const sendPay = document.querySelector(".sendPay");
+const activeTwo = document.querySelector(".activeTwo");
+const mainTransferForm = document.querySelector("#mainTransferForm");
+const transferMain = document.querySelector("#transferMain");
+const mainTransferDetails = document.querySelector(".mainTransferDetails");
+const mainTransferAmount = document.querySelector("#mainTransferAmount");
+const fromTo = document.querySelector(".from-to");
+const transferReason = document.getElementById("transferReason");
 
 //ALL BALANCES
 const updateUI = function (currentAccount) {
