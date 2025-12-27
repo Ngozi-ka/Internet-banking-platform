@@ -152,11 +152,14 @@ const mainBalance = function (acc) {
 
   checkBalance.textContent = `$${acc.spendingBalance}`;
 
-  const SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
+
+
+  currentAccount.SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
 
-  saveBalance.textContent = `$${SavingsBalance}`;
+
+  saveBalance.textContent = `$${currentAccount.SavingsBalance}`;
 
   const balance = function () {
     const one = [...currentAccount.movements, ...currentAccount.savings];
@@ -292,17 +295,6 @@ loan.addEventListener("click", function () {
 
 //IMplementing transfers
 // DISPLAYING THE NAME OF THE TRANSFER ACCOUNT OWNER
-// transferMain.addEventListener("input", function () {
-//   const own = accounts.find(function (acc) {
-//     return acc.spendingacc === Number(transferMain.value);
-//   });
-//   if (own) {
-//     mainTransferDetails.textContent = own.owner;
-//   } else {
-//     mainTransferDetails.textContent = "Incorrect account number";
-//   }
-// });
-
 transferMain.addEventListener("input", function () {
   const own = accounts.find(function (acc) {
     return acc.spendingacc === Number(transferMain.value);
@@ -314,5 +306,18 @@ transferMain.addEventListener("input", function () {
   }
 });
 
+mainTransferForm.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  transferToAccount = accounts.find(function (acc) {
+    return acc.spendingacc === Number(transferMain.value);
+  });
+
+
+console.log(currentAccount)
+console.log(transferToAccount)
+
+
+})
 
 

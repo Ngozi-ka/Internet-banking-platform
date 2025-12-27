@@ -292,6 +292,7 @@ form p {
   box-shadow: 1px 1px 1px rgba(0, 0, 128, 0.589);
   border-radius: 5px;
   padding: 1rem 4rem 1rem 1rem;
+  font-weight: 700;
 }
 
 .from-to {

@@ -385,7 +385,7 @@ mainTransferForm.addEventListener("click", function (e) {
   e.preventDefault();
 
   transferToAccount = accounts.find(function (acc) {
-    return acc.spendingacc == transferMain.value;
+    return acc.spendingacc === Number(transferMain.value);
   });
 
   console.log(currentAccount);
