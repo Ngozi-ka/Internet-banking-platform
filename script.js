@@ -32,20 +32,20 @@ const account3 = {
   spendingacc: 9081726354,
   interestRate: 0.7,
   pin: 3333,
-  transWith: ["Company Payroll", "Apple Store", "Landlord", "Cinema House", "Freelance Client", "Gym Center", "Internet Provider", "Mother"],
-  transFor: ["Monthly salary", "Phone accessory", "House rent", "Movie ticket", "Project payment", "Membership fee", "Internet subscription", "Allowance received"]
+  transWith: ["Company Payroll", "Apple Store", "Landlord", "Cinema House", "Freelance Client", "Gym Center", "Internet Provider", "Mother" ,"Office HR", "Pharmacy Plus",],
+  transFor: ["Monthly salary", "Phone accessory", "House rent", "Movie ticket", "Project payment", "Membership fee", "Internet subscription", "Allowance received", "Salary payment", "Medicine purchase"]
 };
 
 const account4 = {
   owner: "Gift Nwokeafor",
-  movements: [430, 1000, 700, 50, 90],
+  movements: [430, 1000, 700, 50, 90, 360],
   savings: [300, 400, 210, 846, 567],
   savingsacc: 4829103756,
   spendingacc: 7612345980,
   interestRate: 1,
   pin: 4444,
-  transWith: ["Airpeace", "Eze Maryann", "Spar Mall", "UBA Bank", "John Okafor", "Pharmacy Plus", "MTN", "Office HR"],
-  transFor: ["Flight ticket", "Personal transfer", "Groceries", "Account funding", "Loan repayment", "Medicine purchase", "Airtime purchase", "Salary payment"]
+  transWith: ["Airpeace", "Eze Maryann", "Spar Mall", "UBA Bank", "John Okafor", "MTN"],
+  transFor: ["Flight ticket", "Personal transfer", "Groceries", "Account funding", "Loan repayment", "Airtime purchase"]
 };
 
 
