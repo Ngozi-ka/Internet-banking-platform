@@ -146,22 +146,32 @@ const eachTransaction = function (acc) {
 
 //CREATING A SPENDINGBALANCE PROPERTY IN THE CURRENTACCOUNT, CALCULATING SPENDNG BALANCE, CALCULATING SAVINGS BALANCE AND CALCULATING THE MAIN BALANCE
 const mainBalance = function (acc) {
-  acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
+  //   acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
+  //   return acc + curr;
+  // }, 0);
+
+  const spendingBalance = accounts.forEach(function(acc){
+     acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
     return acc + curr;
-  }, 0);
+    }, 0);
+  })
+  
 
-  checkBalance.textContent = `$${acc.spendingBalance}`;
+  // map(function(acc){
+  //    acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
+  //   return acc + curr;
+  // }, 0);
+  // })
 
-
+checkBalance.textContent = `$${acc.spendingBalance}`;
 
   currentAccount.SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
 
+saveBalance.textContent = `$${currentAccount.SavingsBalance}`;
 
-  saveBalance.textContent = `$${currentAccount.SavingsBalance}`;
-
-  const balance = function () {
+const balance = function () {
     const one = [...currentAccount.movements, ...currentAccount.savings];
     const main = one.reduce(function (acc, curr) {
       return acc + curr;
@@ -170,7 +180,9 @@ const mainBalance = function (acc) {
   };
 
   balance();
-};
+   
+}
+  
 
 //CALCULATING OTHER BALANCES
 const summary = function (acc) {
@@ -226,7 +238,7 @@ if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
       formContainer.style.display = "none";
       mainContainer.style.display = "block";
       mainContainer.classList.add("fade-in");
-      eachTransaction(currentAccount);
+      // eachTransaction(currentAccout);
       updateUI(currentAccount);
       accountNo.value = "";
       accountPin.value = "";
@@ -313,11 +325,40 @@ mainTransferForm.addEventListener("click", function (e) {
     return acc.spendingacc === Number(transferMain.value);
   });
 
+const amount = Number(mainTransferAmount.value.trim());
+ const tReason = transferReason.value;
 
-console.log(currentAccount)
-console.log(transferToAccount)
+ if (
+    transferToAccount &&
+    transferToAccount?.spendingacc !== currentAccount.spendingacc &&
+    amount > 0 &&
+    currentAccount.spendingBalance >= amount
+  ) {
+    currentAccount.movements.push(-amount);
+    transferToAccount.movements.push(amount);
+    currentAccount.transWith.push(transferToAccount.owner);
+    transferToAccount.transWith.push(currentAccount.owner);
+    currentAccount.transFor.push(tReason);
+    transferToAccount.transFor.push(tReason);
+    updateUI(currentAccount);
+    // updateUI(transferToAccount)
+    transferMain.value = "";
+    mainTransferAmount.value = "";
+    mainTransferDetails.textContent = "";
+    transferReason.value = "";
+    sendOne.style.display = "none";
+    main.style.filter = "blur(0)";
+    console.log("Did it again");
+  } else {
+    console.log("try again");
+  
+  }
+
 
 
 })
+
+// 9081726354
+// 7612345980
 
 
