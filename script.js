@@ -8,6 +8,8 @@ const account1 = {
   spendingacc: 5823710496,
   interestRate: 1.2, // %
   pin: 1111,
+  transWith: ["School Bookshop", "David Musa", "Netflix", "Access Bank", "Electric Company", "Food Vendor", "Jane Smith", "Water Utility"],
+  transFor:["Textbooks", "Money sent", "Subscription payment", "Cash deposit", "Electricity bill", "Lunch purchase", "Refund received", "Water bill"]
 };
 
 const account2 = {
@@ -18,6 +20,8 @@ const account2 = {
   spendingacc: 4609871532,
   interestRate: 1.5,
   pin: 2222,
+  transWith: ["Supermart", "Alex Johnson", "Bolt", "University Bursary", "Amazon", "Fuel Station", "Sarah Williams", "Church"],
+  transFor:["Groceries", "Transfer sent", "Transport fare", "School fees refund", "Online shopping", "Fuel purchase", "Gift received", "Donation"]
 };
 
 const account3 = {
@@ -28,6 +32,8 @@ const account3 = {
   spendingacc: 9081726354,
   interestRate: 0.7,
   pin: 3333,
+  transWith: ["Company Payroll", "Apple Store", "Landlord", "Cinema House", "Freelance Client", "Gym Center", "Internet Provider", "Mother"],
+  transFor: ["Monthly salary", "Phone accessory", "House rent", "Movie ticket", "Project payment", "Membership fee", "Internet subscription", "Allowance received"]
 };
 
 const account4 = {
@@ -38,7 +44,10 @@ const account4 = {
   spendingacc: 7612345980,
   interestRate: 1,
   pin: 4444,
+  transWith: ["Airpeace", "Eze Maryann", "Spar Mall", "UBA Bank", "John Okafor", "Pharmacy Plus", "MTN", "Office HR"],
+  transFor: ["Flight ticket", "Personal transfer", "Groceries", "Account funding", "Loan repayment", "Medicine purchase", "Airtime purchase", "Salary payment"]
 };
+
 
 const accounts = [account1, account2, account3, account4];
 
@@ -88,10 +97,11 @@ const fromTo = document.querySelector(".from-to");
 const transferReason = document.getElementById("transferReason");
 
 //ALL BALANCES
-const updateUI = function (currentAccount) {
-  mainBalance(currentAccount);
-  summary(currentAccount);
-  spendno(currentAccount);
+const updateUI = function (acc) {
+  eachTransaction(acc)
+  mainBalance(acc);
+  summary(acc);
+  spendno(acc);
 };
 
 //CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
@@ -114,16 +124,19 @@ const date = `${month} ${day}`;
 
 const eachTransaction = function (acc) {
   transactions.innerHTML = "";
-  acc.movements.forEach(function (movement) {
+  acc.movements.forEach(function (movement, i) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
+   const transF = acc.transFor[i];
+   const transT = acc.transWith[i];
 
     const html = `<div class="transaction">
               <div>
-              <p class="from-to">${acc.owner}</p>
+              <p class="from-to">${transT}</p>
                 <span class="datee">${date}</span>
               </div>
               <div>
               <p class="transaction-${deposit}">$ ${movement}</p>
+              <p class="transfer-reason">${transF}</p>
               <div>
             </div>`;
 
