@@ -216,6 +216,8 @@ const spendno = function (currentAccount) {
   spendNo.textContent = `${spend}`;
 };
 
+//LOGGING INTO THE ACCOUNT
+
 let currentAccount;
 let transferToAccount;
 
@@ -286,7 +288,7 @@ close.forEach(function (closebtn) {
 });
 
 
-//OPENING TRANSFER, DEPOSIT, BORROW AND BILL FORMS
+//OPENING TRANSFER, DEPOSIT, BORROW AND BILL FORMS FOR SMALL SCREEN
 transfer.addEventListener("click", function () {
   sendOne.style.display = "block";
   main.style.filter = "blur(2px)";
@@ -303,6 +305,24 @@ loan.addEventListener("click", function () {
   sendFour.style.display = "block";
   main.style.filter = "blur(2px)";
 });
+
+//FOR LARGE SCREENS
+activeOne.addEventListener("click", function () {
+  asideForms.prepend(sendTransfer);
+});
+
+activeTwo.addEventListener("click", function () {
+  asideForms.prepend(sendPay);
+});
+
+activeThree.addEventListener("click", function () {
+  asideForms.prepend(sendDeposit);
+});
+
+activeFour.addEventListener("click", function () {
+  asideForms.prepend(sendLoan);
+});
+
 
 
 //IMplementing transfers
@@ -350,7 +370,7 @@ const amount = Number(mainTransferAmount.value.trim());
     main.style.filter = "blur(0)";
     console.log("Did it again");
   } else {
-    console.log("try again");
+    alert("Something is not right; rectify and try again later.")
   
   }
 
