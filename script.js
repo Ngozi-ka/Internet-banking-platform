@@ -95,6 +95,9 @@ const mainTransferDetails = document.querySelector(".mainTransferDetails");
 const mainTransferAmount = document.querySelector("#mainTransferAmount");
 const fromTo = document.querySelector(".from-to");
 const transferReason = document.getElementById("transferReason");
+const mainDepositForm  = document.getElementById("mainDepositForm");
+const depositAccount  = document.getElementById("depositAccount");
+const depositAmount  = document.getElementById("depositAmount");
 
 //ALL BALANCES
 const updateUI = function (acc) {
@@ -373,12 +376,24 @@ const amount = Number(mainTransferAmount.value.trim());
     alert("Something is not right; rectify and try again later.")
   
   }
-
-
-
 })
 
 // 9081726354
 // 7612345980
+
+//IMPLEMENTING DEPOSIT
+mainDepositForm.addEventListener("click", function(e){
+  e.preventDefault();
+
+
+    const depoAmount = Number(depositAmount.value);
+  if(Number(depositAccount.value) === currentAccount.savingsacc && depoAmount < currentAccount.spendingBalance ){
+    currentAccount.savings.push(depoAmount)
+    currentAccount.movements.push(-depoAmount);
+    updateUI(currentAccount)
+  }else{
+    alert("nope")
+  }
+})
 
 
