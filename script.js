@@ -48,9 +48,9 @@ const account4 = {
   transFor: ["Flight ticket", "Personal transfer", "Groceries", "Account funding", "Loan repayment", "Airtime purchase"]
 };
 
- 
 
 const accounts = [account1, account2, account3, account4];
+
 
 const bill1 = {
     name: "Transportation",
@@ -435,12 +435,35 @@ mainDepositForm.addEventListener("click", function(e){
 
 //IMPLEMENTING BILL
 
-payBills.addEventListener("click", function(e){
+billType.addEventListener("input", function(e){
   e.preventDefault();
 
   const payBill = bills.find(function(bill){
-  return bill.name == billType.value;
+  return bill.name === billType.value;
 })
 
-console.log(payBill);
+if(payBill){
+  billAccount.value = payBill.account;
+  billAmount.value = payBill.amount;
+}
+})
+
+payBills.addEventListener("click", function(e){
+  e.preventDefault();
+
+  if(Number(billAmount.value) < currentAccount.spendingBalance){
+    currentAccount.movements.push(-billAmount.value);
+currentAccount.transWith.push("Paid bill");
+currentAccount.transFor.push(billType.value)
+updateUI(currentAccount)
+billType.value = "";
+ billAccount.value = "";
+  billAmount.value = "";
+  sendTwo.style.display = "none";
+   main.style.filter = "blur(0)";
+  }else{
+     alert("Something is not right; rectify and try again later.")
+  }
+
+
 })
