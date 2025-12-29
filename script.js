@@ -48,8 +48,24 @@ const account4 = {
   transFor: ["Flight ticket", "Personal transfer", "Groceries", "Account funding", "Loan repayment", "Airtime purchase"]
 };
 
+ 
 
 const accounts = [account1, account2, account3, account4];
+
+const bill1 = {
+    name: "Transportation",
+    account: 1234567890,
+    amount: 700
+  };
+
+ const bill2 = {
+    name: "Electricity",
+    account: 1234567890,
+    amount: 900
+  };
+
+const bills = [bill1, bill2];
+
 
 const greeting = document.querySelector(".greeting");
 const transactions = document.querySelector(".transactions");
@@ -98,6 +114,10 @@ const transferReason = document.getElementById("transferReason");
 const mainDepositForm  = document.getElementById("mainDepositForm");
 const depositAccount  = document.getElementById("depositAccount");
 const depositAmount  = document.getElementById("depositAmount");
+const payBills  = document.getElementById("payBills");
+const billType  = document.getElementById("bill-type");
+const billAmount  = document.getElementById("bill-amount");
+const billAccount  = document.getElementById("bill-account");
 
 //ALL BALANCES
 const updateUI = function (acc) {
@@ -413,3 +433,14 @@ mainDepositForm.addEventListener("click", function(e){
 })
 
 
+//IMPLEMENTING BILL
+
+payBills.addEventListener("click", function(e){
+  e.preventDefault();
+
+  const payBill = bills.find(function(bill){
+  return bill.name == billType.value;
+})
+
+console.log(payBill);
+})

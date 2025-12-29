@@ -91,10 +91,21 @@
             <form action="submit">
               <p class="for">Pay Bills</p>
               <label for="bill-type">Bill Type</label>
-              <input type="text" name="" id="bill-type" />
+              <select name="categories" id="bill-type">
+              <option value="" disabled selected>Pay for:</option>
+              <option value="School">School</option>
+              <option value="Electricity">Electricity</option>
+              <option value="Water">Water</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Internet">Internet</option>
+              <option value="Faith">Faith</option>
+              <option value="Others">Others</option>
+            </select>
+            <label for="bill-account">Bill Account</label>
+              <input type="number" name="" id="bill-account" />
               <label for="bill-amount">Bill Amount</label>
               <input type="number" name="" id="bill-amount" />
-              <button type="submit">Pay</button>
+              <button id="payBills">Pay</button>
               <img src="close.png" alt="close form" class="close" />
             </form>
           </div>
