@@ -153,24 +153,19 @@ const mainBalance = function (acc) {
   //   return acc + curr;
   // }, 0);
 
-  const spendingBalance = accounts.forEach(function(acc){
+  accounts.forEach(function(acc){
      acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
     return acc + curr;
     }, 0);
   })
   
-
-  // map(function(acc){
-  //    acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
-  //   return acc + curr;
-  // }, 0);
-  // })
-
 checkBalance.textContent = `$${acc.spendingBalance}`;
 
-  currentAccount.SavingsBalance = currentAccount.savings.reduce(function (acc, curr) {
+  accounts.forEach(function(acc){
+  acc.SavingsBalance = acc.savings.reduce(function (acc, curr) {
     return acc + curr;
   }, 0);
+  })
 
 saveBalance.textContent = `$${currentAccount.SavingsBalance}`;
 
@@ -263,6 +258,8 @@ if (currentAccount && Number(accountPin.value) === currentAccount.pin) {
   } else {
     errorMsg.textContent = "Invalid username or pin";
   }
+
+  console.log(accounts)
 });
 
 
@@ -390,9 +387,28 @@ mainDepositForm.addEventListener("click", function(e){
   if(Number(depositAccount.value) === currentAccount.savingsacc && depoAmount < currentAccount.spendingBalance ){
     currentAccount.savings.push(depoAmount)
     currentAccount.movements.push(-depoAmount);
-    updateUI(currentAccount)
-  }else{
-    alert("nope")
+    currentAccount.transWith.push("From spending");
+    currentAccount.transFor.push("For savings")
+    updateUI(currentAccount);
+    depositAccount.value = "";
+    depositAmount.value = "";
+    sendThree.style.display = "none";
+     main.style.filter = "blur(0)";
+     alert("Deposit from spending to savings, SUCCESSFUL");
+  }else if (Number(depositAccount.value) === currentAccount.spendingacc && depoAmount < currentAccount.SavingsBalance ){
+    currentAccount.savings.push(-depoAmount)
+    currentAccount.movements.push(depoAmount);
+    currentAccount.transWith.push("From savings");
+    currentAccount.transFor.push("For spending")
+    updateUI(currentAccount);
+    depositAccount.value = "";
+    depositAmount.value = "";
+    sendThree.style.display = "none";
+     main.style.filter = "blur(0)";
+     alert("Deposit from savings to spending, SUCCESSFUL");
+  }else {
+    alert("Something is not right; rectify and try again later.")
+  
   }
 })
 
