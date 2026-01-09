@@ -67,7 +67,16 @@
           <section class="transact">
             <p class="recent">Recent Transactions</p>
             <div class="transactions">
-              <div class="transaction"></div>
+              <div class="transaction">
+              <div>
+              <p class="from-to">Blessing</p>
+                <span class="datee">4/1</span>
+              </div>
+              <div>
+              <p class="transaction-deposit">2000</p>
+              <p class="transfer-reason">For shopping</p>
+            </div>
+              </div>
             </div>
           </section>
         </main>
@@ -76,13 +85,13 @@
           <div class="send sendOne">
             <form>
               <p class="for">Transfer</p>
-              <label for="transfer-account">Account Number</label>
+              <label for="transferMain">Account Number</label>
               <input type="number" id="transferMain" />
               <p class="mainTransferDetails"></p>
               <label for="transferReason">Reason:</label>
               <input type="text" id="transferReason" />
               <label for="transfer-amount">Amount</label>
-              <input type="number" name="" id="mainTransferAmount" />
+              <input type="number" id="mainTransferAmount" />
               <button id="mainTransferForm">Transfer</button>
               <img src="close.png" alt="close form" class="close" />
             </form>
@@ -99,7 +108,6 @@
               <option value="Transportation">Transportation</option>
               <option value="Internet">Internet</option>
               <option value="Faith">Faith</option>
-              <option value="Others">Others</option>
             </select>
             <label for="bill-account">Bill Account</label>
               <input type="number" name="" id="bill-account" />
@@ -112,7 +120,7 @@
           <div class="send sendThree" id="sendO">
             <form>
               <p class="for">Deposits</p>
-              <label for="Deposit-amount">Deposit Account</label>
+              <label for="deposit-account">Deposit Account</label>
               <input type="number" name="" id="depositAccount" />
               <label for="depositAmount">Amount</label>
               <input type="number" name="" id="depositAmount" />
@@ -165,31 +173,43 @@
               <form>
                 <p class="for">Transfer</p>
                 <label for="transfer-account">Account Number</label>
-                <input type="number" name="" class="transfer-account" />
-                <p class="transferDetails">hello</p>
-                <label for="transfer-amount">Amount</label>
-                <input type="number" name="" class="transfer-amount" />
-                <button class="transferForm">Transfer</button>
+                <input type="number" name="" id="transferAccount" />
+                <p id="transferDetails"></p>
+                 <label for="transferPurpose">Reason:</label>
+              <input type="text" id="transferPurpose" />
+                <label for="transferAmount">Amount</label>
+                <input type="number" id="transferAmount" />
+                <button id="transferForm">Transfer</button>
               </form>
             </div>
             <div class="send sendPay">
               <form action="submit">
                 <p class="for">Pay Bills</p>
                 <label for="bill-type">Bill Type</label>
-                <input type="text" name="" id="bill-type" />
-                <label for="bill-amount">Bill Amount</label>
-                <input type="number" name="" id="bill-amount" />
-                <button type="submit">Pay</button>
+              <select name="categories" id="bill-types">
+              <option value="" disabled selected>Pay for:</option>
+              <option value="School">School</option>
+              <option value="Electricity">Electricity</option>
+              <option value="Water">Water</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Internet">Internet</option>
+              <option value="Faith">Faith</option>
+            </select>
+             <label for="billAccount">Bill Account</label>
+              <input type="number" name="" id="billAccount" />
+                <label for="billAmount">Bill Amount</label>
+                <input type="number" name="" id="billAmount" />
+                <button id="billPay">Pay</button>
               </form>
             </div>
             <div class="send sendDeposit">
               <form action="submit">
                 <p class="for">Deposits</p>
-                <label for="Deposit-amount">Deposit Amount</label>
-                <input type="number" name="" id="tranfer-account" />
-                <label for="loan-amount">Purpose</label>
-                <input type="text" name="" id="purpose" />
-                <button type="submit">Deposit</button>
+                <label for="deposit-account">Deposit Accunt</label>
+                <input type="number" name="" id="deposit-account" />
+                <label for="deposit-amount">Amount</label>
+                <input type="text" name="" id="deposit-amount" />
+                <button id="depositt">Deposit</button>
               </form>
             </div>
             <div class="send sendLoan">
@@ -199,7 +219,7 @@
                 <input type="date" name="" id="loan-account" />
                 <label for="loan-amount">Loan Amount</label>
                 <input type="number" name="" id="loan-amount" />
-                <button type="submit">Borrow</button>
+                <button>Borrow</button>
               </form>
             </div>
           </section>
@@ -225,6 +245,10 @@
         </form>
       </div>
     </div>
+    <article id="infoCards">
+      <p id="card">Something is not right; rectify and try again later.</p>
+      <button id="forCards">OK</button>
+    </article>
 
     <script src="script.js"></script>
   </body>

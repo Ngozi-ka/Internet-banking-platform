@@ -8,12 +8,14 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  /* position: relative; */
 }
 
 .main-container {
   display: none;
   opacity: 1;
   position: relative;
+  overflow: hidden;
 }
 
 .form-container,
@@ -223,6 +225,7 @@ aside {
   background: rgba(245, 245, 245, 0.473);
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 128, 0.26);
+  margin-bottom: 2rem;
 }
 
 form {
@@ -314,14 +317,18 @@ select {
   font-size: 0.8rem;
 }
 
-.transaction > .transaction-deposit {
-  color: blue;
-  font-weight: 500;
+.transaction .datee{
+  color: gray;
 }
 
-.transaction > .transaction-withdrawal {
+.transaction .transaction-deposit{
+  color: blue;
+  font-weight: 550;
+}
+
+.transaction .transaction-withdrawal{
   color: red;
-  font-weight: 500;
+  font-weight: 550;
 }
 
 .total-deposit {
@@ -537,4 +544,38 @@ button {
     right: 0;
     cursor: pointer;
   }
+}
+
+#infoCards{
+  display: none;
+  background: rgba(0, 0, 255, 0.801);
+  width: 18rem;
+  height: 8rem;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  border-radius: 7px;
+}
+
+#card{
+  text-align: center;
+  padding-top: 1rem;
+  color: whitesmoke;
+  font-size: 0.9rem;
+  font-weight: 550;
+}
+
+#forCards{
+ margin: 1.5rem 45%;
+ padding: 0.5rem 1rem;
+ outline: 0;
+ border: none;
+ border-radius: 1rem;
+ color: blue;
+ font-weight: 550;
+}
+
+#forCards:hover{
+  background: lightblue;
+  transition: 0.5s ease;
 }
