@@ -8,6 +8,8 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  width: 100%;
+  overflow-x: hidden;
   /* position: relative; */
 }
 
@@ -88,6 +90,7 @@ header > .greeting {
 main {
   padding: 1rem 2rem;
   width: 65%;
+  margin-top: 2rem;
 }
 
 .balance {
@@ -544,25 +547,28 @@ button {
     right: 0;
     cursor: pointer;
   }
+
 }
 
 #infoCards{
   display: none;
   background: rgba(0, 0, 255, 0.801);
-  width: 18rem;
-  height: 8rem;
+  width: 20rem;
+  height: 10rem;
   position: absolute;
   top: 40%;
   left: 40%;
   border-radius: 7px;
+  position: fixed;
 }
 
 #card{
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 2rem;
   color: whitesmoke;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 550;
+  letter-spacing: 1px;
 }
 
 #forCards{
