@@ -6,6 +6,13 @@
   box-sizing: border-box;
 }
 
+:root{
+  --bg-color: rgb(0, 0, 255);
+  --sec-bg-color: whitesmoke;
+  --color-bg: white;
+  --color: black;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -42,7 +49,7 @@ header {
   flex-direction: column;
   gap: 2rem;
   padding: 1rem 2rem;
-  background: whitesmoke;
+  background: var(whitesmoke);
   z-index: 1000;
 }
 
@@ -58,7 +65,7 @@ header {
 
 .head button {
   padding: 1rem;
-  background: #fff;
+  background: white;
   border: none;
   border-radius: 10px;
   font-size: 0.8rem;
@@ -68,12 +75,12 @@ header {
 
 .head button:hover {
   color: #fff;
-  background: blue;
+  background: var(--bg-color);
   transition: 1s ease-in-out;
 }
 
 .bank {
-  color: blue;
+  color: var(--bg-color);
 }
 
 header > .greeting {
@@ -143,7 +150,7 @@ main .other-balances {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  background: blue;
+  background: var(--bg-color);
   color: white;
   width: 50%;
   padding: 1rem;
@@ -164,7 +171,7 @@ main .other-balances {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  background: whitesmoke;
+  background: var(whitesmoke);
   color: #000;
   width: 50%;
   padding: 1rem;
@@ -200,7 +207,7 @@ main .other-balances {
 }
 
 .transfer > .active {
-  background: blue;
+  background: var(--bg-color);
   padding: 0.6rem;
   border-radius: 50%;
 }
@@ -245,7 +252,7 @@ form > input {
   border-radius: 5px;
   background: transparent;
   outline: none;
-  color: blue;
+  color: var(--bg-color);
   padding: 1rem;
   font-size: 1.2rem;
   font-weight: 550;
@@ -256,7 +263,7 @@ form button {
   border: none;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 128, 0.589);
   border-radius: 5px;
-  background: blue;
+  background: var(--bg-color);
   outline: none;
   color: white;
   padding: 1rem;
@@ -274,7 +281,7 @@ select {
   border: none;
   font-weight: 550;
   font-size: 1.2rem;
-  color: blue;
+  color: var(--bg-color);
   box-shadow: 1px 1px 1px rgba(0, 0, 128, 0.589);
   outline: none;
   cursor: pointer;
@@ -325,7 +332,7 @@ select {
 }
 
 .transaction .transaction-deposit{
-  color: blue;
+  color: var(--bg-color);
   font-weight: 550;
 }
 
@@ -335,7 +342,7 @@ select {
 }
 
 .total-deposit {
-  color: blue;
+  color: var(--bg-color);
 }
 
 .total-withdrawal {
@@ -366,7 +373,7 @@ select {
 .containerr h3 {
   margin-bottom: 1rem;
   font-size: 1.7rem;
-  color: blue;
+  color: var(--bg-color);
   font-weight: 700;
 }
 
@@ -483,7 +490,7 @@ button {
     gap: 2rem;
     padding: 1rem;
     margin-left: 0;
-    background: whitesmoke;
+    background: var(whitesmoke);
     z-index: 1000;
   }
 
@@ -565,7 +572,7 @@ button {
 #card{
   text-align: center;
   padding-top: 2rem;
-  color: whitesmoke;
+  color: var(whitesmoke);
   font-size: 1.1rem;
   font-weight: 550;
   letter-spacing: 1px;
@@ -577,7 +584,7 @@ button {
  outline: 0;
  border: none;
  border-radius: 1rem;
- color: blue;
+ color: var(--bg-color);
  font-weight: 550;
 }
 
