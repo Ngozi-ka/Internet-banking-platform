@@ -641,7 +641,7 @@ billTypes.addEventListener("input", function (e) {
 billPay.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (Number(billAmountt.value) < currentAccount.spendingBalance) {
+  if (Number(billAmountt.value) < currentAccount.spendingBalance && billTypes.value !== "") {
     currentAccount.movements.push(-billAmountt.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billTypes.value);

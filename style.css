@@ -17,6 +17,8 @@ body {
   font-family: "Roboto", sans-serif;
   width: 100%;
   overflow-x: hidden;
+  /* background: black;
+  color: white; */
   /* position: relative; */
 }
 
@@ -49,7 +51,8 @@ header {
   flex-direction: column;
   gap: 2rem;
   padding: 1rem 2rem;
-  background: var(whitesmoke);
+  /* background: #333; */
+  background: whitesmoke;
   z-index: 1000;
 }
 
@@ -171,7 +174,8 @@ main .other-balances {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  background: var(whitesmoke);
+  background: var( --sec-bg-color);
+  /* background: #333333; */
   color: #000;
   width: 50%;
   padding: 1rem;
@@ -368,6 +372,7 @@ select {
   border: 1px solid #000000ab;
   padding: 2rem;
   border-radius: 1rem;
+  /* border: 1px solid blue; */
 }
 
 .containerr h3 {
@@ -490,7 +495,7 @@ button {
     gap: 2rem;
     padding: 1rem;
     margin-left: 0;
-    background: var(whitesmoke);
+    background: var( --sec-bg-color);
     z-index: 1000;
   }
 
@@ -572,7 +577,7 @@ button {
 #card{
   text-align: center;
   padding-top: 2rem;
-  color: var(whitesmoke);
+  color: var( --sec-bg-color);
   font-size: 1.1rem;
   font-weight: 550;
   letter-spacing: 1px;
