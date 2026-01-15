@@ -226,6 +226,7 @@ const depositAmountt = document.getElementById("deposit-amount");
 const infoCards = document.getElementById("infoCards");
 const forCards = document.getElementById("forCards");
 const card = document.getElementById("card");
+const icon = document.getElementById("icon");
 
 //ALL BALANCES
 const updateUI = function (acc) {
@@ -703,3 +704,7 @@ forCards.addEventListener("click", function (e) {
 
   infoCards.style.display = "none";
 });
+
+icon.onclick = function(){
+  document.body.classList.toggle("dark-theme");
+}
