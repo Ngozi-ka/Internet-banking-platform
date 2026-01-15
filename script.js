@@ -227,6 +227,8 @@ const infoCards = document.getElementById("infoCards");
 const forCards = document.getElementById("forCards");
 const card = document.getElementById("card");
 const icon = document.getElementById("icon");
+const closeIcon = document.getElementById("closeIcon");
+let darkmode = localStorage.getItem("darkmode");
 
 //ALL BALANCES
 const updateUI = function (acc) {
@@ -555,7 +557,7 @@ billType.addEventListener("input", function (e) {
 payBills.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (Number(billAmount.value) < currentAccount.spendingBalance) {
+  if (Number(billAmount.value) < currentAccount.spendingBalance && billTypes.value !== "") {
     currentAccount.movements.push(-billAmount.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billType.value);
@@ -705,6 +707,31 @@ forCards.addEventListener("click", function (e) {
   infoCards.style.display = "none";
 });
 
+darkmode = localStorage.getItem("darkmode");
+
+if (darkmode === "active"){
+  document.body.classList.add("dark-theme");
+  icon.src = "sun.png";
+  closeIcon.src = "close-white.png";
+  billTypes.style.backgroundColor = "#333"
+}else{
+  icon.src = "moon-white.png";
+  closeIcon.src = "close.png";
+}
+
 icon.onclick = function(){
   document.body.classList.toggle("dark-theme");
+
+  if(document.body.classList.contains("dark-theme")){
+    icon.src = "sun.png";
+    closeIcon.src = "close-white.png";
+    
+    localStorage.setItem("darkmode", "active");
+  }else{
+     icon.src = "moon-white.png";
+    closeIcon.src = "close.png";
+    localStorage.removeItem("darkmode");
+  }
+
+
 }

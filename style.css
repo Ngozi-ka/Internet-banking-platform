@@ -13,6 +13,7 @@
   --color: black;
   --border-clr: black;
   --form-bg: white;
+  --trns-color: #333;
 }
 
 .dark-theme{
@@ -21,6 +22,7 @@
   --color: white;
   --border-clr: blue;
   --form-bg: #333333a6;
+  --trns-color: rgba(255, 255, 255, 0.555);
 }
 
 
@@ -153,7 +155,7 @@ footer span {
 
 .balance > .your-balance {
   font-size: 12px;
-  color: #000000a6;
+  color: var(--color);
 }
 
 .balance > .real-balance {
@@ -242,7 +244,7 @@ main .other-balances {
 
 .transfer span {
   font-weight: 600;
-  color: #333;
+  color: var(--trns-color);
 }
 
 aside {
