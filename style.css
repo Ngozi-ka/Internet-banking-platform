@@ -14,6 +14,7 @@
   --border-clr: black;
   --form-bg: white;
   --trns-color: #333;
+  --input-color: blue;
 }
 
 .dark-theme{
@@ -23,6 +24,7 @@
   --border-clr: blue;
   --form-bg: #333333a6;
   --trns-color: rgba(255, 255, 255, 0.555);
+  --input-color: gold;
 }
 
 
@@ -278,7 +280,7 @@ form > input {
   border-radius: 5px;
   background: transparent;
   outline: none;
-  color: var(--bg-color);
+  color: var(--input-color);
   padding: 1rem;
   font-size: 1.2rem;
   font-weight: 550;
@@ -424,6 +426,7 @@ select {
   border: 1px solid rgba(128, 128, 128, 0.329);
   padding: 1.5rem;
   margin-bottom: 1rem;
+  color: blue;
 }
 
 .containerr form input::placeholder {
@@ -515,10 +518,6 @@ button {
 }
 
 @media (max-width: 45rem) {
-  header {
-    gap: 0.5rem;
-  }
-
   main {
     width: 100%;
     padding: 1rem 0.7rem;
@@ -527,8 +526,8 @@ button {
     display: none;
   }
 
-  header > .greeting {
-    font-size: 1.6rem;
+.greeting {
+    font-size: 1.3rem;
     font-weight: 450;
   }
 
@@ -596,7 +595,7 @@ button {
   .sendThree,
   .sendFour {
     width: 20rem;
-    background: white;
+    background: var(--form-bg);
   }
 
   .sendOne {

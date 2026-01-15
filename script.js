@@ -330,7 +330,7 @@ const summary = function (acc) {
     .filter((movement) => movement > 1)
     .reduce((acc, curr) => acc + curr, 0);
 
-  totalInterst.textContent = `$ ${allInterest}`;
+  totalInterst.textContent = `$ ${Math.trunc(allInterest)}`;
 };
 
 //SHOWING THE SPENDING ACCOUNT NUM AND SAVINGS ACCOUNT NUM FOR EACH ACCOUNT
@@ -725,7 +725,7 @@ icon.onclick = function(){
   if(document.body.classList.contains("dark-theme")){
     icon.src = "sun.png";
     closeIcon.src = "close-white.png";
-    
+    billTypes.style.backgroundColor = "#333"
     localStorage.setItem("darkmode", "active");
   }else{
      icon.src = "moon-white.png";
