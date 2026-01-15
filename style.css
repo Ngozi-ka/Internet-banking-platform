@@ -22,7 +22,7 @@
   --color-bg: black;
   --color: white;
   --border-clr: blue;
-  --form-bg: #333333a6;
+  --form-bg: #333333;
   --trns-color: rgba(255, 255, 255, 0.555);
   --input-color: gold;
 }
@@ -530,6 +530,14 @@ button {
     font-size: 1.3rem;
     font-weight: 450;
   }
+
+  .head button {
+  padding: 0.7rem;
+}
+
+.containerr{
+width: 88%;
+}
 
   .containerr form input,
   .containerr form button {
