@@ -536,6 +536,25 @@ button {
   margin-top: 5.5rem;
 }
 
+.balance > .real-balance {
+  font-size: 1.3rem;
+}
+
+.other-balances .checking,
+.other-balances .saving{
+  padding: 0.5rem;
+}
+
+.checking .checkno,
+.saving .saveno{
+  font-size: 0.9rem;
+}
+
+.checking .check-balance,
+.saving .save-balance  {
+  font-size: 1.2rem;
+}
+
 
   main {
     width: 100%;
