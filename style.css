@@ -554,8 +554,6 @@ button {
 .saving .save-balance  {
   font-size: 1.2rem;
 }
-
-
   main {
     width: 100%;
     padding: 1rem 0.7rem;
@@ -592,6 +590,18 @@ width: 88%;
     display: flex;
     justify-content: space-between;
   }
+
+  .activitess .transfer img{
+    width: 2.5rem;
+  }
+
+  .transact .recent{
+    font-size: 1rem;
+  }
+
+  .from-to {
+  font-weight: 350;
+}
 
   footer {
     position: fixed;
