@@ -557,7 +557,10 @@ billType.addEventListener("input", function (e) {
 payBills.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (Number(billAmount.value) <= currentAccount.spendingBalance && billType.value !== "") {
+  if (
+    Number(billAmount.value) <= currentAccount.spendingBalance &&
+    billType.value !== ""
+  ) {
     currentAccount.movements.push(-billAmount.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billType.value);
@@ -644,7 +647,10 @@ billTypes.addEventListener("input", function (e) {
 billPay.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (Number(billAmountt.value) < currentAccount.spendingBalance && billTypes.value !== "") {
+  if (
+    Number(billAmountt.value) < currentAccount.spendingBalance &&
+    billTypes.value !== ""
+  ) {
     currentAccount.movements.push(-billAmountt.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billTypes.value);
@@ -709,29 +715,27 @@ forCards.addEventListener("click", function (e) {
 
 darkmode = localStorage.getItem("darkmode");
 
-if (darkmode === "active"){
+if (darkmode === "active") {
   document.body.classList.add("dark-theme");
   icon.src = "sun.png";
   closeIcon.src = "close-white.png";
-  billTypes.style.backgroundColor = "#333"
-}else{
+  billTypes.style.backgroundColor = "#333";
+} else {
   icon.src = "moon-white.png";
   closeIcon.src = "close.png";
 }
 
-icon.onclick = function(){
+icon.onclick = function () {
   document.body.classList.toggle("dark-theme");
 
-  if(document.body.classList.contains("dark-theme")){
+  if (document.body.classList.contains("dark-theme")) {
     icon.src = "sun.png";
     closeIcon.src = "close-white.png";
-    billTypes.style.backgroundColor = "#333"
+    billTypes.style.backgroundColor = "#333";
     localStorage.setItem("darkmode", "active");
-  }else{
-     icon.src = "moon-white.png";
+  } else {
+    icon.src = "moon-white.png";
     closeIcon.src = "close.png";
     localStorage.removeItem("darkmode");
   }
-
-
-}
+};
