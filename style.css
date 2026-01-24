@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --bg-color: rgb(0, 0, 255);
   --sec-bg-color: whitesmoke;
   --color-bg: white;
@@ -17,8 +17,8 @@
   --input-color: blue;
 }
 
-.dark-theme{
-   --sec-bg-color: #333;
+.dark-theme {
+  --sec-bg-color: #333;
   --color-bg: black;
   --color: white;
   --border-clr: blue;
@@ -26,8 +26,6 @@
   --trns-color: rgba(255, 255, 255, 0.555);
   --input-color: gold;
 }
-
-
 
 body {
   font-family: "Roboto", sans-serif;
@@ -104,12 +102,12 @@ header {
   color: var(--bg-color);
 }
 
- .greeting {
+.greeting {
   font-size: 2rem;
   font-weight: 450;
 }
 
-.switch{
+.switch {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -178,7 +176,7 @@ main .other-balances {
   gap: 0.5rem;
   align-items: center;
   background: var(--bg-color);
-  color: var( --color);
+  color: var(--color);
   width: 50%;
   padding: 1rem;
 }
@@ -198,8 +196,8 @@ main .other-balances {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  background: var( --sec-bg-color);
-  color: var( --color);
+  background: var(--sec-bg-color);
+  color: var(--color);
   width: 50%;
   padding: 1rem;
 }
@@ -293,7 +291,7 @@ form button {
   border-radius: 5px;
   background: var(--bg-color);
   outline: none;
-  color:white;
+  color: white;
   padding: 1rem;
   margin-top: 1rem;
 }
@@ -314,7 +312,6 @@ select {
   outline: none;
   cursor: pointer;
 }
-
 
 .transact {
   display: flex;
@@ -355,16 +352,16 @@ select {
   font-size: 0.8rem;
 }
 
-.transaction .datee{
+.transaction .datee {
   color: gray;
 }
 
-.transaction .transaction-deposit{
+.transaction .transaction-deposit {
   color: var(--bg-color);
   font-weight: 550;
 }
 
-.transaction .transaction-withdrawal{
+.transaction .transaction-withdrawal {
   color: red;
   font-weight: 550;
 }
@@ -447,7 +444,7 @@ button {
   cursor: pointer;
 }
 
-#infoCards{
+#infoCards {
   display: none;
   background: rgba(0, 0, 255, 0.801);
   width: 20rem;
@@ -460,7 +457,7 @@ button {
   z-index: 1000;
 }
 
-#card{
+#card {
   text-align: center;
   padding-top: 2rem;
   /* color: var( --sec-bg-color); */
@@ -470,21 +467,20 @@ button {
   letter-spacing: 1px;
 }
 
-#forCards{
- margin: 1.5rem 45%;
- padding: 0.5rem 1rem;
- outline: 0;
- border: none;
- border-radius: 1rem;
- color: var(--bg-color);
- font-weight: 550;
+#forCards {
+  margin: 1.5rem 45%;
+  padding: 0.5rem 1rem;
+  outline: 0;
+  border: none;
+  border-radius: 1rem;
+  color: var(--bg-color);
+  font-weight: 550;
 }
 
-#forCards:hover{
+#forCards:hover {
   background: lightblue;
   transition: 0.5s ease;
 }
-
 
 @media (max-width: 90rem) {
   main {
@@ -518,42 +514,41 @@ button {
 }
 
 @media (max-width: 45rem) {
-
-  header{
+  header {
     gap: 1rem;
   }
 
-  .head > h3{
+  .head > h3 {
     font-size: 1.2rem;
   }
 
-  #logoutBtn{
+  #logoutBtn {
     font-size: 0.6rem;
     font-weight: 600;
   }
 
   .container {
-  margin-top: 5.5rem;
-}
+    margin-top: 5.5rem;
+  }
 
-.balance > .real-balance {
-  font-size: 1.3rem;
-}
+  .balance > .real-balance {
+    font-size: 1.3rem;
+  }
 
-.other-balances .checking,
-.other-balances .saving{
-  padding: 0.5rem;
-}
+  .other-balances .checking,
+  .other-balances .saving {
+    padding: 0.5rem;
+  }
 
-.checking .checkno,
-.saving .saveno{
-  font-size: 0.9rem;
-}
+  .checking .checkno,
+  .saving .saveno {
+    font-size: 0.9rem;
+  }
 
-.checking .check-balance,
-.saving .save-balance  {
-  font-size: 1.2rem;
-}
+  .checking .check-balance,
+  .saving .save-balance {
+    font-size: 1.2rem;
+  }
   main {
     width: 100%;
     padding: 1rem 0.7rem;
@@ -562,18 +557,18 @@ button {
     display: none;
   }
 
-.greeting {
+  .greeting {
     font-size: 1.1rem;
     font-weight: 450;
   }
 
   .head button {
-  padding: 0.5rem;
-}
+    padding: 0.5rem;
+  }
 
-.containerr{
-width: 88%;
-}
+  .containerr {
+    width: 88%;
+  }
 
   .containerr form input,
   .containerr form button {
@@ -591,17 +586,17 @@ width: 88%;
     justify-content: space-between;
   }
 
-  .activitess .transfer img{
+  .activitess .transfer img {
     width: 2.5rem;
   }
 
-  .transact .recent{
+  .transact .recent {
     font-size: 1rem;
   }
 
   .from-to {
-  font-weight: 350;
-}
+    font-weight: 350;
+  }
 
   footer {
     position: fixed;
@@ -610,9 +605,9 @@ width: 88%;
     display: flex;
     justify-content: center;
     gap: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-left: 0;
-    background: var( --sec-bg-color);
+    background: var(--sec-bg-color);
     z-index: 1000;
   }
 
@@ -640,6 +635,23 @@ width: 88%;
     bottom: 50%;
     right: 15%;
     z-index: 1000;
+  }
+
+  .transaction .transaction-deposit {
+    font-weight: 400;
+  }
+
+  .transaction .transaction-withdrawal {
+    font-weight: 400;
+  }
+
+  .transfer-reason {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .from-to{
+    font-size: 0.9rem;
   }
 
   .send {
@@ -675,8 +687,10 @@ width: 88%;
     position: absolute;
     right: 0;
     cursor: pointer;
-
   }
 
+  #infoCards {
+    width: 15rem;
+    left: 20%;
+  }
 }
-

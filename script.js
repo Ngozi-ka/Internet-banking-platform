@@ -268,7 +268,7 @@ const eachTransaction = function (acc) {
                 <span class="datee">${date}</span>
               </div>
               <div>
-              <p class="transaction-${deposit}">$ ${movement}</p>
+              <p class="transaction-${deposit}">\u20A6 ${movement}</p>
               <p class="transfer-reason">${transF}</p>
               <div>
             </div>`;
@@ -289,7 +289,7 @@ const mainBalance = function (acc) {
     }, 0);
   });
 
-  checkBalance.textContent = `$${acc.spendingBalance}`;
+  checkBalance.textContent = `\u20A6${acc.spendingBalance}`;
 
   accounts.forEach(function (acc) {
     acc.SavingsBalance = acc.savings.reduce(function (acc, curr) {
@@ -297,14 +297,14 @@ const mainBalance = function (acc) {
     }, 0);
   });
 
-  saveBalance.textContent = `$${currentAccount.SavingsBalance}`;
+  saveBalance.textContent = `\u20A6${currentAccount.SavingsBalance}`;
 
   const balance = function () {
     const one = [...currentAccount.movements, ...currentAccount.savings];
     const main = one.reduce(function (acc, curr) {
       return acc + curr;
     }, 0);
-    realBalance.textContent = `$${main}`;
+    realBalance.textContent = `\u20A6${main}`;
   };
 
   balance();
@@ -316,13 +316,13 @@ const summary = function (acc) {
     .filter((movement) => movement > 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  totalDeposit.textContent = `$ ${deposited}`;
+  totalDeposit.textContent = `\u20A6 ${deposited}`;
 
   const withdrawal = acc.movements
     .filter((movement) => movement < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  totalWithdrawal.textContent = `$ ${withdrawal}`;
+  totalWithdrawal.textContent = `\u20A6 ${withdrawal}`;
 
   const allInterest = acc.movements
     .filter((movement) => movement > 0)
@@ -330,7 +330,7 @@ const summary = function (acc) {
     .filter((movement) => movement > 1)
     .reduce((acc, curr) => acc + curr, 0);
 
-  totalInterst.textContent = `$ ${Math.trunc(allInterest)}`;
+  totalInterst.textContent = `\u20A6 ${Math.trunc(allInterest)}`;
 };
 
 //SHOWING THE SPENDING ACCOUNT NUM AND SAVINGS ACCOUNT NUM FOR EACH ACCOUNT
@@ -557,7 +557,7 @@ billType.addEventListener("input", function (e) {
 payBills.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (Number(billAmount.value) < currentAccount.spendingBalance && billTypes.value !== "") {
+  if (Number(billAmount.value) <= currentAccount.spendingBalance && billType.value !== "") {
     currentAccount.movements.push(-billAmount.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billType.value);
