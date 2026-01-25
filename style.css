@@ -403,6 +403,15 @@ select {
   font-weight: 700;
 }
 
+.containerr h3 .bank-name{
+color: var(--color);
+}
+
+.containerr h3 .bank {
+  color: var(--bg-color);
+}
+
+
 .containerr p {
   color: var(--color);
   font-weight: 650;
@@ -567,7 +576,7 @@ button {
   }
 
   .containerr {
-    width: 88%;
+    width: 80%;
   }
 
   .containerr form input,
