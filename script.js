@@ -312,8 +312,6 @@ const mainBalance = function (acc) {
 
 //CALCULATING OTHER BALANCES
 const summary = function (acc) {
-
-
   // const deposited = acc.movements
   //   .filter((movement) => movement > 0)
   //   .reduce((acc, curr) => acc + curr, 0);
@@ -328,14 +326,13 @@ const summary = function (acc) {
 
   // checkBalance.textContent = `\u20A6${acc.spendingBalance}`;
 
-  accounts.forEach(function(acc){
+  accounts.forEach(function (acc) {
     acc.deposited = acc.movements
-  .filter((movement) => movement > 0)
-  .reduce((acc, curr) => acc + curr, 0);
+      .filter((movement) => movement > 0)
+      .reduce((acc, curr) => acc + curr, 0);
   });
 
   totalDeposit.textContent = `\u20A6 ${acc.deposited}`;
-
 
   const withdrawal = acc.movements
     .filter((movement) => movement < 0)
@@ -759,7 +756,6 @@ icon.onclick = function () {
   }
 };
 
-
 //IMPLEMENTING LOANS
 //Account must have received up to 7000
 //payback date - current date
@@ -769,22 +765,19 @@ const borrow = document.querySelector(".borrow");
 const loanAmount = document.getElementById("loan-amount");
 const paybackDate = document.getElementById("payback-date");
 
-const payDate = new Date(Number(paybackDate.value));
-const today = new Date();
-console.log(today)
-console.log(payDate.value)
-const timeframe = payDate - today;
-
-
-borrow.addEventListener("click", function(e){
-  e.preventDefault()
-  console.log(paybackDate.value);
- const loanAmountt = Number(loanAmount.value);
-
-  if(currentAccount.deposited >= 7000 && loanAmountt <= 10000){
+borrow.addEventListener("click", function (e) {
+  e.preventDefault();
+  const payDate = new Date(paybackDate.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = payDate - today;
+  const res = diff / (1000 * 3600 * 24);
+  console.log(Math.floor(res));
+  console.log(payDate);
+  const loanAmountt = Number(loanAmount.value);
+  if (currentAccount.deposited >= 7000 && loanAmountt <= 10000) {
     currentAccount.movements.push(loanAmountt);
     console.log("done");
-    console.log(timeframe)
     currentAccount.transWith.push("Loan");
     currentAccount.transFor.push("Borrow");
     updateUI(currentAccount);
@@ -794,13 +787,12 @@ borrow.addEventListener("click", function(e){
     main.style.filter = "blur(0)";
     card.innerHTML = `Your account has been credited with ${loanAmountt}`;
     infoCards.style.display = "block";
-  }else if(currentAccount.deposited >= 7000){
-    card.innerHTML = "You are not eligible to take a loan. You must have had at least 7000 in your spending account";
+  } else if (currentAccount.deposited >= 7000) {
+    card.innerHTML =
+      "You are not eligible to take a loan. You must have had at least 7000 in your spending account";
     infoCards.style.display = "block";
-  }else if(loanAmountt > 10000){
+  } else if (loanAmountt > 10000) {
     card.innerHTML = "You are not eligible to borrow up to this amount";
     infoCards.style.display = "block";
   }
-
-})
-
+});
