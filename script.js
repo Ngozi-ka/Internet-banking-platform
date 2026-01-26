@@ -6,7 +6,8 @@ const account1 = {
   savings: [300, 400, 210, 846, 567],
   savingsacc: 7482091563,
   spendingacc: 5823710496,
-  interestRate: 1.2, // %
+  // interestRate: 1.2, // %
+  loan: [1500, 1700],
   pin: 1111,
   transWith: [
     "School Bookshop",
@@ -36,7 +37,7 @@ const account2 = {
   savings: [300, 400, 210, 846, 567],
   savingsacc: 9135684270,
   spendingacc: 4609871532,
-  interestRate: 1.5,
+  loan: [1500, 1700],
   pin: 2222,
   transWith: [
     "Supermart",
@@ -66,7 +67,7 @@ const account3 = {
   savings: [300, 400, 210, 846, 567],
   savingsacc: 8357204918,
   spendingacc: 9081726354,
-  interestRate: 0.7,
+  loan: [1500, 1700],
   pin: 3333,
   transWith: [
     "Company Payroll",
@@ -100,7 +101,7 @@ const account4 = {
   savings: [300, 400, 210, 846, 567],
   savingsacc: 4829103756,
   spendingacc: 7612345980,
-  interestRate: 1,
+  loan: [1500, 1700],
   pin: 4444,
   transWith: [
     "Airpeace",
@@ -165,7 +166,7 @@ const transactions = document.querySelector(".transactions");
 const realBalance = document.querySelector(".real-balance");
 const totalDeposit = document.querySelector(".total-deposit");
 const totalWithdrawal = document.querySelector(".total-withdrawal");
-const totalInterst = document.querySelector(".total-interst");
+const totalLoanAmt = document.querySelector(".total-loan");
 const checkBalance = document.querySelector(".check-balance");
 const saveBalance = document.querySelector(".save-balance");
 const saveNo = document.querySelector(".saveno");
@@ -229,6 +230,9 @@ const card = document.getElementById("card");
 const icon = document.getElementById("icon");
 const closeIcon = document.getElementById("closeIcon");
 let darkmode = localStorage.getItem("darkmode");
+const borrow = document.querySelector(".borrow");
+const loanAmount = document.getElementById("loan-amount");
+const paybackDate = document.getElementById("payback-date");
 
 //ALL BALANCES
 const updateUI = function (acc) {
@@ -312,20 +316,6 @@ const mainBalance = function (acc) {
 
 //CALCULATING OTHER BALANCES
 const summary = function (acc) {
-  // const deposited = acc.movements
-  //   .filter((movement) => movement > 0)
-  //   .reduce((acc, curr) => acc + curr, 0);
-
-  // totalDeposit.textContent = `\u20A6 ${deposited}`;
-
-  //  accounts.forEach(function (acc) {
-  //   acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
-  //     return acc + curr;
-  //   }, 0);
-  // });
-
-  // checkBalance.textContent = `\u20A6${acc.spendingBalance}`;
-
   accounts.forEach(function (acc) {
     acc.deposited = acc.movements
       .filter((movement) => movement > 0)
@@ -340,13 +330,16 @@ const summary = function (acc) {
 
   totalWithdrawal.textContent = `\u20A6 ${withdrawal}`;
 
-  const allInterest = acc.movements
-    .filter((movement) => movement > 0)
-    .map((movement) => (movement * acc.interestRate) / 100)
-    .filter((movement) => movement > 1)
-    .reduce((acc, curr) => acc + curr, 0);
+  // const allInterest = acc.movements
+  //   .filter((movement) => movement > 0)
+  //   .map((movement) => (movement * acc.interestRate) / 100)
+  //   .filter((movement) => movement > 1)
+  //   .reduce((acc, curr) => acc + curr, 0);
 
-  totalInterst.textContent = `\u20A6 ${Math.trunc(allInterest)}`;
+  accounts.forEach(function (acc) {
+    acc.totalLoan = acc.loan.reduce((acc, curr) => acc + curr, 0);
+  });
+  totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`;
 };
 
 //SHOWING THE SPENDING ACCOUNT NUM AND SAVINGS ACCOUNT NUM FOR EACH ACCOUNT
@@ -756,28 +749,34 @@ icon.onclick = function () {
   }
 };
 
-//IMPLEMENTING LOANS
+//IMPLEMENTING LOANS FOR SMALL DEVICES
 //Account must have received up to 7000
 //payback date - current date
 //repayment date must not be more than 20 days from borrowing day
 
-const borrow = document.querySelector(".borrow");
-const loanAmount = document.getElementById("loan-amount");
-const paybackDate = document.getElementById("payback-date");
 
 borrow.addEventListener("click", function (e) {
   e.preventDefault();
+
   const payDate = new Date(paybackDate.value);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const diff = payDate - today;
   const res = diff / (1000 * 3600 * 24);
-  console.log(Math.floor(res));
-  console.log(payDate);
+  const mustNotExceed = Math.floor(res);
+
   const loanAmountt = Number(loanAmount.value);
-  if (currentAccount.deposited >= 7000 && loanAmountt <= 10000) {
+
+  if (
+    currentAccount.deposited >= 7000 &&
+    loanAmountt <= 10000 &&
+    loanAmountt !== "" &&
+    loanAmountt > 100 &&
+    mustNotExceed <= 20 &&
+    currentAccount.totalLoan + loanAmountt <= 10000
+  ) {
     currentAccount.movements.push(loanAmountt);
-    console.log("done");
+    currentAccount.loan.push(loanAmountt);
     currentAccount.transWith.push("Loan");
     currentAccount.transFor.push("Borrow");
     updateUI(currentAccount);
@@ -785,14 +784,27 @@ borrow.addEventListener("click", function (e) {
     loanAmount.value = "";
     sendFour.style.display = "none";
     main.style.filter = "blur(0)";
-    card.innerHTML = `Your account has been credited with ${loanAmountt}`;
+    card.innerHTML = `Your account has been credited with \u20A6${loanAmountt}`;
     infoCards.style.display = "block";
-  } else if (currentAccount.deposited >= 7000) {
+  } else if (currentAccount.deposited < 7000) {
     card.innerHTML =
-      "You are not eligible to take a loan. You must have had at least 7000 in your spending account";
+      "You are not eligible to take a loan. You must have had at least \u20A67000 in your spending account";
     infoCards.style.display = "block";
+    loanAmount.value = "";
+    loanAmount.value = "";
+    sendFour.style.display = "none";
+    main.style.filter = "blur(0)";
   } else if (loanAmountt > 10000) {
     card.innerHTML = "You are not eligible to borrow up to this amount";
+    infoCards.style.display = "block";
+  } else if (loanAmountt < 100) {
+    card.innerHTML = "You cannot borrow less than \u20A6100";
+    infoCards.style.display = "block";
+  } else if(mustNotExceed > 20){
+    card.innerHTML = "Your payback date must not exceed 20 days";
+    infoCards.style.display = "block";
+  }else if (currentAccount.totalLoan + loanAmountt > 10000) {
+    card.innerHTML = `Your total loan must not exceed \u20A610000. You already owe ${totalLoanAmt.textContent}`;
     infoCards.style.display = "block";
   }
 });
