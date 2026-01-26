@@ -375,7 +375,7 @@ select {
 }
 
 .total-interst {
-  color: blueviolet;
+  color:  var(--form-bg);
 }
 
 #errorMsg {
@@ -384,9 +384,11 @@ select {
 
 .form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
 }
 
 .containerr {
@@ -394,6 +396,18 @@ select {
   padding: 2rem;
   border-radius: 1rem;
   /* border: 1px solid blue; */
+}
+
+.copyright{
+  position: absolute;
+  bottom: 0;
+  font-size: 0.8rem;
+  font-weight: 550;
+}
+
+.customer{
+  padding: 0.4rem;
+  border-right: 2px solid var(--color);
 }
 
 .containerr h3 {

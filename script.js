@@ -1,44 +1,134 @@
 "use strict";
 
-const account1 = {
-  owner: "Jane Nnadi",
-  movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
-  savings: [300, 400, 210, 846, 567],
-  savingsacc: 7482091563,
-  spendingacc: 5823710496,
-  // interestRate: 1.2, // %
-  loan: [1500, 1700],
-  pin: 1111,
-  transWith: [
-    "School Bookshop",
-    "David Musa",
-    "Netflix",
-    "Access Bank",
-    "Electric Company",
-    "Food Vendor",
-    "Jane Smith",
-    "Water Utility",
-  ],
-  transFor: [
-    "Textbooks",
-    "Money sent",
-    "Subscription payment",
-    "Cash deposit",
-    "Electricity bill",
-    "Lunch purchase",
-    "Refund received",
-    "Water bill",
-  ],
-};
+// const account1 = {
+//   owner: "Jane Nnadi",
+//   movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
+//   savings: [300, 400, 210, 846, 567],
+//   savingsacc: 7482091563,
+//   spendingacc: 5823710496,
+//   // interestRate: 1.2, // %
+//   loan: [1500, 1700],
+//   pin: 1111,
+//   transWith: [
+//     "School Bookshop",
+//     "David Musa",
+//     "Netflix",
+//     "Access Bank",
+//     "Electric Company",
+//     "Food Vendor",
+//     "Jane Smith",
+//     "Water Utility",
+//   ],
+//   transFor: [
+//     "Textbooks",
+//     "Money sent",
+//     "Subscription payment",
+//     "Cash deposit",
+//     "Electricity bill",
+//     "Lunch purchase",
+//     "Refund received",
+//     "Water bill",
+//   ],
+// };
 
-const account2 = {
+// const account2 = {
+//   owner: "Blessing Nweke",
+//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+//   savings: [300, 400, 210, 846, 567],
+//   savingsacc: 9135684270,
+//   spendingacc: 4609871532,
+//   loan: [1500, 1700],
+//   pin: 2222,
+//   transWith: [
+//     "Supermart",
+//     "Alex Johnson",
+//     "Bolt",
+//     "University Bursary",
+//     "Amazon",
+//     "Fuel Station",
+//     "Sarah Williams",
+//     "Church",
+//   ],
+//   transFor: [
+//     "Groceries",
+//     "Transfer sent",
+//     "Transport fare",
+//     "School fees refund",
+//     "Online shopping",
+//     "Fuel purchase",
+//     "Gift received",
+//     "Donation",
+//   ],
+// };
+
+// const account3 = {
+//   owner: "Favour Onyinye Madu",
+//   movements: [200, -200, 340, -300, -20, 50, 400, -460, 500, -200],
+//   savings: [300, 400, 210, 846, 567],
+//   savingsacc: 8357204918,
+//   spendingacc: 9081726354,
+//   loan: [1500, 1700],
+//   pin: 3333,
+//   transWith: [
+//     "Company Payroll",
+//     "Apple Store",
+//     "Landlord",
+//     "Cinema House",
+//     "Freelance Client",
+//     "Gym Center",
+//     "Internet Provider",
+//     "Mother",
+//     "Office HR",
+//     "Pharmacy Plus",
+//   ],
+//   transFor: [
+//     "Monthly salary",
+//     "Phone accessory",
+//     "House rent",
+//     "Movie ticket",
+//     "Project payment",
+//     "Membership fee",
+//     "Internet subscription",
+//     "Allowance received",
+//     "Salary payment",
+//     "Medicine purchase",
+//   ],
+// };
+
+// const account4 = {
+//   owner: "Gift Nwokeafor",
+//   movements: [430, 1000, 700, 50, 90, 360],
+//   savings: [300, 400, 210, 846, 567],
+//   savingsacc: 4829103756,
+//   spendingacc: 7612345980,
+//   loan: [1500, 1700],
+//   pin: 4444,
+//   transWith: [
+//     "Airpeace",
+//     "Eze Maryann",
+//     "Spar Mall",
+//     "UBA Bank",
+//     "John Okafor",
+//     "MTN",
+//   ],
+//   transFor: [
+//     "Flight ticket",
+//     "Personal transfer",
+//     "Groceries",
+//     "Account funding",
+//     "Loan repayment",
+//     "Airtime purchase",
+//   ],
+// };
+
+const account1 = {
   owner: "Blessing Nweke",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   savings: [300, 400, 210, 846, 567],
   savingsacc: 9135684270,
   spendingacc: 4609871532,
   loan: [1500, 1700],
-  pin: 2222,
+  pin: 1112,
   transWith: [
     "Supermart",
     "Alex Johnson",
@@ -59,69 +149,218 @@ const account2 = {
     "Gift received",
     "Donation",
   ],
+  dates: [
+    "2025-12-10",
+    "2025-12-15",
+    "2025-12-18",
+    "2025-12-30",
+    "2026-01-01",
+    "2026-01-03",
+    "2026-01-05",
+    "2026-01-07",
+    
+  ],
+};
+
+
+const account2 = {
+  owner: "Chidozie Ezenwa",
+  movements: [150000, -25000, -8000, 50000, -12000, -30000, 20000, -5000, 75000],
+  savings: [50000, 120000, 200000],
+  savingsacc: 3029485617,
+  spendingacc: 7612345980,
+  loan: [300000],
+  pin: 2223,
+  transWith: [
+    "Employer",
+    "Shoprite Ikeja",
+    "MTN Nigeria",
+    "GTBank",
+    "PHCN",
+    "Landlord",
+    "Friend",
+    "Bolt Ride",
+    "Access Bank",
+  ],
+  transFor: [
+    "Salary payment",
+    "Groceries",
+    "Data subscription",
+    "Cash deposit",
+    "Electricity bill",
+    "House rent",
+    "Money received",
+    "Transport fare",
+    "Loan disbursement",
+  ],
+  dates: [
+    "2026-01-01",
+    "2026-01-03",
+    "2026-01-05",
+    "2026-01-07",
+    "2026-01-10",
+    "2026-01-12",
+    "2026-01-15",
+    "2026-01-18",
+    "2026-01-22",
+  ],
 };
 
 const account3 = {
-  owner: "Favour Onyinye Madu",
-  movements: [200, -200, 340, -300, -20, 50, 400, -460, 500, -200],
-  savings: [300, 400, 210, 846, 567],
-  savingsacc: 8357204918,
-  spendingacc: 9081726354,
-  loan: [1500, 1700],
-  pin: 3333,
+  owner: "Blessing Oluebube",
+  movements: [15000, -2500, -1200, -3000, 5000, -1500, -800, 7000],
+  savings: [5000, 12000],
+  savingsacc: 3029485617,
+  spendingacc: 8192037465,
+  loan: [],
+  pin: 3334,
   transWith: [
-    "Company Payroll",
-    "Apple Store",
-    "Landlord",
-    "Cinema House",
-    "Freelance Client",
-    "Gym Center",
-    "Internet Provider",
-    "Mother",
-    "Office HR",
-    "Pharmacy Plus",
+    "Parent",
+    "Campus Canteen",
+    "MTN Nigeria",
+    "POS Agent",
+    "Friend",
+    "Photocopy Shop",
+    "Bolt Ride",
+    "Access Bank",
   ],
   transFor: [
-    "Monthly salary",
-    "Phone accessory",
-    "House rent",
-    "Movie ticket",
-    "Project payment",
-    "Membership fee",
-    "Internet subscription",
-    "Allowance received",
-    "Salary payment",
-    "Medicine purchase",
+    "Pocket money",
+    "Food purchase",
+    "Data subscription",
+    "Cash withdrawal",
+    "Money received",
+    "Printing documents",
+    "Transport fare",
+    "Cash deposit",
+  ],
+  dates: [
+    "2026-01-03",
+    "2026-01-04",
+    "2026-01-06",
+    "2026-01-07",
+    "2026-01-09",
+    "2026-01-11",
+    "2026-01-14",
+    "2026-01-18",
   ],
 };
+
 
 const account4 = {
-  owner: "Gift Nwokeafor",
-  movements: [430, 1000, 700, 50, 90, 360],
-  savings: [300, 400, 210, 846, 567],
-  savingsacc: 4829103756,
-  spendingacc: 7612345980,
-  loan: [1500, 1700],
-  pin: 4444,
+  owner: "Genesis Ufedo",
+  movements: [25000, -7000, -2500, -4000, 10000, -3000, -1500],
+  savings: [10000, 20000],
+  savingsacc: 9182736451,
+  spendingacc: 5647382910,
+  loan: [],
+  pin: 4445,
   transWith: [
-    "Airpeace",
-    "Eze Maryann",
-    "Spar Mall",
-    "UBA Bank",
-    "John Okafor",
-    "MTN",
+    "Employer",
+    "Market Vendor",
+    "MTN Nigeria",
+    "Salon",
+    "Friend",
+    "POS Agent",
+    "Food Vendor",
   ],
   transFor: [
-    "Flight ticket",
-    "Personal transfer",
-    "Groceries",
-    "Account funding",
-    "Loan repayment",
-    "Airtime purchase",
+    "Monthly stipend",
+    "Foodstuff purchase",
+    "Data subscription",
+    "Hair care",
+    "Money received",
+    "Cash withdrawal",
+    "Lunch purchase",
+  ],
+  dates: [
+    "2026-01-04",
+    "2026-01-06",
+    "2026-01-08",
+    "2026-01-10",
+    "2026-01-13",
+    "2026-01-16",
+    "2026-01-19",
   ],
 };
 
-const accounts = [account1, account2, account3, account4];
+const account5 = {
+  owner: "Ekenechukwu Nwachukwu",
+  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000],
+  savings: [4000, 9000],
+  savingsacc: 6401928374,
+  spendingacc: 8273649102,
+  loan: [],
+  pin: 5556,
+  transWith: [
+    "Blessing N",
+    "Food Vendor",
+    "Airtel Nigeria",
+    "Brother",
+    "Laundry Service",
+    "Campus Canteen",
+    "POS Agent",
+  ],
+  transFor: [
+    "Money received",
+    "Lunch purchase",
+    "Data purchase",
+    "Allowance",
+    "Laundry payment",
+    "Dinner",
+    "Cash withdrawal",
+  ],
+  dates: [
+    "2026-01-01",
+    "2026-01-03",
+    "2026-01-06",
+    "2026-01-09",
+    "2026-01-11",
+    "2026-01-14",
+    "2026-01-17",
+  ],
+};
+
+const account6 = {
+  owner: "Ekene Akubue",
+  movements: [180000, -60000, -15000, 4000, -2500, -10000, 9000],
+  savings: [7000, 15000],
+  savingsacc: 6401928374,
+  spendingacc: 8273649102,
+  loan: [500000],
+  pin: 6667,
+  transWith: [
+    "Business Client",
+    "Car Dealer",
+    "Fuel Station",
+    "Friend",
+    "Electric Company",
+    "DSTV",
+    "First Bank",
+  ],
+  transFor: [
+    "Business income",
+    "Car payment",
+    "Fuel purchase",
+    "Money received",
+    "Electricity bill",
+    "Cable subscription",
+    "Loan disbursement",
+  ],
+  dates: [
+    "2026-01-01",
+    "2026-01-04",
+    "2026-01-06",
+    "2026-01-09",
+    "2026-01-12",
+    "2026-01-15",
+    "2026-01-20",
+  ],
+};
+
+
+
+const accounts = [account1, account2, account3, account4, account5, account6];
 
 const bill1 = {
   name: "Transportation",
@@ -254,10 +493,11 @@ const username = accounts.forEach(function (acc) {
 //SET THE TIME OF THE DAY TO ENABLE APPROPRATE GREETING
 const hour = new Date().getHours();
 
-const month = new Date().toLocaleString("default", { month: "short" });
-const day = new Date().getDate();
+const year = new Date().getFullYear();
+const month = String(new Date().getMonth() + 1).padStart(2, "0");
+const day = String(new Date().getDate()).padStart(2, "0");
 
-const date = `${month} ${day}`;
+const date = `${year}-${month}-${day}`;
 
 const eachTransaction = function (acc) {
   transactions.innerHTML = "";
@@ -265,11 +505,12 @@ const eachTransaction = function (acc) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
     const transF = acc.transFor[i];
     const transT = acc.transWith[i];
+    const transD = acc.dates[i]
 
     const html = `<div class="transaction">
               <div>
               <p class="from-to">${transT}</p>
-                <span class="datee">${date}</span>
+                <span class="datee">${transD}</span>
               </div>
               <div>
               <p class="transaction-${deposit}">\u20A6 ${movement}</p>
@@ -619,6 +860,8 @@ transferForm.addEventListener("click", function (e) {
   ) {
     currentAccount.movements.push(-amount);
     transferToAccount.movements.push(amount);
+    currentAccount.dates.push(new Date());
+    transferToAccount.dates.push(new Date());
     currentAccount.transWith.push(transferToAccount.owner);
     transferToAccount.transWith.push(currentAccount.owner);
     currentAccount.transFor.push(tReason);
@@ -773,12 +1016,14 @@ borrow.addEventListener("click", function (e) {
     loanAmountt !== "" &&
     loanAmountt > 100 &&
     mustNotExceed <= 20 &&
+    paybackDate.value !== "" &&
     currentAccount.totalLoan + loanAmountt <= 10000
   ) {
     currentAccount.movements.push(loanAmountt);
     currentAccount.loan.push(loanAmountt);
     currentAccount.transWith.push("Loan");
     currentAccount.transFor.push("Borrow");
+     currentAccount.dates.push(date);
     updateUI(currentAccount);
     loanAmount.value = "";
     loanAmount.value = "";
@@ -805,6 +1050,69 @@ borrow.addEventListener("click", function (e) {
     infoCards.style.display = "block";
   }else if (currentAccount.totalLoan + loanAmountt > 10000) {
     card.innerHTML = `Your total loan must not exceed \u20A610000. You already owe ${totalLoanAmt.textContent}`;
+    infoCards.style.display = "block";
+  }else if(paybackDate.value === ""){
+    card.innerHTML = `Choose a payback date.`;
+    infoCards.style.display = "block";
+  }
+});
+
+//IMPLEMENTING LOANS FOR LARGER DEVICES
+
+const getLoan = document.getElementById("getLoan");
+const loanDate = document.getElementById("loan-date");
+const loanAmt = document.getElementById("loan-amt");
+
+getLoan.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const payDate = new Date(loanDate.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = payDate - today;
+  const res = diff / (1000 * 3600 * 24);
+  const mustNotExceed = Math.floor(res);
+
+  const loanAmountt = Number(loanAmt.value);
+
+  if (
+    currentAccount.deposited >= 7000 &&
+    loanAmountt <= 10000 &&
+    loanAmountt !== "" &&
+    loanAmountt > 100 &&
+    mustNotExceed <= 20 &&
+    loanDate.value === "" &&
+    currentAccount.totalLoan + loanAmountt <= 10000
+  ) {
+    currentAccount.movements.push(loanAmountt);
+    currentAccount.loan.push(loanAmountt);
+    currentAccount.transWith.push("Loan");
+    currentAccount.transFor.push("Borrow");
+    updateUI(currentAccount);
+    loanDate.value = "";
+    loanAmt.value = "";
+    card.innerHTML = `Your account has been credited with \u20A6${loanAmountt}`;
+    infoCards.style.display = "block";
+  } else if (currentAccount.deposited < 7000) {
+    card.innerHTML =
+      "You are not eligible to take a loan. You must have had at least \u20A67000 in your spending account";
+    infoCards.style.display = "block";
+    loanDate.value = "";
+    loanAmt.value = "";
+  } else if (loanAmountt > 10000) {
+    card.innerHTML = "You are not eligible to borrow up to this amount";
+    infoCards.style.display = "block";
+  } else if (loanAmountt < 100) {
+    card.innerHTML = "You cannot borrow less than \u20A6100";
+    infoCards.style.display = "block";
+  } else if(mustNotExceed > 20){
+    card.innerHTML = "Your payback date must not exceed 20 days";
+    infoCards.style.display = "block";
+  }else if (currentAccount.totalLoan + loanAmountt > 10000) {
+    card.innerHTML = `Your total loan must not exceed \u20A610000. You already owe ${totalLoanAmt.textContent}`;
+    infoCards.style.display = "block";
+  }else if(loanDate.value === ""){
+    card.innerHTML = `Choose a payback date.`;
     infoCards.style.display = "block";
   }
 });
