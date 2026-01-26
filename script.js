@@ -732,6 +732,8 @@ mainTransferForm.addEventListener("click", function (e) {
     transferToAccount.transWith.push(currentAccount.owner);
     currentAccount.transFor.push(tReason);
     transferToAccount.transFor.push(tReason);
+    currentAccount.dates.push(date);
+    transferToAccount.dates.push(date);
     updateUI(currentAccount);
     // updateUI(transferToAccount)
     transferMain.value = "";
@@ -761,6 +763,7 @@ mainDepositForm.addEventListener("click", function (e) {
     currentAccount.movements.push(-depoAmount);
     currentAccount.transWith.push("From spending");
     currentAccount.transFor.push("For savings");
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     depositAccount.value = "";
     depositAmount.value = "";
@@ -776,6 +779,7 @@ mainDepositForm.addEventListener("click", function (e) {
     currentAccount.movements.push(depoAmount);
     currentAccount.transWith.push("From savings");
     currentAccount.transFor.push("For spending");
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     depositAccount.value = "";
     depositAmount.value = "";
@@ -814,6 +818,7 @@ payBills.addEventListener("click", function (e) {
     currentAccount.movements.push(-billAmount.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billType.value);
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     billType.value = "";
     billAccount.value = "";
@@ -860,8 +865,8 @@ transferForm.addEventListener("click", function (e) {
   ) {
     currentAccount.movements.push(-amount);
     transferToAccount.movements.push(amount);
-    currentAccount.dates.push(new Date());
-    transferToAccount.dates.push(new Date());
+    currentAccount.dates.push(date);
+    transferToAccount.dates.push(date);
     currentAccount.transWith.push(transferToAccount.owner);
     transferToAccount.transWith.push(currentAccount.owner);
     currentAccount.transFor.push(tReason);
@@ -906,6 +911,7 @@ billPay.addEventListener("click", function (e) {
     currentAccount.movements.push(-billAmountt.value);
     currentAccount.transWith.push("Paid bill");
     currentAccount.transFor.push(billTypes.value);
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     billTypes.value = "";
     billAccountt.value = "";
@@ -931,6 +937,7 @@ depositt.addEventListener("click", function (e) {
     currentAccount.movements.push(-depoAmount);
     currentAccount.transWith.push("From spending");
     currentAccount.transFor.push("For savings");
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     depositAccountts.value = "";
     depositAmountt.value = "";
@@ -946,6 +953,7 @@ depositt.addEventListener("click", function (e) {
     currentAccount.movements.push(depoAmount);
     currentAccount.transWith.push("From savings");
     currentAccount.transFor.push("For spending");
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     depositAccountt.value = "";
     depositAmountt.value = "";
@@ -1088,6 +1096,7 @@ getLoan.addEventListener("click", function (e) {
     currentAccount.loan.push(loanAmountt);
     currentAccount.transWith.push("Loan");
     currentAccount.transFor.push("Borrow");
+    currentAccount.dates.push("date");
     updateUI(currentAccount);
     loanDate.value = "";
     loanAmt.value = "";
