@@ -7,7 +7,8 @@
 }
 
 :root {
-  --bg-color: rgb(0, 0, 255);
+  --main-bg: #fff;
+  --bg-color: rgb(7, 124, 7);
   --sec-bg-color: whitesmoke;
   --color-bg: white;
   --color: black;
@@ -18,6 +19,7 @@
 }
 
 .dark-theme {
+  --main-bg: #01271a;
   --sec-bg-color: #333;
   --color-bg: black;
   --color: white;
@@ -31,7 +33,7 @@ body {
   font-family: "Roboto", sans-serif;
   width: 100%;
   overflow-x: hidden;
-  background: var(--color-bg);
+  background: var(--main-bg);
   color: var(--color);
   /* background: black;
   color: white; */
@@ -43,6 +45,7 @@ body {
   opacity: 1;
   position: relative;
   overflow: hidden;
+  flex-shrink: 1;
 }
 
 .form-container,
