@@ -457,7 +457,7 @@ select {
 }
 
 .containerr form input::placeholder {
-  font-size: 13px;
+  font-size: 0.7rem;
   color: var(--color);
 }
 
