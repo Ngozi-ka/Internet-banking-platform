@@ -28,7 +28,7 @@
   --form-bg: rgba(2, 2, 58, 0.938);
   --trns-color: rgba(255, 255, 255, 0.555);
   --input-color: gold;
-   --deposit-clr:  rgb(197, 214, 221);
+  --deposit-clr: rgb(197, 214, 221);
 }
 
 body {
@@ -140,7 +140,6 @@ header {
   border-radius: 1rem;
 }
 
-
 .balance {
   display: flex;
   flex-direction: column;
@@ -220,7 +219,6 @@ main .other-balances {
   font-weight: 550;
 }
 
-
 .activitess {
   display: none;
 }
@@ -260,7 +258,7 @@ main .other-balances {
 
 .asideForms .send {
   background: rgba(245, 245, 245, 0.473);
-   border-radius: 0.5rem;
+  border-radius: 0.5rem;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 128, 0.26);
   margin-bottom: 2rem;
   width: 100%;
@@ -375,7 +373,7 @@ select {
 }
 
 .total-deposit {
-  color: var(--deposit-clr);;
+  color: var(--deposit-clr);
 }
 
 .total-withdrawal {
@@ -513,15 +511,15 @@ button {
 
 @media (max-width: 85rem) {
   .container {
-  gap: 0;
-  padding: 0;
-}
+    gap: 0;
+    padding: 0;
+  }
 
-.main {
-  padding: 1rem 2rem;
-  width: 55%;
-  margin-top: 0;
-}
+  .main {
+    padding: 1rem 2rem;
+    width: 55%;
+    margin-top: 0;
+  }
 
   .container aside {
     width: 45%;
@@ -601,7 +599,7 @@ button {
   .saving .save-balance {
     font-size: 1.2rem;
   }
- .main {
+  .main {
     width: 100%;
     padding: 1rem 0.7rem;
   }
@@ -619,7 +617,7 @@ button {
   }
 
   .containerr {
-    width: 70%;
+    width: 80%;
   }
 
   .containerr form input,
@@ -650,7 +648,7 @@ button {
     font-weight: 350;
   }
 
-footer {
+  footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -682,7 +680,7 @@ footer {
     align-items: center;
     position: fixed;
     width: 70%;
-    top: 50%; 
+    top: 50%;
     left: 15%;
     bottom: 50%;
     right: 15%;

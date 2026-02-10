@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,11 +14,11 @@
           <button id="logoutBtn">Log out</button>
         </div>
         <div class="switch">
-        <p class="greeting">Good Morning, Jane</p>
-        <div class="theme-toggle">
-          <img src="moon-white.png" alt="moon-icon" id="icon">
-        </div>
+          <p class="greeting">Good Morning, Jane</p>
+          <div class="theme-toggle">
+            <img src="moon-white.png" alt="moon-icon" id="icon" />
           </div>
+        </div>
       </header>
       <div class="container">
         <main class="main">
@@ -73,14 +73,14 @@
             <p class="recent">Recent Transactions</p>
             <div class="transactions">
               <div class="transaction">
-              <div>
-              <p class="from-to">Blessing</p>
-                <span class="datee">4/1</span>
-              </div>
-              <div>
-              <p class="transaction-deposit">2000</p>
-              <p class="transfer-reason">For shopping</p>
-            </div>
+                <div>
+                  <p class="from-to">Blessing</p>
+                  <span class="datee">4/1</span>
+                </div>
+                <div>
+                  <p class="transaction-deposit">2000</p>
+                  <p class="transfer-reason">For shopping</p>
+                </div>
               </div>
             </div>
           </section>
@@ -98,7 +98,12 @@
               <label for="transfer-amount">Amount</label>
               <input type="number" id="mainTransferAmount" />
               <button id="mainTransferForm">Transfer</button>
-              <img src="close.png" alt="close form" class="close" id="closeIcon"/>
+              <img
+                src="close.png"
+                alt="close form"
+                class="close"
+                id="closeIcon"
+              />
             </form>
           </div>
           <div class="send sendTwo">
@@ -106,20 +111,25 @@
               <p class="for">Pay Bills</p>
               <label for="bill-type">Bill Type</label>
               <select name="categories" id="bill-type">
-              <option value="" disabled selected>Pay for:</option>
-              <option value="School">School</option>
-              <option value="Electricity">Electricity</option>
-              <option value="Water">Water</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Internet">Internet</option>
-              <option value="Faith">Faith</option>
-            </select>
-            <label for="bill-account">Bill Account</label>
+                <option value="" disabled selected>Pay for:</option>
+                <option value="School">School</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Water">Water</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Internet">Internet</option>
+                <option value="Faith">Faith</option>
+              </select>
+              <label for="bill-account">Bill Account</label>
               <input type="number" name="" id="bill-account" />
               <label for="bill-amount">Bill Amount</label>
               <input type="number" name="" id="bill-amount" />
               <button id="payBills">Pay</button>
-              <img src="close.png" alt="close form" class="close" id="closeIcon"/>
+              <img
+                src="close.png"
+                alt="close form"
+                class="close"
+                id="closeIcon"
+              />
             </form>
           </div>
           <div class="send sendThree" id="sendO">
@@ -130,7 +140,12 @@
               <label for="depositAmount">Amount</label>
               <input type="number" name="" id="depositAmount" />
               <button id="mainDepositForm">Deposit</button>
-              <img src="close.png" alt="close form" class="close" id="closeIcon"/>
+              <img
+                src="close.png"
+                alt="close form"
+                class="close"
+                id="closeIcon"
+              />
             </form>
           </div>
           <div class="send sendFour" id="sendO">
@@ -141,7 +156,12 @@
               <label for="loan-amount">Loan Amount</label>
               <input type="number" id="loan-amount" />
               <button class="borrow">Borrow</button>
-              <img src="close.png" alt="close form" class="close" id="closeIcon"/>
+              <img
+                src="close.png"
+                alt="close form"
+                class="close"
+                id="closeIcon"
+              />
             </form>
           </div>
         </section>
@@ -180,8 +200,8 @@
                 <label for="transfer-account">Account Number</label>
                 <input type="number" name="" id="transferAccount" />
                 <p id="transferDetails"></p>
-                 <label for="transferPurpose">Reason:</label>
-              <input type="text" id="transferPurpose" />
+                <label for="transferPurpose">Reason:</label>
+                <input type="text" id="transferPurpose" />
                 <label for="transferAmount">Amount</label>
                 <input type="number" id="transferAmount" />
                 <button id="transferForm">Transfer</button>
@@ -191,17 +211,17 @@
               <form action="submit">
                 <p class="for">Pay Bills</p>
                 <label for="bill-type">Bill Type</label>
-              <select name="categories" id="bill-types">
-              <option value="" disabled selected>Pay for:</option>
-              <option value="School">School</option>
-              <option value="Electricity">Electricity</option>
-              <option value="Water">Water</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Internet">Internet</option>
-              <option value="Faith">Faith</option>
-            </select>
-             <label for="billAccount">Bill Account</label>
-              <input type="number" name="" id="billAccount" />
+                <select name="categories" id="bill-types">
+                  <option value="" disabled selected>Pay for:</option>
+                  <option value="School">School</option>
+                  <option value="Electricity">Electricity</option>
+                  <option value="Water">Water</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Internet">Internet</option>
+                  <option value="Faith">Faith</option>
+                </select>
+                <label for="billAccount">Bill Account</label>
+                <input type="number" name="" id="billAccount" />
                 <label for="billAmount">Bill Amount</label>
                 <input type="number" name="" id="billAmount" />
                 <button id="billPay">Pay</button>
@@ -234,22 +254,23 @@
 
     <div class="form-container">
       <div class="containerr">
-         <h3><span class="bank-name">Nona</span><span class="bank">Bank</span></h3>
+        <h3>
+          <span class="bank-name">Nona</span><span class="bank">Bank</span>
+        </h3>
         <p>Welcome back! Please enter your details</p>
         <form action="" id="loginForm">
           <label for="account-no">Username</label>
-          <input
-            type="text"
-            id="account-no"
-            placeholder="bn"
-          />
+          <input type="text" id="account-no" placeholder="bn" />
           <label for="account-pin">Account Pin</label>
           <input type="number" id="account-pin" placeholder="1111" />
           <p id="errorMsg" class="error"></p>
           <button class="loginBtn">Login</button>
         </form>
       </div>
-      <div class="copyright"><span class="customer">Customer Care's whatsapp: 09014140023</span> <span>&copyNweke Ngozika</span></div>
+      <div class="copyright">
+        <span class="customer">Customer Care's whatsapp: 09014140023</span>
+        <span>&copyNweke Ngozika</span>
+      </div>
     </div>
     <article id="infoCards">
       <p id="card">Something is not right; rectify and try again later.</p>

@@ -158,14 +158,14 @@ const account1 = {
     "2026-01-03",
     "2026-01-05",
     "2026-01-07",
-    
   ],
 };
 
-
 const account2 = {
   owner: "Chidozie Ezenwa",
-  movements: [150000, -25000, -8000, 50000, -12000, -30000, 20000, -5000, 75000],
+  movements: [
+    150000, -25000, -8000, 50000, -12000, -30000, 20000, -5000, 75000,
+  ],
   savings: [50000, 120000, 200000],
   savingsacc: 3029485617,
   spendingacc: 7612345980,
@@ -245,7 +245,6 @@ const account3 = {
     "2026-01-18",
   ],
 };
-
 
 const account4 = {
   owner: "Genesis Ufedo",
@@ -358,7 +357,79 @@ const account6 = {
   ],
 };
 
+const account7 = {
+  owner: "Festus Nweke",
+  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000],
+  savings: [4000, 9000],
+  savingsacc: 6401928374,
+  spendingacc: 8273649102,
+  loan: [],
+  pin: 7778,
+  transWith: [
+    "Blessing N",
+    "Food Vendor",
+    "Airtel Nigeria",
+    "Brother",
+    "Laundry Service",
+    "Campus Canteen",
+    "POS Agent",
+  ],
+  transFor: [
+    "Money received",
+    "Lunch purchase",
+    "Data purchase",
+    "Allowance",
+    "Laundry payment",
+    "Dinner",
+    "Cash withdrawal",
+  ],
+  dates: [
+    "2026-01-01",
+    "2026-01-03",
+    "2026-01-06",
+    "2026-01-09",
+    "2026-01-11",
+    "2026-01-14",
+    "2026-01-17",
+  ],
+};
 
+const account8 = {
+  owner: "Osita Nweke",
+  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000],
+  savings: [4000, 9000],
+  savingsacc: 6401928374,
+  spendingacc: 8273649102,
+  loan: [],
+  pin: 8889,
+  transWith: [
+    "Blessing N",
+    "Food Vendor",
+    "Airtel Nigeria",
+    "Brother",
+    "Laundry Service",
+    "Campus Canteen",
+    "POS Agent",
+  ],
+  transFor: [
+    "Money received",
+    "Lunch purchase",
+    "Data purchase",
+    "Allowance",
+    "Laundry payment",
+    "Dinner",
+    "Cash withdrawal",
+  ],
+  dates: [
+    "2026-01-01",
+    "2026-01-03",
+    "2026-01-06",
+    "2026-01-09",
+    "2026-01-11",
+    "2026-01-14",
+    "2026-01-17",
+  ],
+};
 
 const accounts = [account1, account2, account3, account4, account5, account6];
 
@@ -505,7 +576,7 @@ const eachTransaction = function (acc) {
     const deposit = movement > 0 ? "deposit" : "withdrawal";
     const transF = acc.transFor[i];
     const transT = acc.transWith[i];
-    const transD = acc.dates[i]
+    const transD = acc.dates[i];
 
     const html = `<div class="transaction">
               <div>
@@ -524,7 +595,6 @@ const eachTransaction = function (acc) {
 
 //CREATING A SPENDINGBALANCE PROPERTY IN THE CURRENTACCOUNT, CALCULATING SPENDNG BALANCE, CALCULATING SAVINGS BALANCE AND CALCULATING THE MAIN BALANCE
 const mainBalance = function (acc) {
-
   accounts.forEach(function (acc) {
     acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
       return acc + curr;
@@ -579,14 +649,12 @@ const summary = function (acc) {
   });
   // totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`;
 
-  if(acc.totalLoan > 0){
-  totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`
-}else{
-  totalLoanAmt.textContent = `\u20A6 ${acc.totalLoan}`
-}
-
+  if (acc.totalLoan > 0) {
+    totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`;
+  } else {
+    totalLoanAmt.textContent = `\u20A6 ${acc.totalLoan}`;
+  }
 };
-
 
 //SHOWING THE SPENDING ACCOUNT NUM AND SAVINGS ACCOUNT NUM FOR EACH ACCOUNT
 const spendno = function (currentAccount) {
@@ -1010,7 +1078,6 @@ icon.onclick = function () {
 //payback date - current date
 //repayment date must not be more than 20 days from borrowing day
 
-
 borrow.addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -1036,7 +1103,7 @@ borrow.addEventListener("click", function (e) {
     currentAccount.loan.push(loanAmountt);
     currentAccount.transWith.push("Loan");
     currentAccount.transFor.push("Borrow");
-     currentAccount.dates.push(date);
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     loanAmount.value = "";
     loanAmount.value = "";
@@ -1058,13 +1125,13 @@ borrow.addEventListener("click", function (e) {
   } else if (loanAmountt < 100) {
     card.innerHTML = "You cannot borrow less than \u20A6100";
     infoCards.style.display = "block";
-  } else if(mustNotExceed > 20){
+  } else if (mustNotExceed > 20) {
     card.innerHTML = "Your payback date must not exceed 20 days";
     infoCards.style.display = "block";
-  }else if (currentAccount.totalLoan + loanAmountt > 10000) {
+  } else if (currentAccount.totalLoan + loanAmountt > 10000) {
     card.innerHTML = `Your total loan must not exceed \u20A610000. You already owe ${totalLoanAmt.textContent}`;
     infoCards.style.display = "block";
-  }else if(paybackDate.value === ""){
+  } else if (paybackDate.value === "") {
     card.innerHTML = `Choose a payback date.`;
     infoCards.style.display = "block";
   }
@@ -1119,13 +1186,13 @@ getLoan.addEventListener("click", function (e) {
   } else if (loanAmountt < 100) {
     card.innerHTML = "You cannot borrow less than \u20A6100";
     infoCards.style.display = "block";
-  } else if(mustNotExceed > 20){
+  } else if (mustNotExceed > 20) {
     card.innerHTML = "Your payback date must not exceed 20 days";
     infoCards.style.display = "block";
-  }else if (currentAccount.totalLoan + loanAmountt > 10000) {
+  } else if (currentAccount.totalLoan + loanAmountt > 10000) {
     card.innerHTML = `Your total loan must not exceed \u20A610000. You already owe ${totalLoanAmt.textContent}`;
     infoCards.style.display = "block";
-  }else if(loanDate.value === ""){
+  } else if (loanDate.value === "") {
     card.innerHTML = `Choose a payback date.`;
     infoCards.style.display = "block";
   }
