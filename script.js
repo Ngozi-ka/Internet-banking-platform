@@ -524,9 +524,6 @@ const eachTransaction = function (acc) {
 
 //CREATING A SPENDINGBALANCE PROPERTY IN THE CURRENTACCOUNT, CALCULATING SPENDNG BALANCE, CALCULATING SAVINGS BALANCE AND CALCULATING THE MAIN BALANCE
 const mainBalance = function (acc) {
-  //   acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
-  //   return acc + curr;
-  // }, 0);
 
   accounts.forEach(function (acc) {
     acc.spendingBalance = acc.movements.reduce(function (acc, curr) {
@@ -580,8 +577,16 @@ const summary = function (acc) {
   accounts.forEach(function (acc) {
     acc.totalLoan = acc.loan.reduce((acc, curr) => acc + curr, 0);
   });
-  totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`;
+  // totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`;
+
+  if(acc.totalLoan > 0){
+  totalLoanAmt.textContent = `\u20A6 -${acc.totalLoan}`
+}else{
+  totalLoanAmt.textContent = `\u20A6 ${acc.totalLoan}`
+}
+
 };
+
 
 //SHOWING THE SPENDING ACCOUNT NUM AND SAVINGS ACCOUNT NUM FOR EACH ACCOUNT
 const spendno = function (currentAccount) {
