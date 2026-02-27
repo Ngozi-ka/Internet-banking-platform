@@ -660,9 +660,9 @@ const summary = function (acc) {
   });
 
   if (acc.totalLoan > 0) {
-    totalLoanAmt.textContent = formatter(acc.totalLoan);
+    totalLoanAmt.textContent = `- \u20A6${acc.totalLoan}`;
   } else {
-    totalLoanAmt.textContent = formatter(acc.totalLoan);
+    totalLoanAmt.textContent = `\u20A6 ${acc.totalLoan}`;
   }
 };
 

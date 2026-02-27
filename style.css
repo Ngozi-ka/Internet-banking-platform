@@ -15,7 +15,7 @@
   --border-clr: black;
   --form-bg: rgb(218, 227, 231);
   --trns-color: #333;
-  --input-color: blue;
+  --place-color: rgba(138, 118, 118, 0.842);
   --deposit-clr: rgb(3, 3, 85);
 }
 
@@ -27,7 +27,7 @@
   --border-clr: blue;
   --form-bg: rgba(2, 2, 58, 0.938);
   --trns-color: rgba(255, 255, 255, 0.555);
-  --input-color: gold;
+  --place-color: #413d3dc7;
   --deposit-clr: rgb(197, 214, 221);
 }
 
@@ -37,9 +37,6 @@ body {
   overflow-x: hidden;
   background: var(--main-bg);
   color: var(--color);
-  /* background: black;
-  color: white; */
-  /* position: relative; */
 }
 
 .main-container {
@@ -162,18 +159,18 @@ footer span {
   border: none;
   padding: 0.8rem;
   border-radius: 8px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   box-shadow: 1px 1px 1px navy;
 }
 
 .balance > .your-balance {
-  font-size: 12px;
+  font-size: 0.8rem;
   color: var(--color);
 }
 
 .balance .real-balance {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -208,7 +205,7 @@ main .other-balances {
 
 .saving .savin,
 .checking .checkin {
-  font-weight: 600;
+  font-weight: 550;
   letter-spacing: 0.7px;
 }
 
@@ -251,7 +248,7 @@ main .other-balances {
 
 .transfer span {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.9rem;
   color: var(--trns-color);
 }
 
@@ -324,7 +321,7 @@ select {
 }
 
 .transact > .recent {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
@@ -349,6 +346,7 @@ select {
 .from-to {
   font-weight: 450;
   margin-bottom: 0.3rem;
+  font-size: 0.8rem;
 }
 
 .datee {
@@ -455,7 +453,7 @@ select {
 
 .containerr form input::placeholder {
   font-size: 0.7rem;
-  color: var(--color);
+  color: var(--place-color);
 }
 
 .containerr form button {
