@@ -1,129 +1,8 @@
 "use strict";
 
-// const account1 = {
-//   owner: "Jane Nnadi",
-//   movements: [200, 450, -400, 3000, -650, -130, 70, 5000],
-//   savings: [300, 400, 210, 846, 567],
-//   savingsacc: 7482091563,
-//   spendingacc: 5823710496,
-//   // interestRate: 1.2, // %
-//   loan: [1500, 1700],
-//   pin: 1111,
-//   transWith: [
-//     "School Bookshop",
-//     "David Musa",
-//     "Netflix",
-//     "Access Bank",
-//     "Electric Company",
-//     "Food Vendor",
-//     "Jane Smith",
-//     "Water Utility",
-//   ],
-//   transFor: [
-//     "Textbooks",
-//     "Money sent",
-//     "Subscription payment",
-//     "Cash deposit",
-//     "Electricity bill",
-//     "Lunch purchase",
-//     "Refund received",
-//     "Water bill",
-//   ],
-// };
-
-// const account2 = {
-//   owner: "Blessing Nweke",
-//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-//   savings: [300, 400, 210, 846, 567],
-//   savingsacc: 9135684270,
-//   spendingacc: 4609871532,
-//   loan: [1500, 1700],
-//   pin: 2222,
-//   transWith: [
-//     "Supermart",
-//     "Alex Johnson",
-//     "Bolt",
-//     "University Bursary",
-//     "Amazon",
-//     "Fuel Station",
-//     "Sarah Williams",
-//     "Church",
-//   ],
-//   transFor: [
-//     "Groceries",
-//     "Transfer sent",
-//     "Transport fare",
-//     "School fees refund",
-//     "Online shopping",
-//     "Fuel purchase",
-//     "Gift received",
-//     "Donation",
-//   ],
-// };
-
-// const account3 = {
-//   owner: "Favour Onyinye Madu",
-//   movements: [200, -200, 340, -300, -20, 50, 400, -460, 500, -200],
-//   savings: [300, 400, 210, 846, 567],
-//   savingsacc: 8357204918,
-//   spendingacc: 9081726354,
-//   loan: [1500, 1700],
-//   pin: 3333,
-//   transWith: [
-//     "Company Payroll",
-//     "Apple Store",
-//     "Landlord",
-//     "Cinema House",
-//     "Freelance Client",
-//     "Gym Center",
-//     "Internet Provider",
-//     "Mother",
-//     "Office HR",
-//     "Pharmacy Plus",
-//   ],
-//   transFor: [
-//     "Monthly salary",
-//     "Phone accessory",
-//     "House rent",
-//     "Movie ticket",
-//     "Project payment",
-//     "Membership fee",
-//     "Internet subscription",
-//     "Allowance received",
-//     "Salary payment",
-//     "Medicine purchase",
-//   ],
-// };
-
-// const account4 = {
-//   owner: "Gift Nwokeafor",
-//   movements: [430, 1000, 700, 50, 90, 360],
-//   savings: [300, 400, 210, 846, 567],
-//   savingsacc: 4829103756,
-//   spendingacc: 7612345980,
-//   loan: [1500, 1700],
-//   pin: 4444,
-//   transWith: [
-//     "Airpeace",
-//     "Eze Maryann",
-//     "Spar Mall",
-//     "UBA Bank",
-//     "John Okafor",
-//     "MTN",
-//   ],
-//   transFor: [
-//     "Flight ticket",
-//     "Personal transfer",
-//     "Groceries",
-//     "Account funding",
-//     "Loan repayment",
-//     "Airtime purchase",
-//   ],
-// };
-
 const account1 = {
   owner: "Blessing Nweke",
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30, -9900, -4550, -13000, -1200],
   savings: [300, 400, 210, 846, 567],
   savingsacc: 9135684270,
   spendingacc: 4609871532,
@@ -138,6 +17,11 @@ const account1 = {
     "Fuel Station",
     "Sarah Williams",
     "Church",
+     "Udemy",
+    "Super market",
+     "Shoe vendor",
+    "Laundry Service",
+    
   ],
   transFor: [
     "Groceries",
@@ -148,6 +32,10 @@ const account1 = {
     "Fuel purchase",
     "Gift received",
     "Donation",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2025-12-10",
@@ -158,18 +46,22 @@ const account1 = {
     "2026-01-03",
     "2026-01-05",
     "2026-01-07",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account2 = {
   owner: "Chidozie Ezenwa",
   movements: [
-    150000, -25000, -8000, 50000, -12000, -30000, 20000, -5000, 75000,
+    150000, -25000, -8000, 50000, -12000, -30000, 20000, -5000, 75000, -9900, -4550, -13000, -1200,
   ],
-  savings: [50000, 120000, 200000],
+  savings: [50000, 1200, 20000],
   savingsacc: 3029485617,
   spendingacc: 7612345980,
-  loan: [300000],
+  loan: [15000],
   pin: 2223,
   transWith: [
     "Employer",
@@ -181,6 +73,10 @@ const account2 = {
     "Friend",
     "Bolt Ride",
     "Access Bank",
+     "Udemy",
+    "Super market",
+     "Shoe vendor",
+    "Laundry Service",
   ],
   transFor: [
     "Salary payment",
@@ -192,6 +88,10 @@ const account2 = {
     "Money received",
     "Transport fare",
     "Loan disbursement",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-01",
@@ -203,12 +103,16 @@ const account2 = {
     "2026-01-15",
     "2026-01-18",
     "2026-01-22",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account3 = {
   owner: "Blessing Oluebube",
-  movements: [15000, -2500, -1200, -3000, 5000, -1500, -800, 7000],
+  movements: [15000, -2500, -1200, -3000, 5000, -1500, -800, 7000, -9900, -4550, -13000, -1200],
   savings: [5000, 12000],
   savingsacc: 3029485617,
   spendingacc: 8192037465,
@@ -223,6 +127,10 @@ const account3 = {
     "Photocopy Shop",
     "Bolt Ride",
     "Access Bank",
+     "Udemy",
+    "Super market",
+     "Shoe vendor",
+    "Laundry Service",
   ],
   transFor: [
     "Pocket money",
@@ -233,6 +141,10 @@ const account3 = {
     "Printing documents",
     "Transport fare",
     "Cash deposit",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-03",
@@ -243,12 +155,16 @@ const account3 = {
     "2026-01-11",
     "2026-01-14",
     "2026-01-18",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account4 = {
   owner: "Genesis Ufedo",
-  movements: [25000, -7000, -2500, -4000, 10000, -3000, -1500],
+  movements: [25000, -7000, -2500, -4000, 10000, -3000, -1500, -9900, -4550, -13000, -1200],
   savings: [10000, 20000],
   savingsacc: 9182736451,
   spendingacc: 5647382910,
@@ -262,6 +178,10 @@ const account4 = {
     "Friend",
     "POS Agent",
     "Food Vendor",
+     "Udemy",
+    "Super market",
+     "Shoe vendor",
+    "Laundry Service",
   ],
   transFor: [
     "Monthly stipend",
@@ -271,6 +191,10 @@ const account4 = {
     "Money received",
     "Cash withdrawal",
     "Lunch purchase",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-04",
@@ -280,12 +204,16 @@ const account4 = {
     "2026-01-13",
     "2026-01-16",
     "2026-01-19",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account5 = {
   owner: "Ekenechukwu Nwachukwu",
-  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000],
+  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000, -9900, -4550, -13000, -1200],
   savings: [4000, 9000],
   savingsacc: 6401928374,
   spendingacc: 8273649102,
@@ -299,6 +227,10 @@ const account5 = {
     "Laundry Service",
     "Campus Canteen",
     "POS Agent",
+     "Udemy",
+    "Super market",
+     "Shoe vendor",
+    "Laundry Service",
   ],
   transFor: [
     "Money received",
@@ -308,6 +240,10 @@ const account5 = {
     "Laundry payment",
     "Dinner",
     "Cash withdrawal",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-01",
@@ -317,12 +253,16 @@ const account5 = {
     "2026-01-11",
     "2026-01-14",
     "2026-01-17",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account6 = {
   owner: "Ekene Akubue",
-  movements: [180000, -60000, -15000, 4000, -2500, -10000, 9000],
+  movements: [180000, -60000, -15000, 4000, -2500, -10000, 9000, -9900, -4550, -13000, -1200],
   savings: [7000, 15000],
   savingsacc: 6401928374,
   spendingacc: 8273649102,
@@ -336,6 +276,10 @@ const account6 = {
     "Electric Company",
     "DSTV",
     "First Bank",
+     "Udemy",
+    "Super market",
+     "Shoe vendor",
+    "Laundry Service",
   ],
   transFor: [
     "Business income",
@@ -345,6 +289,10 @@ const account6 = {
     "Electricity bill",
     "Cable subscription",
     "Loan disbursement",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-01",
@@ -354,12 +302,16 @@ const account6 = {
     "2026-01-12",
     "2026-01-15",
     "2026-01-20",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account7 = {
   owner: "Festus Nweke",
-  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000],
+  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000,  -9900, -4550, 13000, -1200],
   savings: [4000, 9000],
   savingsacc: 6401928374,
   spendingacc: 8273649102,
@@ -373,6 +325,10 @@ const account7 = {
     "Laundry Service",
     "Campus Canteen",
     "POS Agent",
+    "Udemy",
+    "Super market",
+     "Shoe Client",
+    "Laundry Service",
   ],
   transFor: [
     "Money received",
@@ -382,6 +338,10 @@ const account7 = {
     "Laundry payment",
     "Dinner",
     "Cash withdrawal",
+     "Udemy course",
+    "Food stuff",
+    "Shoe",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-01",
@@ -391,12 +351,16 @@ const account7 = {
     "2026-01-11",
     "2026-01-14",
     "2026-01-17",
+     "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
 const account8 = {
   owner: "Osita Nweke",
-  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000],
+  movements: [12000, -3000, -1000, 6000, -2500, -1500, 4000, -9900, -4550, 13000, -1200],
   savings: [4000, 9000],
   savingsacc: 6401928374,
   spendingacc: 8273649102,
@@ -410,6 +374,10 @@ const account8 = {
     "Laundry Service",
     "Campus Canteen",
     "POS Agent",
+    "Udemy",
+    "Class Rep",
+     "Brother",
+    "Laundry Service",
   ],
   transFor: [
     "Money received",
@@ -419,6 +387,10 @@ const account8 = {
     "Laundry payment",
     "Dinner",
     "Cash withdrawal",
+    "Udemy course",
+    "Textbook",
+    "Allowance",
+    "Laundry payment",
   ],
   dates: [
     "2026-01-01",
@@ -428,10 +400,14 @@ const account8 = {
     "2026-01-11",
     "2026-01-14",
     "2026-01-17",
+    "2026-02-09",
+    "2026-02-11",
+    "2026-02-24",
+    "2026-02-27",
   ],
 };
 
-const accounts = [account1, account2, account3, account4, account5, account6];
+const accounts = [account1, account2, account3, account4, account5, account6, account7, account8];
 
 const bill1 = {
   name: "Transportation",
