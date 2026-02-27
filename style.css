@@ -159,7 +159,7 @@ footer span {
   border: none;
   padding: 0.8rem;
   border-radius: 8px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: 1px 1px 1px navy;
 }
@@ -187,7 +187,7 @@ main .other-balances {
   gap: 0.3rem;
   align-items: center;
   background: var(--bg-color);
-  color: var(--color);
+  color: white;
   width: 50%;
   padding: 1rem;
 }
@@ -347,6 +347,12 @@ select {
   font-weight: 450;
   margin-bottom: 0.3rem;
   font-size: 0.8rem;
+}
+
+.transfer-reason{
+  font-size: 0.9rem;
+  font-weight: 550;
+  margin-top: 0.3rem;
 }
 
 .datee {
@@ -704,9 +710,9 @@ button {
     justify-content: center;
     align-items: center;
     position: fixed;
-    width: 70%;
+    width: 95%;
     top: 50%;
-    left: 15%;
+    left: 2%;
     bottom: 50%;
     right: 15%;
     z-index: 1000;
