@@ -555,6 +555,12 @@ const updateUI = function (acc) {
   spendno(acc);
 };
 
+//ADDING COMMAS TO LARGE NUMBERS
+const formatter = function(amount) {
+  const formatted = Math.abs(amount).toLocaleString('en-NG');
+  return amount < 0 ? `-\u20A6${formatted}` : `\u20A6${formatted}`;
+}
+
 //CREATE A USERNAME PROPERTY FOR EACH ACCOUNT
 const username = accounts.forEach(function (acc) {
   acc.username = acc.owner
@@ -589,7 +595,7 @@ const eachTransaction = function (acc) {
                 <span class="datee">${transD}</span>
               </div>
               <div>
-              <p class="transaction-${deposit}">\u20A6 ${movement}</p>
+              <p class="transaction-${deposit}">${formatter(movement)}</p>
               <p class="transfer-reason">${transF}</p>
               <div>
             </div>`;
@@ -606,7 +612,7 @@ const mainBalance = function (acc) {
     }, 0);
   });
 
-  checkBalance.textContent = `\u20A6${acc.spendingBalance}`;
+  checkBalance.textContent = formatter(acc.spendingBalance);
 
   accounts.forEach(function (acc) {
     acc.SavingsBalance = acc.savings.reduce(function (acc, curr) {
@@ -614,14 +620,14 @@ const mainBalance = function (acc) {
     }, 0);
   });
 
-  saveBalance.textContent = `\u20A6${currentAccount.SavingsBalance}`;
+  saveBalance.textContent = formatter(currentAccount.SavingsBalance);
 
   const balance = function () {
     const one = [...currentAccount.movements, ...currentAccount.savings];
     const main = one.reduce(function (acc, curr) {
       return acc + curr;
     }, 0);
-    realBalance.textContent = `\u20A6${main}`;
+    realBalance.textContent = formatter(main);
   };
 
   balance();
@@ -635,13 +641,13 @@ const summary = function (acc) {
       .reduce((acc, curr) => acc + curr, 0);
   });
 
-  totalDeposit.textContent = `\u20A6 ${acc.deposited}`;
+  totalDeposit.textContent = formatter(acc.deposited);
 
   const withdrawal = acc.movements
     .filter((movement) => movement < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  totalWithdrawal.textContent = `\u20A6 ${withdrawal}`;
+  totalWithdrawal.textContent = formatter(withdrawal);
 
   // const allInterest = acc.movements
   //   .filter((movement) => movement > 0)
@@ -654,9 +660,9 @@ const summary = function (acc) {
   });
 
   if (acc.totalLoan > 0) {
-    totalLoanAmt.textContent = `- \u20A6${acc.totalLoan}`;
+    totalLoanAmt.textContent = formatter(acc.totalLoan);
   } else {
-    totalLoanAmt.textContent = `\u20A6 ${acc.totalLoan}`;
+    totalLoanAmt.textContent = formatter(acc.totalLoan);
   }
 };
 
@@ -1138,7 +1144,7 @@ getLoan.addEventListener("click", function (e) {
     currentAccount.loan.push(loanAmountt);
     currentAccount.transWith.push("Loan");
     currentAccount.transFor.push("Borrow");
-    currentAccount.dates.push("date");
+    currentAccount.dates.push(date);
     updateUI(currentAccount);
     loanDate.value = "";
     loanAmt.value = "";
