@@ -492,7 +492,7 @@ button {
   text-align: center;
   padding-top: 2rem;
   color: whitesmoke;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: 550;
   letter-spacing: 1px;
 }
@@ -658,6 +658,7 @@ button {
 
   .containerr {
     padding: 2rem 1rem;
+    overflow: hidden;
   }
 
   .activitess {
@@ -699,10 +700,6 @@ button {
     font-size: 1rem;
     font-weight: 600;
     box-shadow: 1px 1px 1px navy;
-  }
-
-  .containerr {
-    padding: 1rem;
   }
 
   .payments {
